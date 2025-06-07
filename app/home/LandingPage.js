@@ -65,7 +65,7 @@ const LandingPage = ({user}) => {
       <div className={styles.topBranding}>
         <span className={styles.welcome}>Welcome,</span>
         <span className={styles.brandName} id="customizedColor">
-        Wonge Online Market</span>
+        Wezzie Online Market</span>
       </div>
 
       {/* Search Bar */}

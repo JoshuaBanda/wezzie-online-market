@@ -58,11 +58,11 @@ const Header = () => {
                         stiffness: 120,
                         }}
                         >
-                    Wonge Market Online
+                        Wezzie Market Online
                     <p style={{
                         fontWeight:'lighter',
                     }}>
-                        Wonge weaves wonder piece by piece.
+                        Wezzie weaves wonder piece by piece.
                         Adornment that speaks. Skincare that soothes.
                     </p>
                 </motion.div>

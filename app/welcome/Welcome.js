@@ -59,10 +59,10 @@ const Welcome = () => {
             />
             <motion.div
               className={styles.mainTextContainer}
-              initial={{ y: 50, opacity: 0 }}
+              initial={{ y: 500, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -50, opacity: 0 }}
-              transition={{ }}
+              transition={{type:'spring',stiffness:300 }}
             >
               <h2>Welcome</h2>
               <p>{slides[index].text}</p>

@@ -22,7 +22,7 @@ body {body {
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;       /* Optional: can be 'scroll' for mobile */
-  background-color: #fafafa;
+  background-color: aliceblue;
 
   overflow-x: hidden;
   /*animation: swappic 60s infinite;    /* Your animation */
@@ -108,3 +108,49 @@ a {
   
 }
 /*rgb(255, 51, 85)*/
+
+
+
+
+
+
+
+
+
+
+/* fonts.css or inside globals.css */
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Felipa';
+  src: url('/fonts/Felipa-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bonheur Royale';
+  src: url('/fonts/BonheurRoyale-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Niconne';
+  src: url('/fonts/Niconne-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gudea';
+  src: url('/fonts/Gudea-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}

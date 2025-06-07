@@ -10,7 +10,8 @@
   overflow: hidden;
 }
 .header{
-    font-family: var(--font-bonheurRoyale);
+    font-family:'Bonheur Royale';
+    color: aliceblue;
 }
 
 /* Wrapper for image slider */
@@ -43,11 +44,12 @@
 /* Text overlay */
 .mainTextContainer {
   position: absolute;
-  bottom: 60px; /* Distance from bottom */
+  bottom: 15vh; /* Distance from bottom */
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
-  background-color: rgba(255, 255, 255, 0.8); /* Optional: background for readability */
+  background-color: rgba(255, 255, 255, 0.0); /* Optional: background for readability */
+  color: aliceblue;
   padding: 10px 20px;
   border-radius: 8px;
   text-align: center;

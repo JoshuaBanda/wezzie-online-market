@@ -20,7 +20,7 @@ const beauRivage = Felipa({
   variable: '--font-beauRivage',
 });
 
-const bonheurRoyale = Niconne({
+const bonheurRoyale = Bonheur_Royale({
   subsets: ['latin'],
   weight: '400',
   variable: '--font-bonheurRoyale', // fixed
@@ -44,7 +44,7 @@ const poppins=Poppins({
   variable:'--font-poppins'
 });
 export const metadata = {
-  title: "Wonge Market Online",
+  title: "Wezzie Market Online",
   description: "Online Market",
 };
 

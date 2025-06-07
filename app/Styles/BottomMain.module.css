@@ -36,6 +36,7 @@
     transition: transform 0.2s ease, color 0.2s ease;
     font-size: 20px;
     font-weight: lighter;
+    color: aliceblue;
   }
   
   .icons:hover {
