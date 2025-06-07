@@ -1,0 +1,94 @@
+.main{
+    position: relative;
+    width: 100%;
+    height: 505px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow:1px  1px 5px 5px rgba(2, 2, 2, 0.534) ;
+    z-index: 1;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    color:#333333;
+} .mains::after ,.container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Use transform instead of translate */
+    width: 100%;
+    height: 100%;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    z-index: -1;
+background-color: rgba(22, 22, 22, 0);
+  }
+.tittle{
+    
+    position:relative;top:30px;left:0px;margin:0px 30px;
+    font-family: var(--font-bonheurRoyale);
+    font-size: 30px;
+    color: #ffffff;
+}
+.imageContainer{
+    display:flex;
+    margin: 10px 0px 0px 0px;
+    font-size: 18px;
+}
+.img{
+    width: 150px;
+    height: 150px;
+    position: relative;
+}
+.imageContainerText{
+    margin-top:15px;
+    padding: 10px 10px;
+    font-weight: bold;
+    max-width: 300px;
+    
+    box-shadow:  -1px 5px 10px rgba(0, 0, 0, 0.699);
+    background-color:rgba(0,0,0, 0.3);
+    border-radius: 10px;
+    border: 1px solid #3333330e;
+    color: rgb(250, 244, 233);
+}
+
+
+.imageContainerTwo{
+    position: relative;
+    right:0px;
+    display:flex;
+    margin: 30px 0px 0px 30px;
+    font-size: 18px;
+}
+.imageContainerTextTwo p{
+    font-size: 16.5px;
+}
+.imageContainerText p {
+    font-size:16.5px ;
+    margin-top: 20px;
+}
+
+
+.imageContainerTextTwo{
+    
+    margin-top: 25px;
+    padding: 20px 5px;
+    font-weight: bold;
+    max-width: 220px;
+    
+    box-shadow:  -1px 5px 10px rgba(0, 0, 0, 0.699);
+    padding: 5px;
+    background-color:rgba(0,0,0, 0.3);
+    border-radius: 10px;
+    border: 1px solid #3333336c;
+    color: #333;
+}
+
+.imgTwo{
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    right: -45px;
+}

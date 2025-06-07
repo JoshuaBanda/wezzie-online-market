@@ -1,0 +1,206 @@
+
+  .container{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+
+  }
+
+  .header{
+    position: relative;
+    margin:20px;
+    font-family: var(--font-bonheurRoyale);
+    font-size: 20px;
+  }
+  
+  .likeButton{
+    position: fixed;
+    right: 20px;
+    top:60px;
+    margin-left:20px ;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+       align-items: center;
+    align-content: center;
+    justify-content: center;display: flex;
+    overflow: hidden;
+}
+ .cartButton{
+    position: fixed;
+    right: 40%;
+    top:60px;
+    margin-left:20px ;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+       align-items: center;
+    align-content: center;
+    justify-content: center;display: flex;
+    overflow: hidden;
+}
+ .prevButton{
+    position: fixed;
+    left: 5%;
+    top:60px;
+    margin-left:20px ;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+       align-items: center;
+    align-content: center;
+    justify-content: center;display: flex;
+    overflow: hidden;
+}
+  .productInfo {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .productImage {
+    position: relative;
+    top:200px;
+    margin: 0 auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    
+  }
+  
+  .productDetails {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border-top-left-radius:50px ;
+    border-top-right-radius: 50px;
+    width: 100%;
+    height: 40vh;
+    color: black;
+    border: 1px solid black;
+  }
+  
+  .productName {
+    position: relative;
+    font-size: 30px;
+    font-weight: 1000;
+    margin-bottom: 10px;
+  }
+  
+  .productDescription {
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+  
+    .productDescription span{
+      font-weight: bold;
+      font-size: 15px;
+    }
+    .productDescription p {
+      font-size: 13px;
+      font-weight: lighter;
+    }
+  .productPrice {
+    position: fixed;
+    bottom: 50px;
+    font-weight: 500;
+    color: #333; /* Tomato color for emphasis */
+    margin-bottom: 20px;
+    font-family: var(--font-bonheurRoyale);
+    font-size: 30px;
+
+  }
+  
+  .addToCartBtn {
+    position: fixed;
+    bottom: 50px;right: 30px;
+    background-color: rgba(0, 0, 0); /* Tomato color */
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+  }
+  .addToCartBtn div{
+    padding:0px 5px;
+  }
+  
+  .addToCartBtn:hover {
+    background-color: #474342; /* Darker tomato on hover */
+  }
+  
+  .loader, .error {
+    position: relative;
+    top: 300px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #333;
+    margin-top: 50px;
+    font-weight: bold;
+  }
+  
+  /* Mobile Styles */
+  @media (max-width: 600px) {
+    .productPage {
+      padding: 15px;
+    }
+  
+    .productInfo {
+      width: 100%;
+      padding: 15px;
+    }
+  
+    .productImage {
+      max-width: 90%;
+      margin-bottom: 15px;
+    }
+  
+    .productName {
+      font-size: 1.3rem;
+    }
+  
+    .productDescription {
+      font-size: 0.9rem;
+    }
+  
+    .productPrice {
+      font-size: 20px;
+    }
+  
+    .addToCartBtn {
+      font-size: 1rem;
+      padding: 10px 18px;
+    }
+  }
+  
+  .quantityIn {
+    position: absolute;
+    right: 20px;top: 30px;
+    background-color: rgb(236, 236, 236);
+    display: flex;
+    padding: 2px 20px;
+    gap:25%;
+    border-radius: 20px;
+    height: 25px;
+    width: 50%;
+    max-width: 130px;
+    color: black;
+  
+  }
+  .quantityIn div{
+    position: relative;
+    top: 2px;
+  }
+
+  .rating{
+    position: relative;
+    margin: 5px;
+    font-size: 13px;
+  }

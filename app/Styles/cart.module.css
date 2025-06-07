@@ -1,0 +1,173 @@
+.container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(20px);
+    height: 100vh;
+
+}
+.tittle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  
+  font-family: var(--font-poppins  );
+  font-size: 35px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  
+  margin-bottom: 10px;
+  color: rgb(0, 0, 0);
+}
+
+.imgTwo{
+    position: relative;
+
+    left: -12px;
+    display: block;
+    /*margin: 0px 0 10px auto;*/
+    width: 30%;
+    height: auto;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius:20px ;
+}
+.imgTwo :hover{
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+.itemText{
+    position: relative;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    left: -20px;
+    width: 80%;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+.name{
+    
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+}
+.unorderedlist li{
+    border: 1px solid rgba(90, 90, 90, 0.3);
+    margin: 30px 10px;
+    border-radius: 10px;
+    display: flex;
+    background-color: #ffffff;
+    
+    box-shadow:1px  1px 1px 1px rgba(2, 2, 2, 0.1) ;
+    color: black;
+}
+
+  .quantityIn {
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    padding: 2px 20px;
+    gap:25%;
+    border-radius: 10px;
+    height: 24px;
+    width: 50%;
+    max-width: 130px;
+    color: black;
+    border: 1px solid rgba(0, 0, 0, 0.459);
+  
+  }
+  .order{
+    padding: 1px 20px;
+    background-color: rgba(0, 0, 0, 0.829);
+    color: white;
+    border-radius: 10px;
+    
+  }
+  .options{
+
+    position: relative;
+top: 10px;
+display: flex;
+justify-content: center; /* Horizontal centering */
+align-items: center;     /* Vertical centering */
+padding: 1px 2px;
+gap: 5%;
+
+  }
+
+  .price{
+    position: relative;
+    margin: 0px 30px 0px 30px;
+    font-size: 15px;
+  }
+.heading{
+  position: relative;
+  display: flex;
+  margin: 10px;
+}
+  .orderall{
+    padding: 20px;
+    width: 150px;
+    border-radius: 20px;
+    right: 10;
+    align-items: end;
+    display: block;
+    margin: 0px 0 10px auto;
+    box-shadow:1px  1px 5px 2px rgba(2, 2, 2, 0.4) ;
+    color: white;
+  }
+  .totalcost{
+    
+    background-color: rgba(255, 255, 255, 1);
+    padding: 20px;
+    width: 150px;
+    border-radius: 20px;
+    right: 10;
+    display: block;
+    color: black;
+    box-shadow:1px  1px 5px 1px rgba(2, 2, 2, 0.4) ;
+  }
+
+  .status{
+    position: relative;
+    margin:0px 0px 0px 25px;
+    
+    font-size: 15px;
+  }
+  .status span{
+    color: rgb(44, 44, 44);
+    background-color: rgba(255, 255, 255);
+    padding: 3px 5px;
+    margin: 4px;
+    border-radius: 10px 2px;
+    font-family: var(--font-bonheurRoyale);
+    font-size: 18px;
+  }
+  .availableNow{
+    position: relative;
+    margin:5px 1px  5px 25px ;
+  }
+
+.deleteButton {
+  font-size: 22px;
+  position: relative;
+  right: 0px; /* Space from the right edge */
+  cursor: pointer;
+  transition: color 0.3s ease;
+  width: 10%;
+}
+.deleteButton div{
+  padding:2px  1px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 150px;
+  width: 35px;
+  color: black;
+  align-items: center;
+  align-content: center;
+}
+.deleteButton span{
+  font-size: 18px;
+}
+.deleteButton:hover {
+  color: #e74c3c; /* Darker red on hover */
+}

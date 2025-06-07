@@ -1,0 +1,110 @@
+@property --textc {
+  syntax: "<color>";
+  initial-value: rgb(255, 51, 85);
+  inherits: false;
+}
+
+
+html,
+body {body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  color: black;
+  margin: 0;
+  padding: 0;
+    font-family:var(--font-poppins);
+  
+
+  /*background-image: url('/wonge48.jpg');*/
+  background-size: cover;             /* Ensures the image covers the entire screen */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;       /* Optional: can be 'scroll' for mobile */
+  background-color: #fafafa;
+
+  overflow-x: hidden;
+  /*animation: swappic 60s infinite;    /* Your animation */
+ z-index: 1;
+}
+
+}.myColor {
+  /*animation: changeTextColor 60s infinite;*/
+  color: var(--textc);
+    font-family:var(--font-poppins);
+  font-weight: bold;
+}
+
+@keyframes changeTextColor {
+  0%   { --textc: rgb(255, 51, 85); }
+  50%  { --textc: rgb(60, 161, 82); }
+  100% { --textc: rgb(255, 51, 85); }
+}
+
+
+@keyframes swappic {
+  0% { background-image: url("/wonge1.jpg");
+  }
+  50% { background-image: url("/wonge1.jpg");
+    
+  }
+  
+  100% { background-image: url("/wonge1.jpg");
+  }
+}
+.special-element {
+  font-family: var(--font-lovers);
+}
+
+.blur-wrapper {
+  position: relative;
+  /*background-image: url('/wonge1.jpg');*/
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  backdrop-filter: blur(20px);
+  min-height: 100vh;
+  width: 100vw;
+  position: relative;
+  top: 0px;
+  bottom: 0px;
+  background-color: rgba(0, 0, 0, 0);
+  
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.containerlist{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(2px);
+  background-color: rgba(0, 0, 0, 0.233);
+  height: 100vh;
+
+}
+
+#customizedbackground{
+  background-color:var(--textc) ;
+  
+}
+#customizedColor{
+  color:var(--textc);
+  
+}
+
+#customizedborder{
+  border: 1px solid var(--textc);
+  
+}
+/*rgb(255, 51, 85)*/
