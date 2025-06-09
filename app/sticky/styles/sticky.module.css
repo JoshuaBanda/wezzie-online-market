@@ -77,6 +77,7 @@
 /* Optional: Responsive hiding of sticky image on mobile */
 @media screen and (max-width: 1080px) {
   .stickySection {
+    display: none;
     max-width: 80px;
     transform: translateX(-20);
   }
