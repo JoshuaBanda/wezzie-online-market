@@ -76,16 +76,21 @@
 }
 
 /* Optional: Responsive hiding of sticky image on mobile */
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 1080px) {
   .stickySection {
-    max-width: 120px;
+    max-width: 80px;
+    transform: translateX(-20);
   }
 
   .contentWrapper {
-  margin-left: 130px;
+  margin-left: 70px;
   width: calc(100%);
   }
   .page{
     margin: 0px 0px 100px 0px;
   }
+  
+.contentSection {
+  margin-bottom: 30px;
+}
 }
