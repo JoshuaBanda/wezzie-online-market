@@ -1,0 +1,25 @@
+.container{
+    border: qpx solid black;
+}
+.optionsList{
+    font-family: Poppins;
+    margin: 15px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.paragraph{
+    color: #777;
+}
+.optionsList div{
+    width: 80vw;height: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.411);
+    border-radius: 5px;
+}

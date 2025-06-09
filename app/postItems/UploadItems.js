@@ -2,6 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useUser } from '../userContext';
+import styles from "./styles/form.module.css";
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
 
 const UploadItems = () => {
   const [name, setName] = useState('');
@@ -17,7 +20,7 @@ const UploadItems = () => {
   const [quantity,setQuantity]=useState('');
 
 
-
+  const route=useRouter();
   const {person}=useUser();
     
   const [user,setUser]=useState(person)      
@@ -78,9 +81,33 @@ const UploadItems = () => {
           'Content-Type': 'multipart/form-data',
         },
       });
-
-      console.log('Response:', response.data);
-      resetForm();
+      
+            if (response.status==201){
+              
+              resetForm();
+              toast.success(
+                
+              `Successfuly added ${typeOfProduct} to maket.`,
+                {
+                  onClick: () => {
+                    route.push(`/products/${typeOfProduct}`)
+                  },
+                  closeOnClick: true, // Optional: don't auto-close on click
+                  draggable: true,
+                  autoClose: 10000,
+                }
+              );
+            }else{
+              toast.error(
+                
+              `Failed to add ${typeOfProduct} to maket.`,
+                {
+                  closeOnClick: true, // Optional: don't auto-close on click
+                  draggable: true,
+                  autoClose: 10000,
+                }
+              );
+            }
     } catch (error) {
       setSubmitError(error.message);
       console.error('Error:', error);
@@ -108,208 +135,109 @@ const UploadItems = () => {
   }
 
   return (
-    <div style={containerStyle}>
-      <form onSubmit={handleSubmit} style={formStyle}>
-        <h2 style={headingStyle}>Upload New Item</h2>
-        <div style={formGroupStyle}>
-          <label htmlFor="name" style={labelStyle}>Name:</label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            style={inputStyle}
-            placeholder='Enter name of Product'
-          />
+    <div className={styles.container}>
+        <h2 >Upload New Item</h2>
+        <div style={{color:'#777'}}>
+          NB: The picture should be uploaded without background in png format to mantain the beauty of the website
         </div>
-        <div style={formGroupStyle}>
-          <label htmlFor="description" style={labelStyle}>Description:</label>
-          <textarea
-            id="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            style={inputStyle}
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <div className={styles.formContainer}>
+          
+          <div className={styles.name}>
+            <label htmlFor="name" >Name:</label>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              
+              placeholder='Enter name of Product'
+            />
+          </div>
+          <div className={styles.price}>
+            <label htmlFor="price" >Price:</label>
+            <input
+              type="text"
+              id="price"
+              value={price}
+              onChange={handlePriceChange}
+              placeholder="Enter price"
+            />
+          </div>
+          <div className={styles.description} >
+            <label htmlFor="description" >Description:</label>
+            <textarea
+              id="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              
+              placeholder='Enter Description of the Product'
+            />
+          </div>
+          
+          <div className={styles.quantity}>
+            <label htmlFor="Quantity" >Quantity:</label>
+            <input
+              type="text"
+              id="Quantity"
+              value={quantity}
+              onChange={handleQuantityChange}
+              placeholder="Enter Quantity"
             
-            placeholder='Enter Description of the Product'
-          />
-        </div>
-        <div style={formGroupStyle}>
-          <label htmlFor="photo" style={labelStyle}>Upload Photo:</label>
-          <input type="file" id="photo" onChange={handleFileChange} style={fileInputStyle} />
-          {file && (
-            <div>
-              <h4>Preview:</h4>
-              <img src={URL.createObjectURL(file)} alt="Preview" style={{ width: '200px', height: 'auto' }} />
+            />
+          </div>
+
+          <div className={styles.type}>
+            <label htmlFor="type">Type:</label>
+            <select
+              id="type"
+              value={typeOfProduct}
+              onChange={handleTypeChange}
+            >
+              <option value="ToteBags">Tote bag</option>
+              <option value="Dresses">Dresses</option>
+              <option value="Skirts">Skirts</option>
+              <option value="Shirts">Shirts</option>
+              <option value="Shirts">Bracelets</option>
+            </select>
             </div>
-          )}
-          {uploading && <p style={statusStyle}>Uploading...</p>}
-          {submitError && <p style={errorStyle}>Error: {submitError}</p>}
-        </div>
-        <div style={formGroupStyle}>
-          <label htmlFor="price" style={labelStyle}>Price:</label>
-          <input
-            type="text"
-            id="price"
-            value={price}
-            onChange={handlePriceChange}
-            placeholder="Enter price"
-            style={inputStyle}
-          />
-        </div>
-        
-        <div style={formGroupStyle}>
-          <label htmlFor="Quantity" style={labelStyle}>Quantity:</label>
-          <input
-            type="text"
-            id="Quantity"
-            value={quantity}
-            onChange={handleQuantityChange}
-            placeholder="Enter Quantity"
-            style={inputStyle}
-          />
-        </div>
-        <div style={formGroupStyle}>
-          <label htmlFor="whatsappMessage" style={labelStyle}>Whatsapp Message:</label>
-          <input
-            type="text"
-            id="whatsappMessage"
-            value={whatsappMessage}
-            onChange={handleWhatsappMessageChange}
-            placeholder="Enter Whatsapp message"
-            style={inputStyle}
-          />
-        </div>
-        <div style={formGroupStyle}>
-          <label style={labelStyle}>Type:</label>
-          <div style={radioGroupStyle}>
-            <label style={radioLabelStyle}>
-              <input
-                type="radio"
-                name="type"
-                value="Avon product"
-                checked={typeOfProduct === 'Avon product'}
-                onChange={handleTypeChange}
-              />
-              Avon
-            </label>
-            <label style={radioLabelStyle}>
-              <input
-                type="radio"
-                name="type"
-                value="Earrings"
-                checked={typeOfProduct === 'Earrings'}
-                onChange={handleTypeChange}
-              />
-              Earrings
-            </label>
-            
-            <label style={radioLabelStyle}>
-              <input
-                type="radio"
-                name="type"
-                value="Brochus"
-                checked={typeOfProduct === 'Brochus'}
-                onChange={handleTypeChange}
-              />
-              Brochus
-            </label>
-            
-            <label style={radioLabelStyle}>
-              <input
-                type="radio"
-                name="type"
-                value="Perfume"
-                checked={typeOfProduct === 'Perfume'}
-                onChange={handleTypeChange}
-              />
-              Perfume
-            </label>
+
+
+
+          <div className={styles.whatsappMessage}>
+            <label htmlFor="whatsappMessage" >Whatsapp Message:</label>
+            <input
+              type="text"
+              id="whatsappMessage"
+              value={whatsappMessage}
+              onChange={handleWhatsappMessageChange}
+              placeholder="Enter Whatsapp message"
+            />
+          </div>
+          
+          <div >
+            <label htmlFor="photo" >Choose Photo:</label>
+            <input type="file" id="photo" onChange={handleFileChange} />
+            {file && (
+              <div>
+                <h4>Preview:</h4>
+                <img src={URL.createObjectURL(file)} alt="Preview" style={{ width: '200px', height: 'auto' }} />
+              </div>
+            )}
           </div>
         </div>
-        <button type="submit" disabled={uploading} style={submitButtonStyle} id='customizedbackground'>
+            <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center',width:'100%',
+            }}>
+            {uploading && <p style={{color:'green'}}>Uploading...</p>}
+            {submitError && <p style={{color:'red'}}>Error: {submitError}</p>}
+            </div>
+        <button type="submit" disabled={uploading} id='customizedbackground' className={styles.button}>
           {uploading ? 'Submitting...' : 'Submit'}
         </button>
       </form>
 
     </div>
   );
-};
-
-// Styles
-const containerStyle = {
-  //maxWidth: '600px',
-  //marginTop:"10px",
-  padding: '20px',
-  borderRadius: '20px',
-  boxShadow: '0 2px 10px rgba(0, 0, 0, 0.5)',
-  marging:"0 auto",
-  display:"flex",
-};
-
-const formStyle = {
-  padding: '20px',
-  borderRadius: '5px',
-  boxShadow: '0 2px 5px rgba(0, 0, 0, 0.5)',
-  margin:"0 auto",
-  width:"500px"
-
-};
-
-const headingStyle = {
-  textAlign: 'center',
-};
-
-const formGroupStyle = {
-  marginBottom: '15px',
-};
-
-const labelStyle = {
-  display: 'block',
-  marginBottom: '5px',
-  fontWeight: 'bold',
-};
-
-const inputStyle = {
-  width: '100%',
-  padding: '10px',
-  border: '1px solid #ccc',
-  borderRadius: '4px',
-  boxSizing: 'border-box',
-  backgroundColor:"rgba(255,255,255,0.2)",
-  color:"white",
-};
-
-const fileInputStyle = {
-  padding: '10px',
-};
-
-const radioGroupStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-};
-
-const radioLabelStyle = {
-  marginBottom: '5px',
-};
-
-const submitButtonStyle = {
-  color: 'white',
-  padding: '10px',
-  border: 'none',
-  borderRadius: '4px',
-  cursor: 'pointer',
-  width: '100%',
-  fontSize: '16px',
-  marginTop: '10px',
-  transition: 'background-color 0.3s',
-};
-
-const submitButtonHoverStyle = {
-  backgroundColor: '#45a049',
-};
-
-const statusStyle = {
-  color: 'blue',
 };
 
 const errorStyle = {

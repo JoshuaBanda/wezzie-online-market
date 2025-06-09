@@ -1,0 +1,73 @@
+.container {
+    position: fixed;
+    border: 1px solid black;
+    height: 10vh;
+    width: 10vw;
+    display: flex; /* Make container a flex parent */
+    
+  perspective: 600px; /* Add this line */
+  perspective-origin: center;
+}
+
+.container ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Flexbox for list items */
+    gap: 10px; /* spacing between items */
+}
+
+.container ul li {
+    display: flex;
+    align-items: center;
+    border: 1px solid white;
+    transition: transform 0.3s ease;
+}
+.list{
+    
+  perspective: 600px; /* Add this line */
+  perspective-origin: center;
+}
+.list li{
+    
+    filter: brightness(0);
+    background-color: #111;
+}
+.list li:hover{
+    transform: translateZ(50px) rotateY(20deg);
+    filter: brightness(1);
+}
+.list li:hover + *{
+    transform: translateZ(20px) rotateY(10deg);
+    filter: brightness(0.8);
+}
+
+.list li:hover + * + *{
+    transform: translateZ(-2px) rotateY(-30deg);
+    filter: brightness(0.7);
+}
+
+.list li:hover + * + * + *{
+    transform: translateZ(-1px) rotateY(40deg);
+    filter: brightness(0.6);
+}
+.list li:hover + * + * + * + *{
+    transform: translateZ(-1px) rotateY(-40deg);
+    filter: brightness(0.5);
+}
+.list li:has(+ *:hover){
+    transform: translateZ(60px) rotateY(-40deg);
+    filter: brightness(0.8);
+}
+.list li:has(+ * + *:hover){
+    transform: translateZ(10px) rotateY(30deg);
+    filter: brightness(0.7);
+}
+.list li:has(+ * + * + *:hover){
+    transform: translateZ(-1px) rotateY(-30deg);
+    filter: brightness(0.6);
+}
+.list li:has(+ * + * + * + *:hover){
+    transform: translateZ(15px) rotateY(20deg);
+    filter: brightness(0.5);
+}

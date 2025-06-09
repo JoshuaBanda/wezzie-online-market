@@ -8,26 +8,26 @@ const productList = () => {
       const route = useRouter();
 
     const products=[
-        {name:"Lotion",photo:'/avon3_with_no_bg.png',background:"rgba(163, 163, 163, 0.7)"},
+        {name:"ToteBags",photo:'/bag.png',background:"rgba(163, 163, 163, 0.7)"},
         
-        {name:"Soap",photo:'/soap.png',background:"rgba(163, 163, 163, 0.7)"},
+        {name:"Skirts",photo:'/skirt.png',background:"rgba(163, 163, 163, 0.7)"},
         
-        {name:"Perfume",photo:'/perfume11.png',background:"rgba(163, 163, 163, 0.7)"},
-        {name:"Brochus",photo:'/brooc_with_no_bg.png',background:"rgba(163, 163, 163, 0.7)"},
-        {name:"Earrings",photo:'/earring2.png',background:"rgba(163, 163, 163, 0.7)"},
+        {name:"Shirts",photo:'/Shirts.png',background:"rgba(163, 163, 163, 0.7)"},
+        {name:"Dresses",photo:'/dress.png',background:"rgba(163, 163, 163, 0.7)"},
+        {name:"Bracelets",photo:'/bracelets.png',background:"rgba(163, 163, 163, 0.7)"},
     ];
     const handleRouting=(name)=>{
-        if(name=="Lotion"){
-            route.push("/products/Lotion")
-        }else if(name=="Earrings"){
-            route.push("/products/Earrings")
+        if(name=="ToteBags"){
+            route.push("/products/ToteBags")
+        }else if(name=="Bracelets"){
+            route.push("/products/Bracelets")
         }
-        else if(name=="Brochus"){
-            route.push("/products/Brochus")
-        }else if(name=="Perfume"){
-            route.push("/products/Perfume")
-        }else if(name=="Soap"){
-            route.push("/products/Soap")
+        else if(name=="Dresses"){
+            route.push("/products/Dresses")
+        }else if(name=="Shirts"){
+            route.push("/products/Shirts")
+        }else if(name=="Skirts"){
+            route.push("/products/Skirts")
         }
     }
     const items=products.map((item,index)=>{

@@ -1,6 +1,6 @@
 @property --textc {
   syntax: "<color>";
-  initial-value: rgb(255, 51, 85);
+  initial-value: rgb(56, 31, 35);
   inherits: false;
 }
 
@@ -22,7 +22,7 @@ body {body {
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;       /* Optional: can be 'scroll' for mobile */
-  background-color: aliceblue;
+  background-color: white;
 
   overflow-x: hidden;
   /*animation: swappic 60s infinite;    /* Your animation */
@@ -102,10 +102,18 @@ a {
   color:var(--textc);
   
 }
-
+#darkThemeTextColor{
+  color:#111;
+}
 #customizedborder{
   border: 1px solid var(--textc);
   
+}
+#whiteThemeBackground{
+  background-color: white;
+}
+#whiteText{
+ color: white; 
 }
 /*rgb(255, 51, 85)*/
 
@@ -153,4 +161,29 @@ a {
   src: url('/fonts/Gudea-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
+}
+
+
+
+
+input[type="file"] {
+  font-size: 16px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+}
+
+input[type="file"]::file-selector-button {
+  padding: 8px 16px;
+  background-color: var(--textc); /* indigo */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #4338ca; /* darker indigo */
 }

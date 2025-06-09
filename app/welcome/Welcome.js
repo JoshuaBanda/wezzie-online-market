@@ -1,10 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import styles from "../Styles/welcome.module.css";
+import styles from "./styles/welcome.module.css";
 import Image from "next/image";
 import FadedColor from "@/components/FadedColor";
 import AnimatedWord from "@/components/AnimatedWord";
+import RotatedSlider from "./RotatedSlider";
 
 const slides = [
   {
@@ -33,42 +34,49 @@ const Welcome = () => {
 
 
   return (
-    <div className={styles.container} id="customizedbackground">
+    <div className={styles.container} id="darkThemeTextColor">
         <div className={styles.header}>
             <AnimatedWord/>
         </div>
+        {/*<div className={styles.rotatedSlider}>
+          <RotatedSlider/>
+        </div>*/}
       <div className={styles.sliderContainer}>
         
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
             className={styles.picContainer}
-            initial={{ y: 300, opacity: 1 }}
+            initial={{ y: 300, opacity: 1,x:-100 }}
             animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -100, opacity: 0 }}
+            exit={{ x: 100, opacity: 0 }}
             transition={{ duration: 0.3 ,ease:"linear"}}
           >
             <Image
               src={slides[index].image}
               alt={`Slide ${index + 1}`}
               quality={100}
-              width={560}
+              width={350}
               height={500}
               sizes="(max-width:768px)100vw, (max-width:1200px)50vw, 33vw"
               priority
             />
+          </motion.div>
+          
             <motion.div
               className={styles.mainTextContainer}
-              initial={{ y: 500, opacity: 0 }}
+              initial={{ y: 500, opacity: 0,x:-50 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -50, opacity: 0 }}
               transition={{type:'spring',stiffness:300 }}
             >
-              <h2>Welcome</h2>
-              <p>{slides[index].text}</p>
+              <h2 className={styles.welcome}>Welcome</h2>
+              <p className={styles.paragraph}>{slides[index].text}</p>
             </motion.div>
-          </motion.div>
         </AnimatePresence>
+      </div>
+      <div className={styles.circle} id="customizedbackground">
+
       </div>
       <FadedColor/>
     </div>

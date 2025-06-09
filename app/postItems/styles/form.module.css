@@ -1,0 +1,95 @@
+.container{
+    position: relative;
+    margin: 10px;
+}
+.formContainer{
+
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  margin:10px 10px 50px 10px;
+}
+.formContainer div{
+
+    border-radius: 10px;
+    margin: 10px;
+    padding: 5px;
+    box-shadow: -1px 2px 3px rgba(0, 0, 0, 0.541);
+}
+.formContainer div,
+.type select,
+.formContainer input,
+.formContainer textarea {
+  background-color: rgb(243, 243, 243);
+}
+
+.type select,
+.formContainer input{
+    height: 45px;
+}
+
+.name{
+    grid-column: 1/2;
+    display: flex;
+    flex-direction: column;
+}
+.name input{
+    border: none;
+}
+.description{
+    grid-column: 1/4;
+    display: flex;
+    flex-direction: column;
+}
+.description textarea{
+    border: none;
+}
+.price{
+    grid-column: 2/4;
+    display: flex;
+    flex-direction: column;
+}
+.price input{
+    border: none;
+}
+.quantity{
+    grid-column: 1/2;
+    display: flex;
+    flex-direction: column;
+}
+.quantity input{
+    border: none;
+}
+.type{
+    grid-column: 2/4;
+    display: flex;
+    flex-direction: column;
+}
+.type select{
+    border:none;
+}
+.whatsappMessage{
+    grid-column: 1/4;
+    display: flex;
+    flex-direction: column;
+}
+.whatsappMessage input{
+    border:none;
+}
+.choosePhoto{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.button{
+  position: absolute;   
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 40px;
+  border-radius: 20px;
+  color: white;
+  margin:10px 10px 50px 10px;
+  box-shadow: -2px 5px 10px rgba(0, 0, 0, 0.473);
+}

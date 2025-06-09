@@ -72,7 +72,7 @@ const item = ({params}) => {
       if (res.status==201){
         toast.success(
           
-        `Dear ${user.firstname} ${user.lastname}, You successfully added ${product.name} to your cart. click here to view your item in cart`,
+        `Successfully added ${product.name} to your cart. click here to view your item in cart`,
           {
             onClick: () => {
               router.push('/cart'); // Navigate to cart
@@ -158,7 +158,10 @@ const handleQuantityReduction = () => {
             sizes='(max-width:768px)100vw, (max-width:1200pxpx)50vw, 33vw'
           />
 
-          <div className={styles.productDetails} id=''>
+          <div className={styles.productDetails} 
+                id="customizedbackground"
+                style={{color:'white'}}
+                >
             <h1 className={styles.productName}>{product.name}</h1>
             
              <div className={styles.rating}>

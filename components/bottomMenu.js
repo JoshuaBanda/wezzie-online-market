@@ -32,7 +32,7 @@ const BottomMenu = () => {
       router.push('/productList');
     }
     else if(item=="Settings"){
-      router.push('/postItems');
+      router.push('/adminPrivileges');
     }else if (item=="PurchaseHistory"){
       router.push('/purchaseHistory')
     }

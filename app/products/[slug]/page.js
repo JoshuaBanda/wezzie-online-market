@@ -4,20 +4,20 @@ import ClientFetcher from "./clientFetcher";
 
 export async function generateStaticParams() {
     return [
-      { slug: 'Lotion' },
-      { slug: 'Earrings' },
-      { slug: 'Brochus' },
-      { slug: 'Perfume' },
-      { slug: 'Soap' },
+      { slug: 'ToteBags' },
+      { slug: 'Dresses' },
+      { slug: 'Skirts' },
+      { slug: 'Shirts' },
+      { slug: 'Bracelets' },
     ];
   }
   
   const products = {
-    Lotion: { name: 'Lotion', price: '$20' },
-    Earrings: { name: 'Earrings', price: '$30' },
-    Brochus: { name: 'Brochus', price: '$50' },
-    Perfume: { name: 'Perfume', price: '$50' },
-    Soap:{name:"Soap",price:"$60"}
+    ToteBags: { name: 'ToteBags', price: '$20' },
+    Dresses: { name: 'Dresses', price: '$30' },
+    Skirts: { name: 'Skirts', price: '$50' },
+    Shirts: { name: 'Shirts', price: '$50' },
+    Bracelets:{name:"Bracelets",price:"$60"}
   };
   
   // ✅ Mark as async and await params

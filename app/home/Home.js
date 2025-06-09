@@ -27,16 +27,16 @@ const HomePage = ({user}) => {
   const { ref: shopNowRef, inView: shopNowInView } = useInView({
     threshold: 0.5,
   });
-  const items = ["Avon", "Earrings", "Brochus", 'Perfume'];
+  const items = ["Dresses", "Shirts", "Skirts", 'Bag'];
 
   // State to keep track of selected item
   const [selectedItem, setSelectedItem] = useState(null);
-  const [search, setSearch] = useState("Avon");
+  const [search, setSearch] = useState("Dresses");
   const [listItemBorder,setListItemBorder]=useState(0);
   // Handle when an item is clicked
 
 useEffect(() => {
-  const items = ["Avon", "Earrings", "Brochus", "Perfume"];
+  const items = ["Dresses", "Shirts", "Skirts", "Bag"];
   let index = 0;
 
   const interval = setInterval(() => {
@@ -59,12 +59,12 @@ useEffect(() => {
     setSelectedItem(item);
     setSearch(item); // Update search when an item is clicked
     //console.log("item",item);
-    if(item=="Avon"){
+    if(item=="Dresses"){
       setListItemBorder(0);
     }
-    else if (item=="Earrings") {
+    else if (item=="Shirts") {
       setListItemBorder(1);
-    } else if(item==="Brochus") {
+    } else if(item==="Skirts") {
       setListItemBorder(2);
     }
     else{
@@ -74,7 +74,7 @@ useEffect(() => {
 
   useEffect(() => {
     // Pre-select an item on initial load
-    handleOnClick('Avon');
+    handleOnClick('Dresses');
   }, []);
   useEffect(()=>{
     

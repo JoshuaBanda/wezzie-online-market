@@ -1,0 +1,75 @@
+.container {
+  position: fixed;
+  height: 15vh;
+  width: 80%;
+  perspective: 600px;
+  perspective-origin: center;
+}
+
+.list {
+  display: flex;
+  list-style: none;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  perspective: 600px; /* Add this line */
+  perspective-origin: center;
+}
+
+.listItem {
+  filter: brightness(0);
+  background-color: #111111b4;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.918);
+  width: 15vw;
+}
+
+/* Active & Nearby States */
+.item {
+  transform: translateZ(50px) rotateY(20deg) translateY(50) scale(2.5);
+  filter: brightness(1);
+}
+
+.next1 {
+  transform: translateZ(20px) rotateY(10deg);
+  filter: brightness(0.8);
+}
+
+.next2 {
+  transform: translateZ(-2px) rotateY(-30deg);
+  filter: brightness(0.6);
+}
+
+.next3 {
+  transform: translateZ(-1px) rotateY(40deg);
+  filter: brightness(0.4);
+}
+
+.next4 {
+  transform: translateZ(-1px) rotateY(-40deg);
+  filter: brightness(0.3);
+}
+
+.prev1 {
+  transform: translateZ(60px) rotateY(-40deg);
+  filter: brightness(0.8);
+}
+
+.prev2 {
+  transform: translateZ(10px) rotateY(30deg);
+  filter: brightness(0.6);
+}
+
+.prev3 {
+  transform: translateZ(-1px) rotateY(-30deg);
+  filter: brightness(0.4);
+}
+
+.prev4 {
+  transform: translateZ(15px) rotateY(20deg);
+  filter: brightness(0.3);
+}

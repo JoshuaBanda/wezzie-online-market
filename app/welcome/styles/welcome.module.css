@@ -1,0 +1,84 @@
+/* Container holding everything */
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  
+}
+.header{
+    font-family:'Bonheur Royale';
+}
+
+/* Wrapper for image slider */
+.sliderContainer {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Image container with animation */
+.picContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 0;
+}
+
+/* Optional image style */
+.pic {
+  border: 1px solid black;
+}
+
+/* Text overlay */
+.mainTextContainer {
+  position: absolute;
+  bottom: 20vh; /* Distance from bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  background-color: rgba(172, 172, 172, 0.034); /* Optional: background for readability */
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+
+.rotatedSlider{
+  position: fixed;
+  top:10vh;left:20vw;
+  z-index: 10;
+}
+
+.welcome{
+  font-family: 'Bonheur Royale';
+  font-size: 50px;
+  color: white;
+}
+.paragraph{
+  
+  font-family: 'Bonheur Royale';
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+}
+
+.circle{
+  position:absolute;
+  width: 400px;height: 400px;
+  z-index: -1;
+  bottom: -100px;right: -100px;
+  border-radius: 50%;
+}

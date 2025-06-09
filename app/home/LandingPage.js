@@ -12,10 +12,11 @@ import { useRouter } from "next/navigation";
 
 const LandingPage = ({user}) => {
   const items = [
-    { name: "Lotion",imgSrc:'/wonge3_with_no_bg.png',alt:'pic' },
-    { name: "Earrings",imgSrc:'/wonge5_with_no_bg.png',alt:'pic' },
-    { name: "Brochus" ,imgSrc:'/wonge3_with_no_bg.png',alt:'pic'},
-    { name: "Perfume" ,imgSrc:'/wonge5_with_no_bg.png',alt:'pic'},
+    { name: "ToteBags",imgSrc:'/bag.png',alt:'pic' },
+    { name: "Dresses",imgSrc:'/dress2.png',alt:'pic' },
+    { name: "Shirts" ,imgSrc:'/shirt2.png',alt:'pic'},
+    { name: "Skirts" ,imgSrc:'/Skirt.png',alt:'pic'},
+    { name: "Blacelets" ,imgSrc:'/bracelets.png',alt:'pic'},
   ];
   const route=useRouter();
 
@@ -27,27 +28,30 @@ const LandingPage = ({user}) => {
     setSelectedItem(item);
     setSearch(item.name);
     
-    route.push("/products/Lotion")
 
     switch (item.name) {
-      case "Avon":
+      case "ToteBags":
         setListItemBorder(0);
+        route.push("/products/ToteBags")
         break;
-      case "Earrings":
+      case "Dresses":
         setListItemBorder(1);
+          
+        route.push("/products/Dresses")
         break;
-      case "Brochus":
-        setListItemBorder(2);
+      case "Skirts":
+        setListItemBorder(2);  
+        route.push("/products/Skirts")
+        break;
+      case "Blacelets":
+        setListItemBorder(2);  
+        route.push("/products/Bracelets")
         break;
       default:
         setListItemBorder(3);
     }
   };
 
-  useEffect(() => {
-    const defaultItem = items.find((item) => item.name === "Avon");
-    if (defaultItem) handleOnClick(defaultItem);
-  }, []);
 
   return (
     <div className={styles.container}>
@@ -56,7 +60,9 @@ const LandingPage = ({user}) => {
         <div className={styles.icon1} id="customizedbackground">
           <FaBarsStaggered className={styles.inIcon} />
         </div>
-        <div className={styles.icon2}>
+        <div className={styles.icon2} onClick={()=>{
+          route.push('/profile')
+        }}>
           <FaUser className={styles.userIcon} />
         </div>
       </section>
@@ -114,9 +120,9 @@ const LandingPage = ({user}) => {
                     
                 <div className={styles.HomeOptionText}>
                     <span className={styles.discount}>
-                        Get 10% discount
+                        Get affordable prices
                     </span>
-                    <p>On everything today</p>
+                    <p>check out our new {item.name}</p>
                     <div className={styles.itemName}>
                         <div 
                             className={`

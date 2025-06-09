@@ -12,23 +12,23 @@ const BestProducts = () => {
 
     const route=useRouter();
   const items = [
-    { name: "Lotion", photourl: "/avon3_with_no_bg.png", alt: "avon", price: 150 },
-    { name: "Perfume", photourl: "/perfume11.png", alt: "perfume", price: 300 },
-    { name: "Earrings", photourl: "/earring2.png", alt: "earrings", price: 100 },
-    { name: "Soap", photourl: "/soap.png", alt: "soap", price: 50 },
+    { name: "ToteBag", photourl: "/bag.png", alt: "bag", price: 150 },
+    { name: "Shirts", photourl: "/Shirt2.png", alt: "Shirts", price: 300 },
+    { name: "Dresses", photourl: "/dress2.png", alt: "Dresses", price: 100 },
+    { name: "Skirts", photourl: "/skirt.png", alt: "Skirts", price: 50 },
   ];
 
   const handleRouting=(name)=>{
-    if(name=="Lotion"){
-        route.push("/products/Lotion")
-    }else if(name=="Earrings"){
-        route.push("/products/Earrings")
+    if(name=="ToteBag"){
+        route.push("/products/ToteBag")
+    }else if(name=="Dresses"){
+        route.push("/products/Dresses")
     }
     else if(name=="Brochus"){
         route.push("/products/Brochus")
-    }else if(name=="Perfume"){
-        route.push("/products/Perfume")
-    }else if(name=="Soap"){
+    }else if(name=="Shirts"){
+        route.push("/products/Shirts")
+    }else if(name=="Skirts"){
         route.push("/products/Soap")
     }
 }
