@@ -52,7 +52,6 @@
     flex-direction: column;
     width: 400px;
     
-    font-family:var(--font-poppins);
 
 }
 .welcome{
@@ -87,18 +86,16 @@
   width: fit-content;
   min-width: 30px;
   height: 50px;
-  background-color: #f7f7f7ea;
-  border: 1px solid black;
+  border: 1px wheat;
 }
 
 .inputSearch {
   border: none;
   outline: none;
   font-size: 1rem;
-  
+  color: #ebebeb;
   min-width: 200px;
   height: 45px;
-  background-color: #f7f7f7ea;
   border-bottom-right-radius: 30px;
   border-top-right-radius: 30px;
 }

@@ -1,9 +1,19 @@
-@property --textc {
+@property --primaryColor {
   syntax: "<color>";
-  initial-value: rgb(56, 31, 35);
+  initial-value: #ffdac4;
   inherits: false;
 }
 
+@property --secondaryColor {
+  syntax: "<color>";
+  initial-value:#B68973 ;
+  inherits: false;
+}
+@property --acessoryColor {
+  syntax: "<color>";
+  initial-value:#014850 ;
+  inherits: false;
+}
 
 html,
 body {body {
@@ -22,7 +32,7 @@ body {body {
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;       /* Optional: can be 'scroll' for mobile */
-  background-color: white;
+  background-color: var(--primaryColor);
 
   overflow-x: hidden;
   /*animation: swappic 60s infinite;    /* Your animation */
@@ -31,15 +41,15 @@ body {body {
 
 }.myColor {
   /*animation: changeTextColor 60s infinite;*/
-  color: var(--textc);
-    font-family:var(--font-poppins);
+  color: var(--primaryColor);
+    font-family:Poppins;
   font-weight: bold;
 }
 
 @keyframes changeTextColor {
-  0%   { --textc: rgb(255, 51, 85); }
-  50%  { --textc: rgb(60, 161, 82); }
-  100% { --textc: rgb(255, 51, 85); }
+  0%   { --primaryColor: rgb(255, 51, 85); }
+  50%  { --primaryColor: rgb(60, 161, 82); }
+  100% { --primaryColor: rgb(255, 51, 85); }
 }
 
 
@@ -95,18 +105,22 @@ a {
 }
 
 #customizedbackground{
-  background-color:var(--textc) ;
+  background-color:var(--secondaryColor) ;
   
 }
+
 #customizedColor{
-  color:var(--textc);
+  color:var(--secondaryColor);
   
+}
+#secondCustomizedColor{
+  color: black;
 }
 #darkThemeTextColor{
   color:#111;
 }
 #customizedborder{
-  border: 1px solid var(--textc);
+  border: 1px solid var(--secondaryColor);
   
 }
 #whiteThemeBackground{
@@ -114,6 +128,10 @@ a {
 }
 #whiteText{
  color: white; 
+}
+
+#accessoryColorBackground{
+  background-color: var(--acessoryColor);
 }
 /*rgb(255, 51, 85)*/
 
@@ -176,7 +194,7 @@ input[type="file"] {
 
 input[type="file"]::file-selector-button {
   padding: 8px 16px;
-  background-color: var(--textc); /* indigo */
+  background-color: var(--primaryColor); /* indigo */
   color: white;
   border: none;
   border-radius: 4px;

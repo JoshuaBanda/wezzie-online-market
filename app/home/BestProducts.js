@@ -84,20 +84,17 @@ const BestProducts = () => {
     flexDirection: 'column',
     alignItems: 'center',
     gap: '8px',
-    color: 'black', // Default dark color
-    textShadow: '1px 1px 3px rgba(0,0,0,0.1)',
-    borderRadius: '4px'
+    borderRadius: '4px',
   }}
-  className="myColor"
+  id="customizedColor"
 >
   Best Products
   <span style={{
     fontWeight: 'normal',
-    color: 'black',
     maxWidth: '80%',
     lineHeight: '1.4'
   }}
-  className={styles.explore}>
+  className={styles.explore} id="secondCustomizedColor">
     explore the most recent bought products
   </span>
 </div>

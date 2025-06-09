@@ -104,7 +104,7 @@ const ShopItems = ({ searchItem, jwtToken='1', post='', /*currentUserId,*/ apiSe
 
   // Map over the items to create the list of items
   const homeItems = Array.isArray(items) && items.map((item,index) => (
-    <motion.div key={item.id} className={styles.container} id="customizedborder"
+    <motion.div key={item.id} className={styles.container} id="customizedbackground"
       initial={{
         x:0,y:0
       }}
@@ -187,7 +187,6 @@ const ShopItems = ({ searchItem, jwtToken='1', post='', /*currentUserId,*/ apiSe
       >
         {homeItems.length > 0 ? homeItems : <div style={{position:'relative',margin:'170px auto',}}><Spinner /></div> }
         
-                        <div style={{position:"relative",padding:"180px 0px",}}></div>
       </div>
       
 

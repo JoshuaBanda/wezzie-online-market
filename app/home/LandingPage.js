@@ -9,6 +9,7 @@ import HomeOptions from "./HomeOptions";
 import Image from "next/image";
 import HomePage from "./Home";
 import { useRouter } from "next/navigation";
+import Sticky from "../sticky/Sticky";
 
 const LandingPage = ({user}) => {
   const items = [
@@ -69,7 +70,7 @@ const LandingPage = ({user}) => {
 
       {/* Branding */}
       <div className={styles.topBranding}>
-        <span className={styles.welcome}>Welcome,</span>
+        <span className={styles.welcome} id="secondCustomizedColor">Welcome,</span>
         <span className={styles.brandName} id="customizedColor">
         Wezzie Online Market</span>
       </div>
@@ -78,6 +79,7 @@ const LandingPage = ({user}) => {
       <div className={styles.wrapper}>
         <section
           className={styles.sectionSearch}
+          id="customizedbackground"
           role="search"
           aria-label="Search input"
         >
@@ -86,7 +88,7 @@ const LandingPage = ({user}) => {
           </label>
           <input
             type="text"
-            id="searchInput"
+            id="customizedbackground"
             className={styles.inputSearch}
             placeholder="Search..."
             aria-label="Search"
@@ -127,7 +129,8 @@ const LandingPage = ({user}) => {
                         <div 
                             className={`
                                 ${listItemBorder === index  ? style.item : style.normalitem}
-                            `}>
+                            `}
+                            id="customizedColor">
                                <HomeOptions
                             text={item.name}
                             myBackgroudColor={myBackgroudColor}
@@ -175,6 +178,7 @@ const LandingPage = ({user}) => {
         </div>
       </section>
       <HomePage user={user}/>
+      <Sticky/>
     </div>
   );
 };
