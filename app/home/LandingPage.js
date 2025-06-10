@@ -199,7 +199,7 @@ const LandingPage = ({user}) => {
       {/* List of Items */}
       <section>
         <div className={styles.itemsListContainer}>
-          <ul>
+          <ul className={styles.brick}>
             {items.map((item, index) => {
               const isSelected = selectedItem?.name === item.name;
               const myBackgroudColor = isSelected

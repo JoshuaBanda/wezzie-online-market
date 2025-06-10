@@ -187,7 +187,7 @@
     width: 60%;
     margin: 15px;
     z-index: 100;
-    color: rgba(255, 255, 255, 0.849);
+    color: rgba(255, 255, 255, 1);
 }
 .HomeOptionText p{
     margin: 2px;
@@ -254,6 +254,13 @@
 .topbrandSubContent{
     transform: scale(0.8);
     font-size: 15px;
+}
+.brick{
+    transform: scale(0.7);
+}
+.itemsListContainer{
+    
+  margin: 10px 0px 10px -55px;
 }
 }
 
