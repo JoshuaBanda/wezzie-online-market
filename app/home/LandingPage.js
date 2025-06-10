@@ -56,48 +56,91 @@ const LandingPage = ({user}) => {
 
   return (
     <div className={styles.container}>
+
       {/* Top Icons */}
       <section className={styles.iconContainer}>
         <div className={styles.icon1} id="customizedbackground">
           <FaBarsStaggered className={styles.inIcon} />
         </div>
+        <div className={styles.icon3} onClick={()=>{
+          route.push('/search')
+        }}>
+          <FaSearch className={styles.userchIcon} />
+        </div>
         <div className={styles.icon2} onClick={()=>{
           route.push('/profile')
         }}>
-          <FaUser className={styles.userIcon} />
+          <FaUser className={styles.userIcon}/>
         </div>
       </section>
 
       {/* Branding */}
+      <div className={styles.brand}>
+        
       <div className={styles.topBranding}>
-        <span className={styles.welcome} id="secondCustomizedColor">Welcome,</span>
-        <span className={styles.brandName} id="customizedColor">
-        Wezzie Online Market</span>
+        <div className={styles.WelcomeRemark}>            
+          <span className={styles.welcome} id="secondCustomizedColor">Welcome,</span>
+          <span className={styles.brandName} id="customizedColor">
+          Wezzie Online Market</span>
+        </div>
+        <div>   
+          <Image
+            src="/wonge5_with_no_bg.png"
+            alt='bag'
+            quality={100}
+            width="150"
+            height="120"
+            sizes='(max-width:768px)100vw, (max-width:1200pxpx)50vw, 33vw'
+            priority
+            style={{zIndex:-10}}
+        />
+        </div>
+      </div>
+      
+      <div className={styles.leftBranding}>
+          <div className={styles.brandPicContainer} id="customizedbackground">
+            <motion.div initial={{x:100,y:-50}}
+            animate={{x:-50,y:-50}}
+            transition={{}}
+            className={styles.leftbrandimage}>
+        
+              <Image
+                  src="/bag.png"
+                  alt='bag'
+                  quality={100}
+                  width="220"
+                  height="280"
+                  sizes='(max-width:768px)100vw, (max-width:1200pxpx)50vw, 33vw'
+                  priority
+                  style={{zIndex:-10}}
+              />
+            </motion.div>
+          </div>
       </div>
 
-      {/* Search Bar */}
-      <div className={styles.wrapper}>
-        <section
-          className={styles.sectionSearch}
-          id="customizedbackground"
-          role="search"
-          aria-label="Search input"
-        >
-          <label htmlFor="searchInput" className={styles.icon}>
-            <FaSearch className={styles.iconSearch} />
-          </label>
-          <input
-            type="text"
-            id="customizedbackground"
-            className={styles.inputSearch}
-            placeholder="Search..."
-            aria-label="Search"
-            maxLength={20}
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-        </section>
       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       {/* List of Items */}
       <section>

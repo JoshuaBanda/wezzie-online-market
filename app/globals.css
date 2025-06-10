@@ -1,12 +1,12 @@
 @property --primaryColor {
   syntax: "<color>";
-  initial-value: #ffdac4;
+  initial-value: #ffdac425;
   inherits: false;
 }
 
 @property --secondaryColor {
   syntax: "<color>";
-  initial-value:#B68973 ;
+  initial-value:#fca26e ;
   inherits: false;
 }
 @property --acessoryColor {
