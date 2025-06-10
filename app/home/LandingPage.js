@@ -10,6 +10,7 @@ import Image from "next/image";
 import HomePage from "./Home";
 import { useRouter } from "next/navigation";
 import Sticky from "../sticky/Sticky";
+import StrokeTextCanvas from "./StrokeTextCanvas";
 
 const LandingPage = ({user}) => {
   const items = [
@@ -79,13 +80,21 @@ const LandingPage = ({user}) => {
         
       <div className={styles.topBranding}>
         <div className={styles.WelcomeRemark}>            
-          <span className={styles.welcome} id="secondCustomizedColor">Welcome,</span>
+          <motion.span
+            initial={{opacity:0}}
+            animate={{opacity:1}}
+            transition={{duration:5,delay:1}}
+          className={styles.welcome} id="secondCustomizedColor">Welcome,</motion.span>
           <span className={styles.brandName} id="customizedColor">
           Wezzie Online Market</span>
         </div>
-        <div>   
+        <motion.div
+          initial={{y:300,opacity:0}}
+          animate={{y:0,opacity:1}}
+          transition={{type:'spring',delay:0.2,stiffness:200}}
+        >   
           <Image
-            src="/wonge5_with_no_bg.png"
+            src="/Shirt2.png"
             alt='bag'
             quality={100}
             width="150"
@@ -94,14 +103,18 @@ const LandingPage = ({user}) => {
             priority
             style={{zIndex:-10}}
         />
-        </div>
+        </motion.div>
       </div>
       
-      <div className={styles.leftBranding}>
+      <motion.div className={styles.leftBranding}
+        initial={{opacity:0,y:-200}}
+        animate={{opacity:1,y:0}}
+        transition={{type:'spring',stiffness:200}}
+        >
           <div className={styles.brandPicContainer} id="customizedbackground">
-            <motion.div initial={{x:100,y:-50}}
-            animate={{x:-50,y:-50}}
-            transition={{}}
+            <motion.div initial={{x:100,y:20}}
+            animate={{x:-30,y:20}}
+            transition={{type:'keyframes',duration:0.5,delay:1}}
             className={styles.leftbrandimage}>
         
               <Image
@@ -109,14 +122,36 @@ const LandingPage = ({user}) => {
                   alt='bag'
                   quality={100}
                   width="220"
-                  height="280"
+                  height="250"
                   sizes='(max-width:768px)100vw, (max-width:1200pxpx)50vw, 33vw'
                   priority
                   style={{zIndex:-10}}
               />
+              <motion.div style={{display:'grid',gap:5,
+                gridTemplateColumns:"1fr 1fr"
+              }}
+                initial={{x:300,y:-120}}
+                animate={{x:-40,y:-120}}
+                transition={{type:'spring',stiffness:120,duration:2,delay:2}}
+              >
+                <div style={{
+                  position:'relative',
+                  display:'flex',alignItems:'center',flexDirection:'column',top:"20px"
+                }}>
+                  
+                <StrokeTextCanvas fontSize={20} text={"Wezzie"} textcolor="black" />
+                <StrokeTextCanvas fontSize={20} text={"online"} textcolor="black" />
+                </div>
+                <div style={{
+                  display:'flex',alignItems:'center'
+                }}>
+                  
+                <StrokeTextCanvas fontSize={55} text={"Shop"} textcolor="white" />
+                </div>
+              </motion.div>
             </motion.div>
           </div>
-      </div>
+      </motion.div>
 
       </div>
 
@@ -158,7 +193,7 @@ const LandingPage = ({user}) => {
                   key={index}
                   initial={{ opacity: 0, x: -300 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ type: "spring", stiffness: 300 }}
+                  transition={{ type: "spring", stiffness: 200,duration:1 }}
                   onClick={() => handleOnClick(item)}
                 >
 

@@ -94,10 +94,12 @@
   margin-bottom: 30px;
   padding: 5px;
   border-radius: 20px;
-  font-size: 15px;
+  font-size: 12px;
   padding: 10px;
+  border-radius: 3spx;
+  box-shadow: -2px 5px 5px rgba(0, 0, 0, 0.233);
 }
 .sectionTitle{
-  font-size: 18px;
+  font-size: 15px;
 }
 }
