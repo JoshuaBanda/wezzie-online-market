@@ -11,6 +11,8 @@ import HomePage from "./Home";
 import { useRouter } from "next/navigation";
 import Sticky from "../sticky/Sticky";
 import StrokeTextCanvas from "./StrokeTextCanvas";
+import AnimatedPictures from "../animatedPictures/AnimatedPictures";
+import AdditionTopContentForComputers from "../additionalTopContentForComputers/AdditionTopContentForComputers";
 
 const LandingPage = ({user}) => {
   const items = [
@@ -54,6 +56,13 @@ const LandingPage = ({user}) => {
     }
   };
 
+  const imageList = [
+  '/dress2.png',
+  '/Shirt2.png',
+  '/dress1.png',
+  '/dress.png',
+];
+
 
   return (
     <div className={styles.container}>
@@ -76,9 +85,9 @@ const LandingPage = ({user}) => {
       </section>
 
       {/* Branding */}
-      <div className={styles.brand}>
+      <div className={styles.brand} >
         
-      <div className={styles.topBranding}>
+      <div className={styles.topBranding} >
         <div className={styles.WelcomeRemark}>            
           <motion.span
             initial={{opacity:0}}
@@ -88,71 +97,81 @@ const LandingPage = ({user}) => {
           <span className={styles.brandName} id="customizedColor">
           Wezzie Online Market</span>
         </div>
-        <motion.div
-          initial={{y:300,opacity:0}}
-          animate={{y:0,opacity:1}}
-          transition={{type:'spring',delay:0.2,stiffness:200}}
-        >   
-          <Image
-            src="/Shirt2.png"
-            alt='bag'
-            quality={100}
-            width="150"
-            height="120"
-            sizes='(max-width:768px)100vw, (max-width:1200pxpx)50vw, 33vw'
-            priority
-            style={{zIndex:-10}}
-        />
-        </motion.div>
+        <div className={styles.topbrandSubContent} id="accessoryColorBackground">
+          <ul>
+          <li id="customizedColor">
+            Cheap
+          </li>
+          <li id="whiteText">Affordable</li>
+          <li id="">
+            and Stylish too
+          </li>
+          </ul>
+        </div>
+        <AnimatedPictures images={imageList}/>
       </div>
       
-      <motion.div className={styles.leftBranding}
-        initial={{opacity:0,y:-200}}
-        animate={{opacity:1,y:0}}
-        transition={{type:'spring',stiffness:200}}
-        >
-          <div className={styles.brandPicContainer} id="customizedbackground">
-            <motion.div initial={{x:100,y:20}}
-            animate={{x:-30,y:20}}
-            transition={{type:'keyframes',duration:0.5,delay:1}}
-            className={styles.leftbrandimage}>
-        
-              <Image
-                  src="/bag.png"
-                  alt='bag'
-                  quality={100}
-                  width="220"
-                  height="250"
-                  sizes='(max-width:768px)100vw, (max-width:1200pxpx)50vw, 33vw'
-                  priority
-                  style={{zIndex:-10}}
-              />
-              <motion.div style={{display:'grid',gap:5,
-                gridTemplateColumns:"1fr 1fr"
-              }}
-                initial={{x:300,y:-120}}
-                animate={{x:-40,y:-120}}
-                transition={{type:'spring',stiffness:120,duration:2,delay:2}}
-              >
-                <div style={{
-                  position:'relative',
-                  display:'flex',alignItems:'center',flexDirection:'column',top:"20px"
-                }}>
+        <div className={styles.leftBranding}>
+          <motion.div
+          initial={{opacity:0,y:-200}}
+          animate={{opacity:1,y:0}}
+          transition={{type:'spring',stiffness:200}}
+          >
+            <div className={styles.brandPicContainer} id="customizedbackground">
+              <motion.div initial={{x:200,y:20}}
+              animate={{x:-25,y:20}}
+              transition={{type:'keyframes',duration:0.5,delay:1}}
+              className={styles.leftbrandimage} >
+          
+                <Image
+                    src="/bag.png"
+                    alt='bag'
+                    quality={100}
+                    width="230"
+                    height="250"
+                    sizes='(max-width:768px)100vw, (max-width:1200pxpx)50vw, 33vw'
+                    priority
+                    style={{zIndex:-10}}
+                />
+                <motion.div style={{display:'grid',gap:5,
+                  gridTemplateColumns:"1fr 1fr"
+                }}
+                  initial={{x:300,y:-120}}
+                  animate={{x:-50,y:-120}}
+                  transition={{type:'spring',stiffness:120,duration:2,delay:2}}
                   
-                <StrokeTextCanvas fontSize={20} text={"Wezzie"} textcolor="black" />
-                <StrokeTextCanvas fontSize={20} text={"online"} textcolor="black" />
-                </div>
-                <div style={{
-                  display:'flex',alignItems:'center'
-                }}>
+                    className={styles.leftStrokeText}
+                >
+                  <div style={{
+                    position:'relative',
+                    display:'flex',alignItems:'center',flexDirection:'column',top:"20px"
+                  }}
+                    >
+                    
+                  <StrokeTextCanvas fontSize={22} text={"Wezzie"} textcolor="orangered"/>
                   
-                <StrokeTextCanvas fontSize={55} text={"Shop"} textcolor="white" />
-                </div>
+                  <StrokeTextCanvas fontSize={20} text={"online"} textcolor="black" />
+                  </div>
+                  <div style={{
+                    display:'flex',alignItems:'center'
+                  }}>
+                    
+                  <StrokeTextCanvas fontSize={55} text={"Shop"} textcolor="white" />
+                  </div>
+                </motion.div>
               </motion.div>
-            </motion.div>
-          </div>
-      </motion.div>
+            </div>
+          </motion.div>
 
+          <motion.div className={styles.additionalTopContentForComputers}
+            initial={{y:-380}}
+            animate={{y:0}}
+            transition={{type:'tween',stiffness:200}}
+          >
+              <AdditionTopContentForComputers/>
+          </motion.div>
+
+        </div>
       </div>
 
 

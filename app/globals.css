@@ -11,7 +11,13 @@
 }
 @property --acessoryColor {
   syntax: "<color>";
-  initial-value:#014850 ;
+  initial-value:#1d5f66 ;
+  inherits: false;
+}
+
+@property --acessoryColor2 {
+  syntax: "<color>";
+  initial-value:yellow ;
   inherits: false;
 }
 
@@ -116,11 +122,15 @@ a {
 #secondCustomizedColor{
   color: black;
 }
+#thirdCustomizedColor{
+  color: var(--acessoryColor2);
+}
 #darkThemeTextColor{
   color:#111;
 }
+
 #customizedborder{
-  border: 1px solid var(--secondaryColor);
+  border: 1px solid var(--acessoryColor);
   
 }
 #whiteThemeBackground{
@@ -129,7 +139,9 @@ a {
 #whiteText{
  color: white; 
 }
-
+#additionalCom{
+  background-color: white;
+}
 #accessoryColorBackground{
   background-color: var(--acessoryColor);
 }

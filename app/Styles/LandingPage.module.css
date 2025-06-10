@@ -29,7 +29,7 @@
     font-size: 30px;
 }
 .icon2{
-    right: 30px;
+    right: 25px;
     top:0px;
     margin-left:20px ;
     background-color: rgb(197, 197, 197);
@@ -41,7 +41,7 @@
     justify-content: center;display: flex;
 }
 .icon3{
-    right: 100px;
+    right: 60px;
     top:0px;
     margin-left:20px ;
     background-color: rgb(197, 197, 197);
@@ -51,6 +51,7 @@
        align-items: center;
     align-content: center;
     justify-content: center;display: flex;
+    color: white;
 }
 .userIcon{
     font-size: 25px;
@@ -89,6 +90,14 @@
     
 
 }
+.topbrandSubContent{
+    background-color: rgb(19, 6, 95);
+    border-radius: 5px;
+    padding: 5px;
+    font-weight:bold;
+}
+
+
 
 /* SearchSection.module.css */
 .wrapper {
@@ -216,11 +225,28 @@
 }
 
 
+.additionalTopContentForComputers{
+    width: 100%;
+
+}
 
 
 
 
-
+@media screen and (max-width: 480px) {
+    
+.brandPicContainer{
+    position: relative;
+    height: 200px;max-width: 150px;
+    border-radius: 80px 0px 0px 0px;
+    height: 300px;
+    transform: scale(0.7) translateX(-30);
+}
+.leftStrokeText{
+    position: relative;
+    top: 30px;
+}
+}
 
 
 

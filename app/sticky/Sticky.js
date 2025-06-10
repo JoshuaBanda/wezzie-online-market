@@ -27,7 +27,7 @@ const Sticky = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.6 }}
-                id="customizedbackground"
+                id=""
               >
                 <h2 className={styles.sectionTitle}>Trending Now</h2>
                 <p>
@@ -54,7 +54,7 @@ const Sticky = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.6 }}
-                id="customizedbackground"
+                id=""
               >
                 <h2 className={styles.sectionTitle}>Why Customers Love Us</h2>
                 <p>
