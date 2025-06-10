@@ -44,6 +44,6 @@
 
 @media screen and (max-width: 480px) {  
     .container{
-        transform: scale(0.7) translateX(-85);
+        transform: scale(0.7) translateX(-105);
     }
 }
