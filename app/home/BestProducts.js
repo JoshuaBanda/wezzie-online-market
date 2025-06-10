@@ -29,7 +29,7 @@ const BestProducts = () => {
     }else if(name=="Shirts"){
         route.push("/products/Shirts")
     }else if(name=="Skirts"){
-        route.push("/products/Soap")
+        route.push("/products/Skirts")
     }
 }
 
