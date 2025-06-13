@@ -5,9 +5,13 @@ import { useInView } from "react-intersection-observer";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Sticky = () => {
-  const [refTop, inViewTop] = useInView({ triggerOnce: true });
-  const [refBottom, inViewBottom] = useInView({ triggerOnce: true });
 
+    const { ref: refTop, inView: inViewTop} = useInView({
+    threshold: 0.1,
+  });
+      const { ref: refBottom, inView: inViewBottom} = useInView({
+    threshold: 0.1,
+  });
   return (
     <div className={styles.page}>
       {/* Fixed Sticky Image on the Left */}
@@ -23,10 +27,10 @@ const Sticky = () => {
             {inViewTop && (
               <motion.div
                 className={styles.contentSection}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 200 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 1 }}
                 id=""
               >
                 <h2 className={styles.sectionTitle}>Trending Now</h2>
@@ -50,10 +54,10 @@ const Sticky = () => {
             {inViewBottom && (
               <motion.div
                 className={styles.contentSection}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 100 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 1.2 }}
                 id=""
               >
                 <h2 className={styles.sectionTitle}>Why Customers Love Us</h2>

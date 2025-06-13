@@ -45,5 +45,9 @@
 @media screen and (max-width: 480px) {  
     .container{
         transform: scale(0.7) translateX(-105);
+        
+    }
+    .outerConer{
+        transform: scale(0.7) translateX(-45);
     }
 }

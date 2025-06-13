@@ -12,6 +12,7 @@ import AnimatedWord from '@/components/AnimatedWord';
 import LikeButton from '@/app/like/LikeButton';
 import ItemLikeButton from './itemLikeButton';
 import Rating from '../Rating';
+import { motion } from 'framer-motion';
 
 const item = ({params}) => {
 
@@ -122,32 +123,51 @@ const handleQuantityReduction = () => {
   if (!product) return <div className={styles.error}>Product not found</div>;
 
   return (
-    <div  className={styles.container} >
+    <div  className={styles.container}  >
       <div>
+        
+              <div className={styles.decoratedBackground} id='customizedbackground' />
         {/* Header*/}
         <section className={styles.header}>
             <span>
               <AnimatedWord/>
             </span>
-                <div
+                <motion.div
+                  initial={{y:-200,opacity:0}}
+                  animate={{y:0,opacity:1}}
+                  transition={{type:'tween',duration:2,delay:0}}
                 className={styles.prevButton}
-                id="customizedbackground"
+                id="accessoryColorBackground"
                 onClick={() => router.back()}
                 style={{ cursor: "pointer" }}
               >
                 <FaArrowLeft color="white" />
-              </div>
-            <div className={styles.cartButton} id='customizedbackground' onClick={()=>{
+              </motion.div>
+            <motion.div className={styles.cartButton} id='accessoryColorBackground' onClick={()=>{
               router.push('/cart')
-            }}>
+            }}
+        
+              initial={{y:-200,opacity:0}}
+              animate={{y:0,opacity:1}}
+              transition={{type:'spring', stiffness:250,delay:5}}
+            >
               <FaShoppingCart color='white'/>
-            </div>
-            <div className={styles.likeButton} id='customizedbackground'>
+            </motion.div>
+            <motion.div className={styles.likeButton} id='accessoryColorBackground'
+              
+              initial={{y:-200,opacity:0}}
+              animate={{y:0,opacity:1}}
+              transition={{type:'spring', stiffness:250,delay:2}}
+            >
               
              <ItemLikeButton postId={product.id} userId={product.user_id} initialLikeCount={likeCount} /*initialLikeStatus={isLiked}*/ />
-            </div>
+            </motion.div>
         </section>
-        <div className={styles.productInfo}>
+        <motion.div className={styles.productInfo}
+        
+              initial={{opacity:0}}
+              animate={{opacity:1}}
+              transition={{type:'spring', stiffness:250,delay:1}}>
           <img
             className={styles.productImage}
             src={product.photo_url}
@@ -158,28 +178,44 @@ const handleQuantityReduction = () => {
             sizes='(max-width:768px)100vw, (max-width:1200pxpx)50vw, 33vw'
           />
 
-          <div className={styles.productDetails} 
-                id="customizedbackground"
-                style={{color:'white'}}
+          <motion.div className={styles.productDetails} 
+          
+              initial={{x:100,opacity:0}}
+              animate={{x:0,opacity:1}}
+              transition={{type:'spring', stiffness:250,delay:1,duration:1}}
+                id=""
                 >
-            <h1 className={styles.productName}>{product.name}</h1>
+                
+            <motion.h1 className={styles.productName}
+              
+              initial={{x:-100,opacity:0}}
+              animate={{x:0,opacity:1}}
+              transition={{type:'tween', stiffness:200,delay:2,duration:2}}
+            >{product.name}</motion.h1>
             
-             <div className={styles.rating}>
+             <motion.div className={styles.rating}
+             
+              initial={{x:200,opacity:0}}
+              animate={{x:0,opacity:1}}
+              transition={{type:'tween', stiffness:200,delay:5,duration:2}}>
                 <Rating  initialLikeCount={0} postId={product.id} userId={product.user_id}/>
-             </div>
-             <div className={styles.productDescription}>
+             </motion.div>
+             <motion.div className={styles.productDescription}
+              
+              initial={{y:50,opacity:0}}
+              animate={{y:0,opacity:1}}
+              transition={{type:'tween', stiffness:150,delay:2.5,duration:2}}
+             >
               <span>
                 Description
               </span>
               <p >{product.description}</p>
-             </div>
-            <p className={styles.productPrice}>
-              ${product.price}
-            </p>
+             </motion.div>
+
 
             {/*Quantity */}
             
-            <div className={styles.quantityIn}>
+            <div className={styles.quantityIn} id='customizedbackground'>
               <div onClick={()=>handleQuantityReduction(item,index)}>
                 <FaArrowLeft/>
               </div>
@@ -190,12 +226,19 @@ const handleQuantityReduction = () => {
                 <FaArrowRight/>
               </div>
             </div>
-            <button className={styles.addToCartBtn} onClick={addToCart}>
-              <div>Add to Cart</div>
-              <div><FaCartPlus /></div>
+
+
+
+
+            <button className={styles.addToCartBtn} onClick={addToCart} id='customizedbackground'>
+              <div className={styles.productPrice}>
+              ${product.price}
+              </div>
+              <div className={styles.addToCartBtnText} id='accessoryColor'>Add to Cart</div>
+              <div className={styles.addToCartBtnIcon} id='customizedbackground'><FaCartPlus /></div>
             </button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   );

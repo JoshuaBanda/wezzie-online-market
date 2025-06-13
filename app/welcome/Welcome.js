@@ -6,18 +6,19 @@ import Image from "next/image";
 import FadedColor from "@/components/FadedColor";
 import AnimatedWord from "@/components/AnimatedWord";
 import RotatedSlider from "./RotatedSlider";
+import CanvaText from "../canvaText/CanvaText";
 
 const slides = [
   {
-    image: "/wonge5_with_no_bg.png",
+    image: "/wezzie1.png",
     text: "Get the best luxury bags at unbeatable prices!",
   },
   {
-    image: "/wonge48.png",
+    image: "/wezzie2.png",
     text: "New arrivals: Avon style now available!",
   },
   {
-    image: "/wonge3_with_no_bg.png",
+    image: "/wezzie3.png",
     text: "Style your look with premium Wezzie picks!",
   },
 ];
@@ -47,7 +48,7 @@ const Welcome = () => {
           <motion.div
             key={index}
             className={styles.picContainer}
-            initial={{ y: 300, opacity: 1,x:-100 }}
+            initial={{ y: 300, opacity: 1,x:0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ x: 100, opacity: 0 }}
             transition={{ duration: 0.3 ,ease:"linear"}}
@@ -56,8 +57,8 @@ const Welcome = () => {
               src={slides[index].image}
               alt={`Slide ${index + 1}`}
               quality={100}
-              width={350}
-              height={500}
+              width={700}
+              height={800}
               sizes="(max-width:768px)100vw, (max-width:1200px)50vw, 33vw"
               priority
             />
@@ -72,14 +73,14 @@ const Welcome = () => {
             >
               <h2 className={styles.welcome}>Welcome</h2>
               <p className={styles.paragraph}>{slides[index].text}</p>
-            </motion.div>
+            </motion.div>   
         </AnimatePresence>
       </div>
-      <div className={styles.circle} id="customizedbackground">
-
-      </div>
+      <CanvaText/>
       <FadedColor/>
+      <div className={styles.circle} id="customizedbackground"/>
     </div>
+  
   );
 };
 

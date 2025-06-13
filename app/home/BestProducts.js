@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { FaShoppingCart } from "react-icons/fa";
 import { useRouter } from "next/navigation"; 
+import { useInView } from "react-intersection-observer";
 
 // Dummy placeholders for missing functions and components
 const checkNameLength = (name) => name.length <= 10;
@@ -32,6 +33,9 @@ const BestProducts = () => {
         route.push("/products/Skirts")
     }
 }
+    const { ref: bestProductsListRef, inView: bestProductsInView } = useInView({
+    threshold: 0.1,
+  });
 
   const homeItems = Array.isArray(items) &&
     items.map((item, index) => (
@@ -70,7 +74,14 @@ const BestProducts = () => {
     ));
  return(
     
-    <>
+    <motion.div
+    
+ref={bestProductsListRef}
+initial={{opacity:0,y:-100}}
+animate={{opacity:bestProductsInView?1:0,y:bestProductsInView?0:-100}}
+transition={{type:'tween',duration:1.2}}
+
+    >
       
 <div 
   style={{
@@ -116,7 +127,7 @@ const BestProducts = () => {
         {homeItems.length > 0 ? homeItems : <div style={{position:'relative',margin:'170px auto',}}><Spinner /></div> }
       </div>
 
-    </>
+    </motion.div>
  );
 };
 

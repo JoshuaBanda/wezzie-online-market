@@ -1,0 +1,70 @@
+.container {
+  position: absolute;
+  height: 100%;width: 100%;
+
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+}
+.textWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.firsttextWrapper{
+    grid-column: 1/4;
+    grid-row: 1/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.secondtextWrapper{
+    grid-column: 2/2;
+    grid-row: 1/4;
+    display: flex;
+    align-items: center;
+    transform: translateX(-170);
+}
+.thirdtextWrapper{
+    grid-column: 1/4;
+    grid-row: 2/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.firststokeText {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+}
+.secondstokeText {
+  position: absolute;
+  pointer-events: none;
+  transform: rotate(90deg);
+  z-index: 10;
+}
+.thirdstokeText {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+}
+
+
+
+.firstfullText {
+  position: absolute;
+  pointer-events: none;
+  transform: translateY(-25);
+  z-index: -1;
+}.secondfullText {
+  position: absolute;
+  pointer-events: none;
+  transform: translateX(33)  rotate(90deg);
+  z-index: -1;
+}.thirdfullText {
+  position: absolute;
+  pointer-events: none;
+  transform: translateY(-15);
+  z-index: -1;
+}

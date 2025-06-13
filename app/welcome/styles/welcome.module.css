@@ -8,10 +8,13 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background-color: pink;
+  z-index: -10;
   
 }
 .header{
     font-family:'Bonheur Royale';
+    z-index: 10;
 }
 
 /* Wrapper for image slider */
@@ -23,6 +26,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+    z-index: 0;
 }
 
 /* Image container with animation */
@@ -44,11 +48,11 @@
 /* Text overlay */
 .mainTextContainer {
   position: absolute;
-  bottom: 20vh; /* Distance from bottom */
-  left: 50%;
+  bottom: 10%; /* Distance from bottom */
+  left: 5%;
   transform: translateX(-50%);
   z-index: 1;
-  background-color: rgba(172, 172, 172, 0.034); /* Optional: background for readability */
+  background-color: rgba(255, 253, 253, 0.856); /* Optional: background for readability */
   padding: 10px 20px;
   border-radius: 8px;
   text-align: center;
@@ -65,20 +69,28 @@
 .welcome{
   font-family: 'Bonheur Royale';
   font-size: 50px;
-  color: white;
+  color: black;
 }
 .paragraph{
   
   font-family: 'Bonheur Royale';
   font-size: 22px;
   font-weight: bold;
-  color: white;
+  color: black;
 }
 
 .circle{
   position:absolute;
-  width: 400px;height: 400px;
+  width: 800px;height: 800px;
   z-index: -1;
   bottom: -100px;right: -100px;
-  border-radius: 50%;
+  z-index: -11;
+}@media (max-width: 720px) {
+  
+.circle{
+  position:absolute;
+  width: 70%;height: 120%;
+  z-index: -10;
+  bottom: -100px;right: -100px;
+}
 }

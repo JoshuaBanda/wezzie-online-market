@@ -55,19 +55,19 @@ const Rating = ({initialLikeCount,postId,userId}) => {
                     <div style={{
                         position:'absolute',
                         display:'flex'
-                    }}>
+                    }} id="customizedColor">
                         
                     <FaRegStar style={{
-                        color:"gold",fontSize:'20px'
+                        fontSize:'20px'
                     }}/>
                     <FaRegStar style={{
-                        color:"gold",fontSize:'20px'
+                        fontSize:'20px'
                     }}/>
                     <FaRegStar style={{
-                        color:"gold",fontSize:'20px'
+                        fontSize:'20px'
                     }}/>
                     <FaRegStar style={{
-                        color:"gold",fontSize:'20px'
+                        fontSize:'20px'
                     }}/>
                     </div>
                 </>
@@ -77,18 +77,18 @@ const Rating = ({initialLikeCount,postId,userId}) => {
             return(
                 <div style={{position:'absolute',
                     display:'flex',
-                }}>
+                }}id="customizedColor">
                     <FaStar style={{
-                        color:"gold",fontSize:'20px'
+                        fontSize:'20px'
                     }}/>
                     <FaRegStar style={{
-                        color:"gold",fontSize:'20px'
+                        fontSize:'20px'
                     }}/>
                     <FaRegStar style={{
-                        color:"gold",fontSize:'20px'
+                        fontSize:'20px'
                     }}/>
                     <FaRegStar style={{
-                        color:"gold",fontSize:'20px'
+                        fontSize:'20px'
                     }}/>
                 </div>
             )
@@ -98,18 +98,19 @@ const Rating = ({initialLikeCount,postId,userId}) => {
             return(
                 <div style={{position:'absolute',
                     display:'flex',
-                }}>
+                }}
+                id="customizedColor">
                     <FaStar style={{
-                        color:"gold",fontSize:'20px'
+                        fontSize:'20px'
                     }}/>
                     <FaStar style={{
-                        color:"gold",fontSize:'20px'
+                        fontSize:'20px'
                     }}/>
                     <FaRegStarHalfStroke style={{
-                        color:"gold",fontSize:'20px'
+                        fontSize:'20px'
                     }}/>
                     <FaRegStar style={{
-                        color:"gold",fontSize:'20px'
+                        fontSize:'20px'
                     }}/>
                 </div>
             )
@@ -120,7 +121,7 @@ const Rating = ({initialLikeCount,postId,userId}) => {
             <div>
                 {handleRates()} 
                     <span style={{position:"relative",
-                    color:'black',left:"90px",color:'#666'}}>
+                left:"90px",color:'#666'}} id="accessoryColor">
                        &#40; {likeCount*61} reviews &#41;
                     </span>
             </div>

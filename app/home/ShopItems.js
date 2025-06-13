@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios"; // Import axios
 import Image from "next/image";
-import Link from "next/link";  // Import Link from Next.js
 import styles from '../Styles/shopItems.module.css'
 import Spinner from "./Spinning";
 import LikeButton from "../like/LikeButton";

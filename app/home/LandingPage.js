@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { FaBarsStaggered, FaUser } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { inView, motion } from "framer-motion";
 import styles from "../Styles/LandingPage.module.css";
 import style from "../Styles/HomeItems.module.css";
 import HomeOptions from "./HomeOptions";
@@ -13,6 +13,7 @@ import Sticky from "../sticky/Sticky";
 import StrokeTextCanvas from "./StrokeTextCanvas";
 import AnimatedPictures from "../animatedPictures/AnimatedPictures";
 import AdditionTopContentForComputers from "../additionalTopContentForComputers/AdditionTopContentForComputers";
+import { useInView } from "react-intersection-observer";
 
 const LandingPage = ({user}) => {
   const items = [
@@ -27,6 +28,15 @@ const LandingPage = ({user}) => {
   const [search, setSearch] = useState("Avon");
   const [listItemBorder, setListItemBorder] = useState(0);
   const [selectedItem, setSelectedItem] = useState(null);
+
+    const { ref: homeOptionListRef, inView: homeOptionListInView } = useInView({
+    threshold: 0.025,
+  });
+  
+      const { ref: welcomeListRef, inView: welcomeInView } = useInView({
+    threshold: 0.025,
+  });
+  
 
   const handleOnClick = (item) => {
     setSelectedItem(item);
@@ -68,7 +78,13 @@ const LandingPage = ({user}) => {
     <div className={styles.container}>
 
       {/* Top Icons */}
-      <section className={styles.iconContainer}>
+      <motion.section className={styles.iconContainer}
+        
+        ref={welcomeListRef}
+        initial={{opacity:0,y:-100}}
+        animate={{opacity:welcomeInView?1:0,y:welcomeInView?0:-100}}
+        transition={{type:'tween',duration:1}}
+      >
         <div className={styles.icon1} id="customizedbackground">
           <FaBarsStaggered className={styles.inIcon} />
         </div>
@@ -82,14 +98,21 @@ const LandingPage = ({user}) => {
         }}>
           <FaUser className={styles.userIcon}/>
         </div>
-      </section>
+      </motion.section>
 
       {/* Branding */}
       <div className={styles.brand} >
         
-      <div className={styles.topBranding} >
+      <motion.div className={styles.topBranding} 
+        
+        ref={welcomeListRef}
+        initial={{opacity:0,x:-100}}
+        animate={{opacity:welcomeInView?1:0,x:welcomeInView?0:-100}}
+        transition={{type:'tween',duration:1}}
+      >
         <div className={styles.WelcomeRemark}>            
           <motion.span
+          ref={welcomeListRef}
             initial={{opacity:0}}
             animate={{opacity:1}}
             transition={{duration:5,delay:1}}
@@ -97,8 +120,12 @@ const LandingPage = ({user}) => {
           <span className={styles.brandName} id="customizedColor">
           Wezzie Online Market</span>
         </div>
-        <div className={styles.topbrandSubContent} id="accessoryColorBackground">
-          <ul>
+        <div className={styles.topbrandSubContent} id="accessoryColorBackground"
+          
+        >
+          <ul
+            
+          >
           <li id="customizedColor">
             Cheap
           </li>
@@ -109,18 +136,20 @@ const LandingPage = ({user}) => {
           </ul>
         </div>
         <AnimatedPictures images={imageList}/>
-      </div>
+      </motion.div>
       
         <div className={styles.leftBranding}>
           <motion.div
-          initial={{opacity:0,y:-200}}
-          animate={{opacity:1,y:0}}
-          transition={{type:'spring',stiffness:200}}
+          
+          ref={welcomeListRef}
+          initial={{opacity:0,x:100}}
+          animate={{opacity:welcomeInView?1:0,x:welcomeInView?0:100}}
+          transition={{type:'tween',stiffness:50,duration:1}}
           >
             <div className={styles.brandPicContainer} id="customizedbackground">
               <motion.div initial={{x:200,y:20}}
               animate={{x:-25,y:20}}
-              transition={{type:'keyframes',duration:0.5,delay:1}}
+              transition={{type:'keyframes',duration:0.5,delay:0.4}}
               className={styles.leftbrandimage} >
           
                 <Image
@@ -198,7 +227,12 @@ const LandingPage = ({user}) => {
 
       {/* List of Items */}
       <section>
-        <div className={styles.itemsListContainer}>
+        <motion.div className={styles.itemsListContainer}
+          ref={homeOptionListRef}
+          initial={{opacity:0,y:-100}}
+          animate={{opacity:homeOptionListInView?1:0,y:homeOptionListInView?0:-100}}
+          transition={{duration:1}}
+        >
           <ul className={styles.brick}>
             {items.map((item, index) => {
               const isSelected = selectedItem?.name === item.name;
@@ -211,9 +245,10 @@ const LandingPage = ({user}) => {
                 <motion.li id="customizedbackground"
                   key={index}
                   initial={{ opacity: 0, x: -300 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  animate={{ opacity: 1, x:0 }}
                   transition={{ type: "spring", stiffness: 200,duration:1 }}
                   onClick={() => handleOnClick(item)}
+                  
                 >
 
                     
@@ -272,7 +307,7 @@ const LandingPage = ({user}) => {
               );
             })}
           </ul>
-        </div>
+        </motion.div>
       </section>
       <HomePage user={user}/>
       <Sticky/>

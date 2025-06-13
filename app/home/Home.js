@@ -164,6 +164,7 @@ useEffect(() => {
               stiffness: 200,
               duration: 1,
             }}
+            
           >
         <ShopItems searchItem={selectedItem} />
           </motion.div>
