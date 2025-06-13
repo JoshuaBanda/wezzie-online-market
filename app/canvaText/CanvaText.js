@@ -3,15 +3,15 @@ import styles from './styles/canvaText.module.css';
 import React, { useRef, useEffect } from 'react';
 
 const CanvaText = ({
-  fontSize = 150,
+  fontSize = 50,
   text = "WEZZIE",
   textcolor = 'rgba(255,0,255,1)',
 
-  secondTextfontSize = 200,
+  secondTextfontSize = 60,
   secondTexttext = "Online",
   secondTexttextcolor = 'rgb(94, 218, 100)',
 
-  thirdTextfontSize = 100,
+  thirdTextfontSize = 40,
   thirdTexttext = "SHOP",
   thirdTexttextcolor = 'black',
 }) => {
