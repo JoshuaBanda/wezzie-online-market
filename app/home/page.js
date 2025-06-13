@@ -29,7 +29,7 @@ const FrontPage = ({ user }) => {
   return (
     <div onClick={!showLanding ? handleEnter : undefined}>
       <AnimatePresence mode="wait">
-        {showLanding ? (
+        {!showLanding ? (
           <motion.div
             key="welcome"
             initial={{ opacity: 1 }}
