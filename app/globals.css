@@ -6,7 +6,7 @@
 
 @property --secondaryColor {
   syntax: "<color>";
-  initial-value:#f5c89e;
+  initial-value:#ffb56fdc;
   inherits: false;
 }
 @property --acessoryColor {
