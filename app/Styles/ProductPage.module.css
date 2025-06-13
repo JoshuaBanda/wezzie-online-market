@@ -178,16 +178,18 @@
     }
   
     .productPrice {
-      font-size: 25px;
+      font-size: 15px;
     }
   
     .addToCartBtn {
-      font-size: 22px;
-      transform: scale(0.6) translateX(90);
+      font-size: 12px;
+      transform: scale(1) translateX(-10);
       right: 0;
+      width: 300px;
     }
     .addToCartBtnText{
       transform: translateX(10);
+      width: 100px;
 
     }
   }
