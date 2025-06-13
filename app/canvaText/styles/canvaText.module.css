@@ -24,7 +24,7 @@
     grid-row: 1/4;
     display: flex;
     align-items: center;
-    transform: translateX(-170);
+    transform: translateX(-20);
 }
 .thirdtextWrapper{
     grid-column: 1/4;
@@ -60,7 +60,7 @@
 }.secondfullText {
   position: absolute;
   pointer-events: none;
-  transform: translateX(33)  rotate(90deg);
+  transform: translateX(9)  rotate(90deg);
   z-index: -1;
 }.thirdfullText {
   position: absolute;
