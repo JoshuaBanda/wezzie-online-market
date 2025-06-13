@@ -11,7 +11,7 @@
 }
 @property --acessoryColor {
   syntax: "<color>";
-  initial-value:#1d5f66 ;
+  initial-value:#8bd38b ;
   inherits: false;
 }
 

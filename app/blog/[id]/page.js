@@ -164,10 +164,9 @@ const handleQuantityReduction = () => {
             </motion.div>
         </section>
         <motion.div className={styles.productInfo}
-        
               initial={{opacity:0}}
               animate={{opacity:1}}
-              transition={{type:'spring', stiffness:250,delay:1}}>
+              transition={{type:'spring', stiffness:250}}>
           <img
             className={styles.productImage}
             src={product.photo_url}

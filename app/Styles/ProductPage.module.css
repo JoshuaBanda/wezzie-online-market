@@ -59,7 +59,7 @@
   
   .productImage {
     position: relative;
-    top:200px;
+    top:120px;
     margin: 0 auto;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -182,7 +182,9 @@
     }
   
     .addToCartBtn {
-      font-size: 20px;
+      font-size: 22px;
+      transform: scale(0.6) translateX(90);
+      right: 0;
     }
     .addToCartBtnText{
       transform: translateX(10);
@@ -218,7 +220,7 @@
 
   .decoratedBackground{
     position: fixed;
-    height: 60vh;
+    height: 55vh;
     width: 50vw;
     top: 0px;
     right: 0px;

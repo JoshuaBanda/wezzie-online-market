@@ -242,7 +242,10 @@ const LandingPage = ({user}) => {
               const myTextColor = isSelected ? "#333" : "white";
 
               return (
-                <motion.li id="customizedbackground"
+                <motion.li id=""
+                  style={{
+                    color:"#444"
+                  }}
                   key={index}
                   initial={{ opacity: 0, x: -300 }}
                   animate={{ opacity: 1, x:0 }}
@@ -262,7 +265,7 @@ const LandingPage = ({user}) => {
                             className={`
                                 ${listItemBorder === index  ? style.item : style.normalitem}
                             `}
-                            id="customizedColor">
+                            id="">
                                <HomeOptions
                             text={item.name}
                             myBackgroudColor={myBackgroudColor}
