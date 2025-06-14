@@ -511,12 +511,42 @@ try {
                           position:"relative",margin:"20px",display:"flex",
                         }}>
                         Your Cart is empty
-                        <div style={{margin:"80px -20px"}}> <Spinner/></div>
                         </h3>
                         </div>
                     </>
                 )
             }
+            
+
+
+
+            
+      {loadingOrder&&
+      <div style={{
+        position:'fixed',
+        width:'100%',height:'200px',borderRadius:'20px',
+        display:'flex',
+        alignItems:'center',
+        justifyContent:'center',top:'200px'
+        
+      }}>
+        <motion.div style={{
+          background:'white',
+          width:'200px',height:'100px',
+          display:'flex',alignItems:'center',justifyContent:'center',
+          borderRadius:'20px',
+          boxShadow:'-2px 2px 5px 5px rgba(0, 0, 0, 0.14)'
+        }}
+        initial={{y:200,opacity:0}}
+        animate={{y:0,opacity:1}}
+        transition={{duration:1}}
+        >
+          
+          adding item(s) to cart...
+        </motion.div>
+      </div>
+      }
+
         </div>
     );
 }

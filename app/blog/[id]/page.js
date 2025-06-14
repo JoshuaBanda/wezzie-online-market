@@ -157,7 +157,7 @@ const handleQuantityReduction = () => {
         
               initial={{y:-200,opacity:0}}
               animate={{y:0,opacity:1}}
-              transition={{type:'spring', stiffness:250,delay:5}}
+              transition={{type:'spring', stiffness:250,delay:1}}
             >
               <FaShoppingCart color='white'/>
             </motion.div>
