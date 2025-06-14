@@ -28,17 +28,16 @@ const LandingPage = () => {
 
   const [profilePicture,setProfilePicture]=useState();
   const [swing,setSwing]=useState(false);
-
 useEffect(() => {
   const handleResize = () => {
     const screenWidth = window.innerWidth;
-    console.log("Current screen width:", screenWidth);
+    //console.log("Current screen width:", screenWidth);
 
     if (screenWidth < 400) {
-      console.log("Setting swing to TRUE (screen is narrow)");
+      //console.log("Setting swing to TRUE (screen is narrow)");
       setSwing(true);
     } else {
-      console.log("Setting swing to FALSE (screen is wide)");
+      //console.log("Setting swing to FALSE (screen is wide)");
       setSwing(false);
     }
   };
@@ -48,12 +47,12 @@ useEffect(() => {
 
   // Listen for window resize
   window.addEventListener("resize", handleResize);
-  console.log("Added resize listener");
+  //console.log("Added resize listener");
 
   // Cleanup
   return () => {
     window.removeEventListener("resize", handleResize);
-    console.log("Removed resize listener");
+  //  console.log("Removed resize listener");
   };
 }, []);
 
@@ -68,8 +67,7 @@ useEffect(() => {
 
   },[person]);
 useEffect(()=>{
-  setProfilePicture(user.photoUrl);
-  //console.log('...........',user.photoUrl)
+  setProfilePicture(user.photourl);
 },[user]);
 
 
@@ -163,7 +161,8 @@ useEffect(()=>{
       </motion.section>
 
       {/* Branding */}
-      <motion.div className={styles.brand}  
+      <motion.div className={styles.brand}
+      initial={{x:0}}
         animate={
     swing
       ? { x:[40, 40, 40, 40, 40,200, 200, 200, 200, 220, 40, 40, 40, 40, 40] }
