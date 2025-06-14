@@ -288,10 +288,10 @@
 }
 @keyframes swift {
     0%,100%{
-        transform: translateX(220);
+        transform: translateX(40);
     }
     50%{
-        transform: translate(40);
+        transform: translate(215);
     }
 }
 
