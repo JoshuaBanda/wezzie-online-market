@@ -189,7 +189,7 @@ useEffect(()=>{
     ease: "easeInOut",
     repeat: Infinity,
     repeatType: "loop",
-    delay:2
+    delay:5
   }}
       >
         
