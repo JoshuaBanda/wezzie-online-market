@@ -27,7 +27,35 @@ const LandingPage = () => {
   const route=useRouter();
 
   const [profilePicture,setProfilePicture]=useState();
-  
+  const [swing,setSwing]=useState(false);
+
+useEffect(() => {
+  const handleResize = () => {
+    const screenWidth = window.innerWidth;
+    console.log("Current screen width:", screenWidth);
+
+    if (screenWidth < 400) {
+      console.log("Setting swing to TRUE (screen is narrow)");
+      setSwing(true);
+    } else {
+      console.log("Setting swing to FALSE (screen is wide)");
+      setSwing(false);
+    }
+  };
+
+  // Initial check
+  handleResize();
+
+  // Listen for window resize
+  window.addEventListener("resize", handleResize);
+  console.log("Added resize listener");
+
+  // Cleanup
+  return () => {
+    window.removeEventListener("resize", handleResize);
+    console.log("Removed resize listener");
+  };
+}, []);
 
 
   const {person}=useUser();
@@ -135,7 +163,20 @@ useEffect(()=>{
       </motion.section>
 
       {/* Branding */}
-      <div className={styles.brand} >
+      <motion.div className={styles.brand}  
+        animate={
+    swing
+      ? { x: [40, 220, 40] }
+      : { x: 0 }
+  }
+  transition={{
+    duration: 10,          // total duration of one cycle
+    times: [0, 0.2, 0.4, 0.6, 0.8, 1], // controls timing of each step
+    ease: "easeInOut",
+    repeat: Infinity,
+    repeatType: "loop",
+  }}
+      >
         
       <motion.div className={styles.topBranding} 
         
@@ -232,7 +273,7 @@ useEffect(()=>{
           </motion.div>
 
         </div>
-      </div>
+      </motion.div>
 
 
 

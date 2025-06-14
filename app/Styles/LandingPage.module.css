@@ -272,10 +272,6 @@
        animation: bounce 2s ease infinite;
        font-weight: bolder;
 }
-.brand{
-    
-    animation:   swift 25s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
-}
 }
 
 @keyframes bounce {

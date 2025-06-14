@@ -47,12 +47,13 @@
         
     }
     .outerConer{
-        width: 90px;height: 50px;
+        width: 90px;height: 150px;
     }
     .pic{
         width:405px
     }
     .whiteConer{
-        width: 100px;height: 60px;
+        width: 105px;height: 165px;
+        
     }
 }

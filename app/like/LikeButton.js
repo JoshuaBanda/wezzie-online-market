@@ -6,6 +6,8 @@ import Rating from './Rating';
 import { FaHeart,FaThumbsUp, FaRegHeart,FaFaceGrinHearts } from 'react-icons/fa6';
 import { motion } from 'framer-motion';
 import styles from "../Styles/like.module.css";
+
+
 const LikeButton = ({ postId, userId, jwtToken, initialLikeCount,  }) => {
   //console.log(" postId", postId,"userId",userId,"jwtToken",jwtToken,"initialLikeCount",initialLikeCount);
   const [isLiked, setIsLiked] = useState(false);
@@ -15,7 +17,9 @@ const LikeButton = ({ postId, userId, jwtToken, initialLikeCount,  }) => {
 
   // Fetch like data when the component mounts
   useEffect(() => {
-    fetchLikeData();
+    console.log("userid",userId);
+    if(userId&&postId){
+    fetchLikeData();}
 //console.log("like",likeCount,isLiked);
   }, [postId,isLiked]);
 
