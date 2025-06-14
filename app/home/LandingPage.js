@@ -165,22 +165,23 @@ useEffect(()=>{
       initial={{x:0}}
         animate={
     swing
-      ? { x:[40, 40, 40, 40, 40,200, 200, 200, 200, 220, 40, 40, 40, 40, 40] }
+      ? { x:[350,350,350,350,350,350,350,-20,0,0,0,0,0,30,320,350,350,350,350,350,350] }
       : { x: 0 }
   }
   transition={{
-    duration: 10,          // total duration of one cycle
+    duration: 12,          // total duration of one cycle
     times: [0, 0.2, 0.4, 0.6, 0.8, 1], // controls timing of each step
     ease: "easeInOut",
     repeat: Infinity,
     repeatType: "loop",
+    delay:2
   }}
       >
         
       <motion.div className={styles.topBranding} 
         
         initial={{opacity:0,x:-100}}
-        animate={{opacity:1,x:0}}
+        animate={{opacity:1,x:-40}}
         transition={{type:'tween',duration:1}}
       >
         <div className={styles.WelcomeRemark}>            
@@ -265,7 +266,7 @@ useEffect(()=>{
 
           <motion.div className={styles.additionalTopContentForComputers}
             initial={{y:-380,x:0}}
-            animate={{y:0,x:swing?-10:0}}
+            animate={{y:0,x:0}}
             transition={{type:'tween',stiffness:200}}
           >
               <AdditionTopContentForComputers/>
