@@ -116,7 +116,7 @@ useEffect(()=>{
   const imageList = [
   '/dress2.png',
   '/Shirt2.png',
-  '/dress1.png',
+  '/bag.png',
   '/dress.png',
 ];
 

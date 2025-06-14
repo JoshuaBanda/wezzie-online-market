@@ -1,14 +1,15 @@
 @property --primaryColor {
   syntax: "<color>";
-  initial-value: white;
+  initial-value: rgb(255, 255, 255);
   inherits: false;
 }
 
 @property --secondaryColor {
   syntax: "<color>";
-  initial-value:#ffb56f;
+  initial-value: #ffd3ac;
   inherits: false;
 }
+/*#ffb56f*/
 @property --acessoryColor {
   syntax: "<color>";
   initial-value:rgb(8, 51, 80) ;
