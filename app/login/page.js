@@ -74,7 +74,7 @@ export default function LoginPage() {
       const screenWidth = window.innerWidth;
       //console.log("Current screen width:", screenWidth);
   
-      if (screenWidth < 400) {
+      if (screenWidth <600) {
         //console.log("Setting swing to TRUE (screen is narrow)");
         setSwing(true);
       } else {
@@ -265,7 +265,7 @@ export default function LoginPage() {
         </div>
         <div style={{
           position:'fixed',
-          bottom:'0px',
+          bottom:'40px',
           height:"10%",width:'200px'}}>
             <ul className={styles.bottomSelection}>
               <li
@@ -292,7 +292,6 @@ export default function LoginPage() {
         </div>
         
 
-        <div className={styles.backgroundblur}/>
       </div>
   );
 }
