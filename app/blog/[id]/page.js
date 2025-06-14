@@ -28,10 +28,15 @@ const item = ({params}) => {
   const [likeCount, setLikeCount] = useState(0);
 
 
+  const {person}=useUser();
+  
+  const [user,setUser]=useState(person);
+  useEffect(()=>{
+    //console.log("updatting");
+    setUser(person);
+  //console.log('user',user,"person",person);
 
-
-
-
+  },[person]);
   useEffect(() => {
     if (!id) return;
     //console.log("id:",id);
