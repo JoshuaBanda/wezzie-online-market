@@ -228,21 +228,6 @@ const SignUpPage = () => {
     }}
         className={showClass ? styles.containR : ''}
     >
-    {/* Title text */}
-                <p
-                  style={{
-                    fontSize: "25px",
-                    marginBottom: "10px",
-                    textAlign: "center",
-                    position: "relative",
-                  }}
-                >
-                  WEZZIE ONLINE MARKET
-                </p>
-                <div>
-                    
-                <FaSeedling size={60} />
-                </div> 
       <form onSubmit={handleSubmitAfterOtp} style={{ width: "100%", maxWidth: "500px", display: "flex", flexDirection: "column", }}>
         {steps.map((step, index) => (
           <div key={step.label} style={{ display: currentStep === index ? "block" : "none" }}>

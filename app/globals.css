@@ -117,6 +117,9 @@ a {
 #thirdCustomizedColor{
   color: var(--acessoryColor2);
 }
+.thirdbackgroundcolor{
+  background-color: black;
+}
 #darkThemeTextColor{
   color:#111;
 }
@@ -143,10 +146,12 @@ a {
 /*rgb(255, 51, 85)*/
 
 
-
-
-
-
+input {
+  color: black; /* text color */
+  background-color: #f5f5f500; /* optional */
+  border: 1px solid #ccc;
+  padding: 8px;
+}
 
 
 

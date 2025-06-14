@@ -80,22 +80,7 @@ if (response.status === 201) {
         }}
         className={showClass ? styles.contain : ''}
       >
-        {/* Title text */}
-        <p
-          style={{
-            fontSize: "25px",
-            marginBottom: "10px",
-            textAlign: "center",
-            position: "relative",
-            zIndex: 1,
-          }}
-        >
-          WEZZIE ONLINE MARKET
-        </p>
-
-        <div>
-          <FaSeedling size={60}  />
-        </div>
+        
 
         {/* Login Form */}
         <form

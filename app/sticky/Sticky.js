@@ -7,10 +7,10 @@ import { motion, AnimatePresence } from "framer-motion";
 const Sticky = () => {
 
     const { ref: refTop, inView: inViewTop} = useInView({
-    threshold: 0.1,
+    threshold: 0.4,
   });
       const { ref: refBottom, inView: inViewBottom} = useInView({
-    threshold: 0.1,
+    threshold: 0.6,
   });
   return (
     <div className={styles.page}>
