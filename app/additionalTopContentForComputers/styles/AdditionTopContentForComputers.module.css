@@ -1,5 +1,4 @@
 .container {
-    background-color: rgb(8, 51, 80);
     width: 100%;
     height: 38vh;
     margin: 0 20px;
@@ -12,7 +11,7 @@
 .pic {
     height: 100%;  /* or a fixed height like 200px */
     width: 100%;   /* optional if you want it to fill parent */
-    background-color: red;
+    background-color: white;
     background-image: url('/wonge24.jpg');
     background-size: cover;
     background-position: center;
@@ -44,10 +43,16 @@
 
 @media screen and (max-width: 480px) {  
     .container{
-        transform: scale(0.7) translateX(-105);
+        transform: scale(0.7) translateX(-165);
         
     }
     .outerConer{
-        transform: scale(0.7) translateX(-45);
+        width: 90px;height: 50px;
+    }
+    .pic{
+        width:405px
+    }
+    .whiteConer{
+        width: 100px;height: 60px;
     }
 }

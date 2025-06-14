@@ -91,7 +91,6 @@
 
 }
 .topbrandSubContent{
-    background-color: rgb(19, 6, 95);
     border-radius: 5px;
     padding: 5px;
     font-weight:bold;
@@ -220,6 +219,13 @@
     justify-content: center;
     height: 300px;
 }
+@keyframes springy {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.1); }
+  60%  { transform: scale(0.95); }
+  80%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
 .brandPicContainer{
     position: relative;
     height: fit-content;width: 180px;
@@ -267,6 +273,10 @@
        animation: bounce 2s ease infinite;
        font-weight: bolder;
 }
+.brand{
+    
+    animation:   swift 15s ease-in infinite;
+}
 }
 
 @keyframes bounce {
@@ -277,7 +287,14 @@
         transform: translateY(-20px);
     }
 }
-
+@keyframes swift {
+    0%,100%{
+        transform: translateX(220);
+    }
+    50%{
+        transform: translate(40);
+    }
+}
 
 
 

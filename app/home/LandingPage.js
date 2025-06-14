@@ -82,7 +82,7 @@ const LandingPage = ({user}) => {
         
         ref={welcomeListRef}
         initial={{opacity:0,y:-100}}
-        animate={{opacity:welcomeInView?1:0,y:welcomeInView?0:-100}}
+        animate={{opacity:welcomeInView?1:0,y:0}}
         transition={{type:'tween',duration:1}}
       >
         <div className={styles.icon1} id="customizedbackground">
@@ -105,14 +105,12 @@ const LandingPage = ({user}) => {
         
       <motion.div className={styles.topBranding} 
         
-        ref={welcomeListRef}
         initial={{opacity:0,x:-100}}
-        animate={{opacity:welcomeInView?1:0,x:welcomeInView?0:-100}}
+        animate={{opacity:1,x:0}}
         transition={{type:'tween',duration:1}}
       >
         <div className={styles.WelcomeRemark}>            
           <motion.span
-          ref={welcomeListRef}
             initial={{opacity:0}}
             animate={{opacity:1}}
             transition={{duration:5,delay:1}}
@@ -120,7 +118,7 @@ const LandingPage = ({user}) => {
           <span className={styles.brandName} id="customizedColor">
           Wezzie Online Market</span>
         </div>
-        <div className={styles.topbrandSubContent} id="accessoryColorBackground"
+        <div className={styles.topbrandSubContent} id=""
           
         >
           <ul
@@ -129,7 +127,7 @@ const LandingPage = ({user}) => {
           <li id="customizedColor">
             Cheap
           </li>
-          <li id="whiteText">Affordable</li>
+          <li id="thirdCustomizedColor">Affordable</li>
           <li id="">
             and Stylish too
           </li>
@@ -141,9 +139,8 @@ const LandingPage = ({user}) => {
         <div className={styles.leftBranding}>
           <motion.div
           
-          ref={welcomeListRef}
           initial={{opacity:0,x:100}}
-          animate={{opacity:welcomeInView?1:0,x:welcomeInView?0:100}}
+          animate={{opacity:1,x:0}}
           transition={{type:'tween',stiffness:50,duration:1}}
           >
             <div className={styles.brandPicContainer} id="customizedbackground">

@@ -11,13 +11,13 @@
 }
 @property --acessoryColor {
   syntax: "<color>";
-  initial-value:#2e325f ;
+  initial-value:rgb(8, 51, 80) ;
   inherits: false;
 }
 
 @property --acessoryColor2 {
   syntax: "<color>";
-  initial-value:yellow ;
+  initial-value:rgb(97, 218, 97) ;
   inherits: false;
 }
 
