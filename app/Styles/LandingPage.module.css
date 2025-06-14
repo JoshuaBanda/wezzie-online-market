@@ -291,7 +291,7 @@
         transform: translateX(220);
     }
     50%{
-        transform: translate(60);
+        transform: translate(40);
     }
 }
 
