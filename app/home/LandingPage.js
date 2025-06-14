@@ -129,11 +129,26 @@ useEffect(()=>{
         
         ref={welcomeListRef}
         initial={{opacity:0,y:-100}}
-        animate={{opacity:welcomeInView?1:0,y:0}}
+        animate={{opacity:welcomeInView?1:0,y:swing?-10:0}}
         transition={{type:'tween',duration:1}}
       >
-        <div className={styles.icon1} id="customizedbackground">
-          <FaBarsStaggered className={styles.inIcon} />
+        <div className={styles.icon1} id="customizedbackground"
+        style={{overflow:'hidden'}}>
+          {/*<FaBarsStaggered className={styles.inIcon} />*/}
+          {/*<div className={styles.brandLabal} id="accessoryColor"
+          style={{top:"-30px"}}>
+            w
+          </div>*/}
+          
+            <Image
+                src='/handbag.png'
+                alt='brand'
+                quality={100}
+                width="40"
+                height="40"
+                sizes='(max-width:768px)100vw, (max-width:1200pxpx)50vw, 33vw'
+                priority
+            />
         </div>
         <div className={styles.icon3} onClick={()=>{
           route.push('/search')
@@ -150,7 +165,7 @@ useEffect(()=>{
           {profilePicture?(
             <Image
                 src={profilePicture}
-                alt='bag'
+                alt='p'
                 quality={100}
                 width="40"
                 height="40"
@@ -181,7 +196,7 @@ useEffect(()=>{
       <motion.div className={styles.topBranding} 
         
         initial={{opacity:0,x:-100}}
-        animate={{opacity:1,x:-40}}
+        animate={{opacity:1,x:swing?-40:0}}
         transition={{type:'tween',duration:1}}
       >
         <div className={styles.WelcomeRemark}>            
@@ -215,7 +230,7 @@ useEffect(()=>{
           <motion.div
           
           initial={{opacity:0,x:100}}
-          animate={{opacity:1,x:0}}
+          animate={{opacity:1,x:swing?-35:0}}
           transition={{type:'tween',stiffness:50,duration:1}}
           >
             <div className={styles.brandPicContainer} id="customizedbackground">

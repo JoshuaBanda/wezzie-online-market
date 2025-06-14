@@ -13,7 +13,6 @@
 .iconContainer div{
     position: fixed;
     margin-top:20px;
-    overflow: hidden;
 }
 .icon1{
     left: 10px;
@@ -24,6 +23,8 @@
     align-items: center;
     align-content: center;
     justify-content: center;display: flex;
+    overflow: visible;
+    border: 3px solid silver;
 }
 .inIcon{
     font-size: 30px;
@@ -38,7 +39,7 @@
     border-radius: 50%;
        align-items: center;
     align-content: center;
-    justify-content: center;display: flex;
+    justify-content: center;display: flex;overflow: hidden;
 }
 .icon3{
     right: 40px;
@@ -274,7 +275,11 @@
        font-weight: bolder;
 }
 }
-
+.brandLabal{
+    font-family: Bonheur Royale;
+    font-size: 85px;
+    font-weight: bold;
+}
 @keyframes bounce {
     0%, 100% {
         transform: translateY(0);
