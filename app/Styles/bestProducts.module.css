@@ -50,12 +50,11 @@
     z-index: 2; /* Ensure it’s above the image */
     object-fit: cover;
     border-radius: 10px;
-    font-size: 15px;
-    font-family: var(--font-bonheurRoyale);
+    font-size: 12px;
   }
   
   .explore{
     
     font-size: 22px;
-    font-family: var(--font-bonheurRoyale);
+    font-family: Bonheur Royale;
   }

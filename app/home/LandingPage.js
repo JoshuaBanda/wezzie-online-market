@@ -14,8 +14,9 @@ import StrokeTextCanvas from "./StrokeTextCanvas";
 import AnimatedPictures from "../animatedPictures/AnimatedPictures";
 import AdditionTopContentForComputers from "../additionalTopContentForComputers/AdditionTopContentForComputers";
 import { useInView } from "react-intersection-observer";
+import { useUser } from "../userContext";
 
-const LandingPage = ({user}) => {
+const LandingPage = () => {
   const items = [
     { name: "ToteBags",imgSrc:'/bag.png',alt:'pic' },
     { name: "Dresses",imgSrc:'/dress2.png',alt:'pic' },
@@ -24,6 +25,26 @@ const LandingPage = ({user}) => {
     { name: "Blacelets" ,imgSrc:'/bracelets.png',alt:'pic'},
   ];
   const route=useRouter();
+
+  const [profilePicture,setProfilePicture]=useState();
+  
+
+
+  const {person}=useUser();
+  
+  const [user,setUser]=useState(person);
+  useEffect(()=>{
+    //console.log("updatting");
+    setUser(person);
+  //console.log('user',user,"person",person);
+
+  },[person]);
+useEffect(()=>{
+  setProfilePicture(user.photoUrl);
+  //console.log('...........',user.photoUrl)
+},[user]);
+
+
 
   const [search, setSearch] = useState("Avon");
   const [listItemBorder, setListItemBorder] = useState(0);
@@ -90,13 +111,26 @@ const LandingPage = ({user}) => {
         </div>
         <div className={styles.icon3} onClick={()=>{
           route.push('/search')
-        }}>
+        }}
+        id="accessoryColorBackground"
+        >
           <FaSearch className={styles.userchIcon} />
         </div>
         <div className={styles.icon2} onClick={()=>{
           route.push('/profile')
-        }}>
-          <FaUser className={styles.userIcon}/>
+        }}
+        id="accessoryColorBackground">
+          {/*<FaUser className={styles.userIcon}/>*/}
+          {profilePicture?(
+            <Image
+                src={profilePicture}
+                alt='bag'
+                quality={100}
+                width="40"
+                height="40"
+                sizes='(max-width:768px)100vw, (max-width:1200pxpx)50vw, 33vw'
+                priority
+            />):(<FaUser className={styles.userIcon}/>)}
         </div>
       </motion.section>
 

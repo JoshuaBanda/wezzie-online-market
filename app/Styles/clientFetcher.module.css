@@ -9,6 +9,10 @@
     box-shadow: -1px 2px 15px rgba(31, 30, 30, 0.3);
 
 }
+.picContainer{
+    position: relative;
+    top:-20px
+}
 
 
 /* For Firefox */
@@ -73,7 +77,7 @@
 
 .like{
     
-    font-family: var(--font-beauRivage);
+    font-family: Bonheur Royale;
 }
 .unorderdlist{
     display: flex;

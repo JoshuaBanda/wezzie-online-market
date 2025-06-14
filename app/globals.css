@@ -30,7 +30,7 @@ body {body {
   color: black;
   margin: 0;
   padding: 0;
-    font-family:var(--font-poppins);
+    font-family:Roboto;
   
 
   /*background-image: url('/wonge48.jpg');*/
@@ -46,17 +46,11 @@ body {body {
 }
 
 }.myColor {
-  /*animation: changeTextColor 60s infinite;*/
   color: var(--primaryColor);
-    font-family:Poppins;
   font-weight: bold;
 }
 
-@keyframes changeTextColor {
-  0%   { --primaryColor: rgb(255, 51, 85); }
-  50%  { --primaryColor: rgb(60, 161, 82); }
-  100% { --primaryColor: rgb(255, 51, 85); }
-}
+
 
 
 @keyframes swappic {
@@ -68,9 +62,6 @@ body {body {
   
   100% { background-image: url("/wonge1.jpg");
   }
-}
-.special-element {
-  font-family: var(--font-lovers);
 }
 
 .blur-wrapper {
@@ -163,52 +154,39 @@ a {
 
 @font-face {
   font-family: 'Poppins';
-  src: url('/fonts/Poppins-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Felipa';
-  src: url('/fonts/Felipa-Regular.woff2') format('woff2');
+  src: url('/fonts/Poppins-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Bonheur Royale';
-  src: url('/fonts/BonheurRoyale-Regular.woff2') format('woff2');
+  src: url('/fonts/BonheurRoyale-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Niconne';
-  src: url('/fonts/Niconne-Regular.woff2') format('woff2');
+  font-family: 'Roboto';
+  src: url('/fonts/Roboto-VariableFont_wdth,wght.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'Gudea';
-  src: url('/fonts/Gudea-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-}
 
 
 
 
 input[type="file"] {
   font-size: 16px;
-  padding: 8px;
+  padding: 2px;
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: white;
 }
 
 input[type="file"]::file-selector-button {
-  padding: 8px 16px;
+  padding: 2px 2px;
   background-color: var(--primaryColor); /* indigo */
   color: white;
   border: none;
@@ -218,5 +196,5 @@ input[type="file"]::file-selector-button {
 }
 
 input[type="file"]::file-selector-button:hover {
-  background-color: #4338ca; /* darker indigo */
+  background-color: #17161a; /* darker indigo */
 }

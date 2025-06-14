@@ -16,9 +16,6 @@ import { motion } from 'framer-motion';
 
 const item = ({params}) => {
 
-  const {person}=useUser();
-  
-  const [user,setUser]=useState(person)
 
 
   const [product, setProduct] = useState(null);
@@ -30,11 +27,6 @@ const item = ({params}) => {
 
   const [likeCount, setLikeCount] = useState(0);
 
-  useEffect(()=>{
-    //console.log("updatting");
-    setUser(person);
-  //  console.log('user',user,"person",person);
-  },[person]);
 
 
 

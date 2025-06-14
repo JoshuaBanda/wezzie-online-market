@@ -12,7 +12,6 @@
   align-items: center;
   padding: 30px;
   
-  font-family: var(--font-poppins  );
   font-size: 35px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
@@ -139,7 +138,7 @@ gap: 5%;
     padding: 3px 5px;
     margin: 4px;
     border-radius: 10px 2px;
-    font-family: var(--font-bonheurRoyale);
+    font-family: Bonheur Royale;
     font-size: 18px;
   }
   .availableNow{

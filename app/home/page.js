@@ -4,10 +4,21 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Welcome from "../welcome/Welcome";
 import LandingPage from "./LandingPage";
+import { useUser } from "../userContext";
 
-const FrontPage = ({ user }) => {
+const FrontPage = () => {
   const [showLanding, setShowLanding] = useState(false);
   const [initialCheckDone, setInitialCheckDone] = useState(false);
+
+  
+    const {person}=useUser();
+    
+    const [user,setUser]=useState(person);
+      useEffect(()=>{
+    //console.log("updatting");
+    setUser(person);
+  //  console.log('user',user,"person",person);
+  },[person]);
 
   useEffect(() => {
     const hasVisited = localStorage.getItem("hasVisited");

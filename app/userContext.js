@@ -10,6 +10,7 @@ export const UserProvider = ({ children }) => {
     firstname: "",
     lastname: "",
     email: "",
+    photourl:"",
   });
 
   // ✅ Only access localStorage in useEffect

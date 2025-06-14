@@ -51,6 +51,7 @@ if (response.status === 201) {
     email: result.user.email,
     userid: result.user.userid,
     access_token: result.result.access_token, // adjust if it's result.user.accessTocken
+    photourl:result.user.photoUrl,
   });
   router.push("/home");
 }

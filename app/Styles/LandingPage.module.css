@@ -192,7 +192,6 @@
 }
 .discount{
     
-    font-family:var(--font-poppins);
     font-weight: bold;
     width: 150px;
     margin: 2px;
@@ -275,7 +274,7 @@
 }
 .brand{
     
-    animation:   swift 15s ease-in infinite;
+    animation:   swift 25s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
 }
 }
 
@@ -292,7 +291,7 @@
         transform: translateX(220);
     }
     50%{
-        transform: translate(40);
+        transform: translate(60);
     }
 }
 
