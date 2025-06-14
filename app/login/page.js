@@ -120,10 +120,12 @@ export default function LoginPage() {
           position:'fixed',
           top:'0px',
           height:"40%",
-          padding:'50px',width:'100%'}}>
+          padding:'50px',width:'100%',
+          
+          }}>
           <h3 style={{position:'absolute',top:'10px',
             left:'20px',
-            color:'white',
+            color:'black',
           }}
           
           id='customizedColor'>
@@ -155,7 +157,7 @@ export default function LoginPage() {
           <motion.div
             id='customizedbackground'
           style={{position:'fixed',top:'20px',
-            width:'250px',height:'250px',right:'0px',
+            width:'200px',height:'200px',right:'0px',
             zIndex:-10,borderRadius:'50%',
             display:swing?"flex":"none"
           }}
