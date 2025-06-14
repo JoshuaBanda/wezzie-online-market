@@ -31,12 +31,19 @@ const item = ({params}) => {
   const {person}=useUser();
   
   const [user,setUser]=useState(person);
+  
+  const [loadingtocart,setloadingtocart]=useState(false);
+  console.log('...............',loadingtocart);
+
   useEffect(()=>{
     //console.log("updatting");
     setUser(person);
   //console.log('user',user,"person",person);
 
   },[person]);
+
+  
+
   useEffect(() => {
     if (!id) return;
     //console.log("id:",id);
@@ -56,6 +63,7 @@ const item = ({params}) => {
 
   const addToCart= async()=>{
     try{
+      setloadingtocart(true);
       const res=await axios.post(`https://wonge-backend-k569.onrender.com/cart/add-to-cart`,
         {
           
@@ -68,6 +76,7 @@ const item = ({params}) => {
       );
       console.log("status",res.status);
       if (res.status==201){
+        setloadingtocart(false);
         toast.success(
           
         `Successfully added ${product.name} to your cart. click here to view your item in cart`,
@@ -82,6 +91,8 @@ const item = ({params}) => {
         );
       }
     } catch(error){
+      
+      setloadingtocart(false);
       toast.error(
         `${user.firstname}, you already have ${product.name} in your cart. Click to view cart.`,
         {
@@ -236,7 +247,28 @@ const handleQuantityReduction = () => {
           </motion.div>
         </motion.div>
       </div>
+      {loadingtocart&&
+      <div style={{
+        position:'fixed',
+        width:'100%',height:'200px',borderRadius:'20px',
+        display:'flex',
+        alignItems:'center',
+        justifyContent:'center'
+        
+      }}>
+        <div style={{
+          background:'white',
+          width:'200px',height:'100px',
+          display:'flex',alignItems:'center',justifyContent:'center',
+          borderRadius:'20px',
+          boxShadow:'-2px 2px 10px 10px rgba(0,0,0,0.2)'
+        }}>
+          adding {product.name} to cart ....
+        </div>
+      </div>
+      }
     </div>
+    
   );
 };
 

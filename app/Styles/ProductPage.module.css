@@ -18,8 +18,8 @@
     right: 20px;
     top:60px;
     margin-left:20px ;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
        align-items: center;
     align-content: center;
@@ -31,8 +31,8 @@
     right: 40%;
     top:60px;
     margin-left:20px ;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
        align-items: center;
     align-content: center;
@@ -44,8 +44,8 @@
     left: 5%;
     top:60px;
     margin-left:20px ;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height:50px;
     border-radius: 50%;
        align-items: center;
     align-content: center;
@@ -187,10 +187,10 @@
       right: 0;
       width: 300px;
     }
-    .addToCartBtnText{
-      transform: translateX(10);
-      width: 100px;
 
+    .prevButton .cartButton .likeButton{
+      transform: scale(0.7);
+      box-shadow: 10px 10px 10px 10px;
     }
   }
   
