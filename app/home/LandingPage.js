@@ -166,7 +166,7 @@ useEffect(()=>{
       <motion.div className={styles.brand}  
         animate={
     swing
-      ? { x: [40, 220, 40] }
+      ? { x:[40, 40, 40, 40, 40,200, 200, 200, 200, 220, 40, 40, 40, 40, 40] }
       : { x: 0 }
   }
   transition={{
@@ -265,8 +265,8 @@ useEffect(()=>{
           </motion.div>
 
           <motion.div className={styles.additionalTopContentForComputers}
-            initial={{y:-380}}
-            animate={{y:0}}
+            initial={{y:-380,x:0}}
+            animate={{y:0,x:swing?-10:0}}
             transition={{type:'tween',stiffness:200}}
           >
               <AdditionTopContentForComputers/>
