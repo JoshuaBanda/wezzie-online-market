@@ -265,9 +265,22 @@
 }
 
 .wrapper {
+  background-image: url('/background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   height: 100vh; /* or set specific height */
   width: 100%;
+}
+
+.backgroundblur {
+  position: absolute;
+  height: 120%;
+  inset: 0; /* shorthand for top: 0; bottom: 0; left: 0; right: 0; */
+  background-image: url('/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: blur(8px); /* adjust the blur radius as needed */
+  z-index: -100;
 }

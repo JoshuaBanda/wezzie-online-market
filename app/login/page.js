@@ -13,6 +13,9 @@ export default function LoginPage() {
   const [selectedSide, setSelectedSide] = useState('left');
   const [showClass, setShowClass] = useState(true);
 
+  const [swing,setSwing]=useState(false);
+
+  
   useEffect(() => {
     setShowClass(true)
     const timer = setTimeout(() => {
@@ -65,6 +68,36 @@ export default function LoginPage() {
     color:isLeftSelected? 'rgba(0,0,0)':"rgba(255,255,255,1)",
   };
 
+
+  useEffect(() => {
+    const handleResize = () => {
+      const screenWidth = window.innerWidth;
+      //console.log("Current screen width:", screenWidth);
+  
+      if (screenWidth < 400) {
+        //console.log("Setting swing to TRUE (screen is narrow)");
+        setSwing(true);
+      } else {
+        //console.log("Setting swing to FALSE (screen is wide)");
+        setSwing(false);
+      }
+    };
+  
+    // Initial check
+    handleResize();
+  
+    // Listen for window resize
+    window.addEventListener("resize", handleResize);
+    //console.log("Added resize listener");
+  
+    // Cleanup
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    //  console.log("Removed resize listener");
+    };
+  }, []);
+  console.log(swing);
+
   return (
       <div
         style={{
@@ -89,7 +122,8 @@ export default function LoginPage() {
           height:"40%",
           padding:'50px',width:'100%'}}>
           <h3 style={{position:'absolute',top:'10px',
-            left:'20px'
+            left:'20px',
+            color:'white',
           }}
           
           id='customizedColor'>
@@ -97,12 +131,13 @@ export default function LoginPage() {
           </h3>
           <motion.div style={{
             position:'fixed',
-            top:'50px',left:'20px',zIndex:-9
+            top:'80px',left:'-50px',zIndex:-9,
+            display:swing?"flex":"none",
           }}
           initial={{x:0,y:0}}
           animate={{x:isLeftSelected?0:200,y:isLeftSelected?0:-100,scale:isLeftSelected?0.7:1}}
           transition={{
-            type:'spring',duration:1
+            type:'spring',duration:3
           }}
           
           >
@@ -121,12 +156,13 @@ export default function LoginPage() {
             id='customizedbackground'
           style={{position:'fixed',top:'20px',
             width:'250px',height:'250px',right:'0px',
-            zIndex:-10,borderRadius:'50%'
+            zIndex:-10,borderRadius:'50%',
+            display:swing?"flex":"none"
           }}
           initial={{opacity:0.75}}
           animate={{opacity:isLeftSelected?0.7:1,scale:isLeftSelected?0.9:1.2}}
           transition={{
-            duration:1
+            duration:2
           }}
           >
 
@@ -253,6 +289,9 @@ export default function LoginPage() {
               </li>
             </ul>
         </div>
+        
+
+        <div className={styles.backgroundblur}/>
       </div>
   );
 }
