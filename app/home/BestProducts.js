@@ -42,7 +42,7 @@ const BestProducts = () => {
       <motion.div
         key={index}
         style={{left:"30px"}}
-        className={styles.container} id="customizedbackground"
+        className={styles.container} id="customizedbackgroun"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.3, delay: index * 0.1 }}

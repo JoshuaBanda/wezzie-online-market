@@ -37,6 +37,7 @@ const FrontPage = () => {
 
   if (!initialCheckDone) return null; // Prevent render flicker
 
+  
   return (
     <div onClick={!showLanding ? handleEnter : undefined}>
       <AnimatePresence mode="wait">

@@ -21,7 +21,7 @@ const LandingPage = () => {
     { name: "ToteBags",imgSrc:'/bag.png',alt:'pic' },
     { name: "Dresses",imgSrc:'/dress2.png',alt:'pic' },
     { name: "Shirts" ,imgSrc:'/shirt2.png',alt:'pic'},
-    { name: "Skirts" ,imgSrc:'/Skirt.png',alt:'pic'},
+    { name: "Skirts" ,imgSrc:'/skirt.png',alt:'pic'},
     { name: "Blacelets" ,imgSrc:'/bracelets.png',alt:'pic'},
   ];
   const route=useRouter();
@@ -180,11 +180,11 @@ useEffect(()=>{
       initial={{x:0}}
         animate={
     swing
-      ? { x:[350,350,350,350,350,350,350,-70,-50,-50,-50,-50,-50,30,320,350,350,350,350,350,350] }
+      ? { x:[350,350,350,350,350,350.350,350,350,350,-80,-70,-70,-70,-70,-50,30,320,350,350,350,350,350,350] }
       : { x: 0 }
   }
   transition={{
-    duration: 12,          // total duration of one cycle
+    duration: 15,          // total duration of one cycle
     times: [0, 0.2, 0.4, 0.6, 0.8, 1], // controls timing of each step
     ease: "easeInOut",
     repeat: Infinity,
@@ -233,7 +233,7 @@ useEffect(()=>{
           animate={{opacity:1,x:swing?-35:0}}
           transition={{type:'tween',stiffness:50,duration:1}}
           >
-            <div className={styles.brandPicContainer} id="customizedbackground">
+            <div className={styles.brandPicContainer} id="">
               <motion.div initial={{x:200,y:20}}
               animate={{x:-25,y:20}}
               transition={{type:'keyframes',duration:0.5,delay:0.4}}
@@ -272,7 +272,7 @@ useEffect(()=>{
                     display:'flex',alignItems:'center'
                   }}>
                     
-                  <StrokeTextCanvas fontSize={55} text={"Shop"} textcolor="white" />
+                  <StrokeTextCanvas fontSize={55} text={"Shop"} textcolor="rgb(255, 0, 170)" />
                   </div>
                 </motion.div>
               </motion.div>

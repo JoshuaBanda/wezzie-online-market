@@ -58,3 +58,12 @@
     font-size: 22px;
     font-family: Bonheur Royale;
   }
+  @media screen and (max-width:600) {
+    .container {
+      height: 65px;width: 65px;
+    }
+      .txt{
+        width: 65px;height: 65px;
+        font-family: Bonheur Royale;
+      }
+  }

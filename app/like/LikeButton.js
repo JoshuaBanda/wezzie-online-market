@@ -115,9 +115,8 @@ const LikeButton = ({ postId, userId, jwtToken, initialLikeCount,  }) => {
         <button
           onClick={toggleLike}
           disabled={isLoading}
-          id={"customizedbackground"}
           style={{
-            
+            backgroundColor:'white',
             border: '1px solid rgba(255,255,255,0.2)',
             cursor: isLoading ? 'not-allowed' : 'pointer',
             color: isLiked ? 'black' : 'grey',
@@ -152,11 +151,11 @@ const LikeButton = ({ postId, userId, jwtToken, initialLikeCount,  }) => {
 }}
 
           >
-          <div style={{fontSize:"18px",color:"white"}} className={styles.like}>
+          <div style={{fontSize:"18px",color:"black"}} className={styles.like}>
           {likeCount}&nbsp;
           </div>
           <div>
-          <FaHeart style={{fontSize:"18px",color:'white'}}/></div>
+          <FaHeart style={{fontSize:"18px",color:'black'}}/></div>
           </motion.div>
             </>
           )
