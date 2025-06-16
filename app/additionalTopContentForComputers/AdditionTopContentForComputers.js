@@ -7,7 +7,7 @@ const AdditionTopContentForComputers = () => {
                 <div className={styles.whiteConer} id="additionalCom">
                     <div
                         className={styles.outerConer}
-                        id="accessoryColorBackground"
+                        id="customizedbackground"
                     >
                          Get The Best
                     </div>

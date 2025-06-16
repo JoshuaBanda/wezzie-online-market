@@ -104,48 +104,49 @@ const ShopItems = ({ searchItem, jwtToken='1', post='', /*currentUserId,*/ apiSe
   // Map over the items to create the list of items
   const homeItems = Array.isArray(items) && items.map((item,index) => (
     <motion.div key={item.id} className={styles.container} id=""
-      initial={{
-        x:0,y:0
-      }}
-      animate={{
-        
-      }}
+
     >
       {/* Check if photo_url exists and display the image */}
       {item.photo_url ? (
         <div className={styles.picContainer}>
-          <Image
-            src={item.photo_url} // Use the photo_url from the API
-            alt={item.name}
-            width={80} // Adjust width as needed
-            height={80} // Adjust height as needed
-            style={{ borderRadius: "5px", marginBottom: "0px",position:'relative',top:'45px',left:'20px', }}
-            className={styles.pic}
-            prioritysizes='(max-width:768px)100vw, (max-width:1200pxpx)50vw, 33vw'
-          />
+          <div 
+            className={styles.clip}
+            id="whiteThemeBackground"
+            >
+             <Image
+              src={item.photo_url} // Use the photo_url from the API
+              alt={item.name}
+              width={80} // Adjust width as needed
+              height={80} // Adjust height as needed
+              style={{ borderRadius: "5px", marginBottom: "0px",position:'relative',top:'45px',left:'20px', }}
+              prioritysizes='(max-width:768px)100vw, (max-width:1200pxpx)50vw, 33vw'
+            />
+          </div>
+
           <div className={styles.likeButton}>
             <div>
               <LikeButton postId={item.id} userId={currentUserId} initialLikeCount={likeCount} /*initialLikeStatus={isLiked}*/ />
             </div>
           </div>
+          
         </div>
       ) : (
         <p>No image available</p>
       )}
-      <div onClick={() => handleBuyNow(item)}>
+      <div onClick={() => handleBuyNow(item)} >
 
         <div className={styles.txt}>
-          <h3 style={{ height: '20px' }}>
-            {checkNameLength(item.name) ? item.name : `${item.name.slice(0, 10)}...`}  {/* Truncate if name is too long */}
+         {/* <h3 style={{ height: '20px' }}>
+            {checkNameLength(item.name) ? item.name : `${item.name.slice(0, 10)}...`}  
           </h3>
-          
+          */}
           
   {/*    <p style={{ height: '40px' }}>
             {checkDescriptionLength(item.description) ? item.description : `${item.description.slice(0, 25)}...`}  
             </p>*/}
             <div style={{
-              position:'relative',top:'48px',left:"20%",
-              alignContent:"center"
+              position:'relative',top:'0px',left:"20%",
+              alignContent:"center",
               //display:'flex'
             }}>
               <div className={styles.price}>

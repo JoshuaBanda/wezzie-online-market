@@ -6,7 +6,7 @@
     left: 50%; /* push to the center */
     transform: translateX(-50%); /* pull it back 50% of its own width */
     z-index: 1000;
-    border-radius: 30px;
+    border-radius: 15px;
     padding: 10px;
     display: flex;
     backdrop-filter: blur(5px);

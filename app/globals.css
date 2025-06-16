@@ -129,7 +129,7 @@ a {
   
 }
 #whiteThemeBackground{
-  background-color: white;
+  background-image: linear-gradient(white);
 }
 #whiteText{
  color: white; 

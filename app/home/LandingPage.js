@@ -21,7 +21,7 @@ const LandingPage = () => {
     { name: "ToteBags",imgSrc:'/bag.png',alt:'pic' },
     { name: "Dresses",imgSrc:'/dress2.png',alt:'pic' },
     { name: "Shirts" ,imgSrc:'/shirt2.png',alt:'pic'},
-    { name: "Skirts" ,imgSrc:'/skirt.png',alt:'pic'},
+    { name: "Skirts" ,imgSrc:'/sskirt.png',alt:'pic'},
     { name: "Blacelets" ,imgSrc:'/bracelets.png',alt:'pic'},
   ];
   const route=useRouter();
