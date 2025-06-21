@@ -10,7 +10,6 @@ import Image from "next/image";
 gsap.registerPlugin(ScrollTrigger);
 
 const Parallax = ({swingProp}) => {
-    console.log(swingProp)
     useEffect(()=>{
         const ScrollTriggerSetting={
             trigger:".main",
