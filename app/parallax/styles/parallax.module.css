@@ -2,10 +2,9 @@
   width: 100%;
   scroll-snap-type: y mandatory;
   overflow-y: auto;       /* scroll entire page */
-  height: 100%;           /* let height grow to fit children */
-  
   max-height: none;
 
+  min-height: 100vh;
   
   scrollbar-width: none;        /* Firefox */
   -ms-overflow-style: none;  
