@@ -44,6 +44,8 @@ body {body {
   overflow-x: hidden;
   /*animation: swappic 60s infinite;    /* Your animation */
  z-index: 1;
+ 
+  overflow: hidden; /* optional if using Lenis or custom scroll */
 }
 
 }.myColor {
@@ -204,3 +206,4 @@ input[type="file"]::file-selector-button {
 input[type="file"]::file-selector-button:hover {
   background-color: #17161a; /* darker indigo */
 }
+

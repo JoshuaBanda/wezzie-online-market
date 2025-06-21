@@ -492,7 +492,7 @@ try {
                       </div>
                       <div className={styles.orderall} onClick={makeOrder} id="customizedbackground">
                       {loadingOrder?(<>LOADING ...</>):
-                          (<>ORDER NOW </>)
+                          (<>ORDER ALL </>)
                       }
                       </div>
                       </div>

@@ -1,0 +1,127 @@
+.container {
+  width: 100%;
+  scroll-snap-type: y mandatory;
+  overflow-y: auto;       /* scroll entire page */
+  height: 100%;           /* let height grow to fit children */
+  
+  max-height: none;
+
+  
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;  
+}
+.container::-webkit-scrollbar {
+  display: none;                /* Chrome, Safari and Opera */
+}
+
+
+
+.container section{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 10px;
+  scroll-snap-align: start;
+}
+
+.img .hero {
+    width: 50%;
+    aspect-ratio: 1;
+}
+.hero{
+    
+  min-height: 100vh;
+}
+.footer{
+    height: 50vh;
+}
+.main{
+    width: 100vw;
+    height: 150vh;
+    flex-direction: column;
+  min-height: 100vh;
+}
+.row{
+    position: relative;
+    width: 100vw;
+    margin: 1em 0;
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+}
+.card{
+    position: relative;
+    width: 40%;
+    height: 360px;
+    border-radius: 0.75em;
+    overflow: hidden;
+    will-change: transform;
+}
+.mainContent{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.logo{
+    width: 150px;
+    height: 150px;
+    border:1px solid #222;
+    border-radius: 100%;
+    overflow: hidden;
+    transform: scale(0);
+    filter: brightness(0);
+}
+
+.copy{
+    margin: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.line{
+    position: relative;
+    margin: 0.53em;
+    height: 28px;
+    width: max-content;
+    clip-path: polygon(0 0, 100% 0, 100% 100%,0% 100%);
+}
+.line p {
+    position: relative;
+    font-size: 24px;
+    transform: translateY(30px);
+    font-family: Bonheur Royale;
+    font-weight: bold;
+}
+
+@media(max-width:900px){
+    .card{
+        width: 50%;
+        height: 240px;
+    }
+}
+
+
+
+
+.content {
+  height: 10vh;
+  scroll-snap-align: start;
+  display: flex;
+  opacity: 1;
+  transition: all 0.8s ease;
+  min-height: 100vh;
+}
+
+.content.visible {
+  opacity: 1;
+  transform: translateY(0);
+
+}
+

@@ -48,11 +48,12 @@ const BestProducts = () => {
         transition={{ duration: 0.3, delay: index * 0.1 }}
         onClick={()=>handleRouting(item.name)}
       ><div className={styles.picContainer}>
+        {/*
             <div className={styles.txt}>
                 <h3 style={{ height: "20px" }}>
                 {checkNameLength(item.name) ? item.name : `${item.name.slice(0, 10)}...`}
                 </h3>
-            </div>
+            </div>*/}
 
             <Image
                 src={item.photourl}

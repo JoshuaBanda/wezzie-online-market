@@ -1,0 +1,66 @@
+.container{
+    position: relative;
+    width: 100vw;
+
+    
+}
+@media (min-width:1000px) {
+    .clipMaskImages{
+        
+    width: 30vw;
+    }.content{
+        transform: translateX(-80);
+    }
+}
+.clipMaskImages{
+    height: 500px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+}
+.clipMaskImages div Image{
+    margin: 5px;
+    background-color: pink;
+}
+.firstClipMaskImages{
+    background-color: whitesmoke;
+    grid-row: 1/3;
+    width: 100%;height: 500px;
+    max-width: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 80px;
+}
+.secondClipMaskImages{
+    background-color: rgb(226, 224, 110);
+    grid-row: 1/2;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 80px;
+    max-width: 160px;
+    height: 300px;
+}
+.thirdClipMaskImages{
+    background-color: pink;
+    grid-row: 2/5;
+    width: 95%;
+    height: 180px;
+    max-width: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 80px;
+}
+
+.content{
+    position: relative;
+    display: flex;
+    justify-items: center;align-items: center;
+    margin: 20px;
+    font-size: 25px;
+    font-weight: bold;
+}

@@ -15,6 +15,8 @@ import AnimatedPictures from "../animatedPictures/AnimatedPictures";
 import AdditionTopContentForComputers from "../additionalTopContentForComputers/AdditionTopContentForComputers";
 import { useInView } from "react-intersection-observer";
 import { useUser } from "../userContext";
+import BrandPictures from "./brandPictures/BrandPictures";
+import Parallax from "../parallax/Parallax";
 
 const LandingPage = () => {
   const items = [
@@ -123,8 +125,12 @@ useEffect(()=>{
 
   return (
     <div className={styles.container}>
-
+      <div>
+        <Parallax swingProp={swing}/>
+      </div>
+      <BrandPictures/>
       {/* Top Icons */}
+      <section className={styles.onlyComputer}>
       <motion.section className={styles.iconContainer}
         
         ref={welcomeListRef}
@@ -291,7 +297,7 @@ useEffect(()=>{
       </motion.div>
 
 
-
+</section>
 
 
 
@@ -399,7 +405,6 @@ useEffect(()=>{
           </ul>
         </motion.div>
       </section>
-      <HomePage user={user}/>
       <Sticky/>
     </div>
   );

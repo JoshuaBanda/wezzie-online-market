@@ -242,9 +242,14 @@
 }
 
 
-
+    .onlyComputer{
+        display: none;
+    }
 
 @media screen and (max-width: 780px) {
+    .onlyComputer{
+        display: none;
+    }
     
 .brandPicContainer{
     position: relative;

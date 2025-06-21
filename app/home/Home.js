@@ -126,7 +126,10 @@ useEffect(() => {
         </div>
         */}
       
+        <div style={{display:'flex',justifyContent:'center'}}>
+          
         <BestProducts/>
+        </div>
         
         {/*  
         <Carousel />
@@ -166,6 +169,7 @@ useEffect(() => {
             }}
             
           >
+            
         <ShopItems searchItem={selectedItem} />
           </motion.div>
         </AnimatePresence>
