@@ -16,31 +16,47 @@
 
 
 .container section{
+  position: relative;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    margin: 10px;
   scroll-snap-align: start;
 }
 
-.img .hero {
-    width: 50%;
-    aspect-ratio: 1;
+.image{
+  width: 100vw;
 }
 .hero{
-    
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-height: 100vh;
+height: 100vh;
+  border: none;
+    aspect-ratio: 1;
+
 }
 .footer{
     height: 50vh;
 }
 .main{
     width: 100vw;
-    height: 150vh;
+    height: 200vh;
     flex-direction: column;
   min-height: 100vh;
+  max-width: 100vw;
+    overflow-x: hidden;
+}
+
+@media (max-width:600) {
+  .main{
+    height: 110vh;
+  }
+  .image{
+    height: 100vh;
+  }
 }
 .row{
     position: relative;
