@@ -22,10 +22,10 @@ const Parallax = ({swingProp}) => {
             start:swingProp?"top 30%":"top 50%",
             toggleActions:"play reverse play reverse"
         };
-        const leftXValues=[-800,-900,-50];
-        const rightXValues=[800,900,0];
-        const leftRotationValues=[-30,-30,-15];
-        const rightRotationValues=[30,20,35];
+        const leftXValues=[-200,-60,-50];
+        const rightXValues=[80,150,0];
+        const leftRotationValues=[-30,-120,-15];
+        const rightRotationValues=[30,20,-60];
         const yValues=[0,-50,-150]
         gsap.utils.toArray(".row").forEach((row,index)=>{
             const cardLeft=row.querySelector(".cardLeft");
@@ -122,11 +122,11 @@ const generateRows = () => {
                     transition={{type:'keyframes',duration:1,delay:0.5}}
                 >
                     <div className={styles.image} style={{justifyContent:'center',display:'flex'}}>
-                        <img src={swingProp?"wezzie1.png": "/logo2.jpg"} alt=""
+                        <img src="wezzie2.png" alt=""
                         style={{width:swingProp?"100%":'100%',height:swingProp?"100%":'150%',objectFit:'cover'}}
 
                         />
-                        <motion.div id="customizedColor"
+                        <motion.div id=""
                         style={{position:'absolute',top:'60vh',
                             display:'flex',
                             justifyContent:'center',

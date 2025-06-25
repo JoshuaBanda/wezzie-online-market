@@ -32,6 +32,7 @@ body {body {
   margin: 0;
   padding: 0;
     font-family:Roboto;
+    background-color:#111;
   
 
   /*background-image: url('/wonge48.jpg');*/
@@ -39,7 +40,6 @@ body {body {
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;       /* Optional: can be 'scroll' for mobile */
-  background-color: var(--primaryColor);
 
   overflow-x: hidden;
   /*animation: swappic 60s infinite;    /* Your animation */
