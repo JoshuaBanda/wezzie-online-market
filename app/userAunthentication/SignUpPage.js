@@ -1,16 +1,14 @@
 "use client";
-import { useEffect, useState } from "react";
-import { FaEye, FaEyeSlash, FaSeedling } from "react-icons/fa";
+import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { motion } from "framer-motion";
 import axios from "axios";
-import { useRouter } from "next/navigation"; // Import router for navigation
-import styles from "../Styles/decoratedBorder.module.css";
+import { useRouter } from "next/navigation";
 import { useUser } from "../userContext";
-//users/otp/send
+import styles from "../login/styles/loginPage.module.css";
 
 const SignUpPage = () => {
-  
-  const {person,setPerson}=useUser();
+  const { person, setPerson } = useUser();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -20,18 +18,13 @@ const SignUpPage = () => {
   const [sex, setSex] = useState("female");
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [profilePicture, setProfilePicture] = useState(null);
-  const [currentStep, setCurrentStep] = useState(0);
   const [errors, setErrors] = useState({});
-  const [formError, setFormError] = useState(""); // For form-wide errors
-  const router = useRouter(); // Initialize router
+  const [formError, setFormError] = useState("");
+  const [verifyOtpOption, setVerifyOtpOption] = useState(true);
+  const [isEmailVerified, setIsEmailVerified] = useState(false);
+  const [otp, setOtp] = useState("");
+  const router = useRouter();
 
-  const [showClass, setShowClass] = useState(false);
-  /*setTimeout(()=>{
-    setShowClass(!showClass);
-  },6000)*/
-  const [verifyOtpOption,setVerifyOtpOption]=useState(true);
-  const [isEmailVerified,setIsEmailVerified]=useState(false);
-  const [otp,setOtp]=useState("");
   const steps = [
     { label: "Email", value: email, setValue: setEmail, type: "email", placeholder: "Email" },
     { label: "Password", value: password, setValue: setPassword, type: "password", placeholder: "Password" },
@@ -47,116 +40,71 @@ const SignUpPage = () => {
     let error = "";
     switch (field) {
       case "email":
-        if (!value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-          error = "Invalid email address";
-        }
+        if (!value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) error = "Invalid email address";
         break;
       case "password":
-        if (value.length < 8) {
-          error = "Password must be at least 8 characters";
-        }
+        if (value.length < 8) error = "Password must be at least 8 characters";
         break;
       case "phone":
-        if (!value.match(/^\d{10}$/)) {
-          error = "Invalid phone number";
-        }
+        if (!value.match(/^\d{10}$/)) error = "Invalid phone number";
         break;
       default:
+        if (!value) error = "This field is required";
         break;
     }
     return error;
   };
 
-  const handleNext = () => {
-    const currentField = steps[currentStep].label.toLowerCase().replace(" ", "");
-    const error = validateField(currentField, steps[currentStep].value);
-    if (error) {
-      setErrors({ ...errors, [currentField]: error });
-    } else if (steps[currentStep].value) {
-      setErrors({ ...errors, [currentField]: "" });
-      if (currentStep < steps.length - 1) {
-        setCurrentStep(currentStep + 1);
-      }
-    } else {
-      setErrors({ ...errors, [currentField]: "This field is required" });
-    }
-  };
-
-  const handlePrev = () => {
-    if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
-    }
-  };
-  const sendOtpVerification=async()=>{
-    console.log("sending for otp",email);
-    
+  const sendOtpVerification = async () => {
     if (!firstName || !lastName || !phone || !dateOfBirth || !profilePicture) {
       setFormError("Please fill out all fields and select a profile picture.");
       return;
     }
-    
+
     try {
       const response = await axios.post(
         "https://wonge-backend-k569.onrender.com/users/otp/send",
-        { email }, // Must be an object with the key 'email'
-        {
-          headers: { 'Content-Type': 'application/json' }
-        }
+        { email },
+        { headers: { "Content-Type": "application/json" } }
       );
-    
       if (response.status === 200 || response.status === 201) {
-        console.log('OTP sent successfully');
-        setVerifyOtpOption(!verifyOtpOption);
-      } else {
-        console.log("Email not verified");
+        setVerifyOtpOption(false);
       }
     } catch (error) {
-      console.error("Error verifying OTP:", error.response?.data || error.message);
+      console.error("Error sending OTP:", error);
     }
-    
-  }
-  const handleOtpVerification=async(e)=>{
+  };
+
+  const handleOtpVerification = async (e) => {
     e.preventDefault();
-    console.log('verifying otp');
-    
-    if (!firstName || !lastName || !phone || !dateOfBirth || !profilePicture) {
-      console.log("***");
-      setFormError("Please fill out all fields and select a profile picture.");
+    if (!otp) {
+      setFormError("Please enter the OTP.");
       return;
     }
-    try{
-      const formData=new FormData();
-      formData.append("otp",otp);
-      
+
+    try {
       const response = await axios.post(
         "https://wonge-backend-k569.onrender.com/users/otp/verify",
-        { email,otp},
-        {
-          headers: { 'Content-Type': 'application/json' }
-        }
+        { email, otp },
+        { headers: { "Content-Type": "application/json" } }
       );
-      if(response.status==200||201){
-        console.log('successifuly verified email',response);
+      if (response.status === 200) {
+        setIsEmailVerified(true);
         handleSubmitAfterOtp();
-      }else{
-        console.log("email not verified");
       }
+    } catch (error) {
+      setFormError("Invalid or expired OTP.");
     }
-    catch(error){
-      console.error("error verifying otp",error);
-    }
-  }
+  };
+
   const handleSubmitAfterOtp = async (e) => {
-    if(e){e.preventDefault();}
-    console.log('submitting')
-    // Validate all fields before submission
+    if (e) e.preventDefault();
+
     const newErrors = {};
-    steps.forEach((step) => {
-      const field = step.label.toLowerCase().replace(" ", "");
-      const error = validateField(field, step.value);
-      if (error) {
-        newErrors[field] = error;
-      }
+    steps.forEach(({ label, value }) => {
+      const field = label.toLowerCase().replace(" ", "");
+      const error = validateField(field, value);
+      if (error) newErrors[field] = error;
     });
 
     if (Object.keys(newErrors).length > 0) {
@@ -164,13 +112,7 @@ const SignUpPage = () => {
       return;
     }
 
-    if (!firstName || !lastName || !phone || !dateOfBirth || !profilePicture) {
-      setFormError("Please fill out all fields and select a profile picture.");
-      return;
-    }
-
     try {
-      // Create a FormData object to send the data including the file
       const formData = new FormData();
       formData.append("email", email);
       formData.append("password", password);
@@ -179,266 +121,225 @@ const SignUpPage = () => {
       formData.append("phonenumber", phone);
       formData.append("sex", sex);
       formData.append("dateofbirth", dateOfBirth);
-      formData.append("file", profilePicture); // Append the profile picture file
+      formData.append("file", profilePicture);
 
-      // Send the complete data to the backend
-      const response = await axios.post("https://wonge-backend-k569.onrender.com/users/create-user", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data", // Important for file uploads
-        },
-      });
+      const response = await axios.post(
+        "https://wonge-backend-k569.onrender.com/users/create-user",
+        formData,
+        { headers: { "Content-Type": "multipart/form-data" } }
+      );
 
-      // If the request is successful
-      console.log("Account created successfully");
-      console.log("response",response.data);
-      const result=response.data.user;
-      console.log("user ",result);
-      const token=response.data.access_token.access_token;
+      const result = response.data.user;
+      const token = response.data.access_token.access_token;
+
       setPerson({
         ...person,
         firstname: result.firstname,
         lastname: result.lastname,
         email: result.email,
         userid: result.userid,
-        access_token:token, // adjust if it's result.user.accessTocken
+        access_token: token,
       });
-      router.push("/home"); // Redirect to the home page
+
+      router.push("/home");
     } catch (error) {
-      // Handle error
-      console.error("Error creating user:", error.message);
-      setFormError(error.message); // Set the error message to display in UI
+      setFormError("Error creating account. Try again.");
     }
   };
-  useEffect(()=>{
-    console.log("verify",verifyOtpOption);
-  },[verifyOtpOption])
+
   return (
-    <>
-      {verifyOtpOption?(
-        
-    <div 
-    style={{
-      position: "relative",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      padding: "20px",
-      height:"450px"
-    }}
-        className={showClass ? styles.containR : ''}
-    >
-      <form onSubmit={handleSubmitAfterOtp} style={{ width: "100%", maxWidth: "500px", display: "flex", flexDirection: "column", }}>
-        {steps.map((step, index) => (
-          <div key={step.label} style={{ display: currentStep === index ? "block" : "none" }}>
-            <label>{step.label}</label>
-            {step.type === "select" ? (
-              <select
-                value={step.value}
-                onChange={(e) => step.setValue(e.target.value)}
-                style={{position:"relative",left:"40px", width: "100%", maxWidth: "200px", display: "flex", flexDirection: "column", height:"40px",alignContent:"center",padding:"10px",borderRadius:"20px"}}
+    < div style={{position:'absolute',top:'5vh',display:'flex',justifyContent:'center',
+      width:'100%'
+    }}>
+    
+      {verifyOtpOption ? (
+        <div style={{ maxWidth: "350px", margin: "0 auto", padding: "20px" }}>
+          <h1  id="thirdCustomizedColor" style={{marginBottom:'10px'}}>Create Account
+
+          </h1>
+          <form onSubmit={handleSubmitAfterOtp}>
+            {/* Email and Password */}
+            {["Email", "Password"].map((label) => {
+              const step = steps.find((s) => s.label === label);
+              return (
+                <div key={step.label} style={{ marginBottom: "5px" }}>
+                  <div style={{ position: "relative" }}>
+                    <input
+                      type={step.type === "password" && !showPassword ? "password" : step.type}
+                      value={step.value}
+                      onChange={(e) => step.setValue(e.target.value)}
+                      placeholder={step.placeholder}
+                      className={styles.inputUnderline}
+                    />
+                    {step.type === "password" && (
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        style={{
+                          position: "absolute",
+                          right: "10px",
+                          top: "50%",
+                          transform: "translateY(-50%)",
+                          background: "none",
+                          border: "none",
+                          color: "gray",
+                          cursor: "pointer",
+                        }}
+                      >
+                        {showPassword ? <FaEyeSlash /> : <FaEye />}
+                      </button>
+                    )}
+                  </div>
+                  {errors[step.label.toLowerCase().replace(" ", "")] && (
+                    <p style={{ color: "red", fontSize: "13px" }}>
+                      {errors[step.label.toLowerCase().replace(" ", "")]}
+                    </p>
+                  )}
+                </div>
+              );
+            })}
+
+            {/* First + Last Name in same row */}
+            <div style={{ display: "flex", gap: "10px", marginBottom: "5px" }}>
+              {["First Name", "Last Name"].map((label) => {
+                const step = steps.find((s) => s.label === label);
+                return (
+                  <div key={label} style={{ flex: 1 }}>
+                    <input
+                      type="text"
+                      value={step.value}
+                      onChange={(e) => step.setValue(e.target.value)}
+                      placeholder={step.placeholder}
+                      className={styles.inputUnderline}
+                    />
+                    {errors[label.toLowerCase().replace(" ", "")] && (
+                      <p style={{ color: "red", fontSize: "13px" }}>
+                        {errors[label.toLowerCase().replace(" ", "")]}
+                      </p>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Remaining Fields */}
+            {["Phone Number", "Sex", "Date of Birth", "Profile Picture"].map((label) => {
+              const step = steps.find((s) => s.label === label);
+              return (
+                <div key={step.label} style={{ marginBottom: "5px" }}>
+                  {step.type === "select" ? (
+                    <select
+                      value={step.value}
+                      onChange={(e) => step.setValue(e.target.value)}
+                      className={styles.inputUnderline}
+                    >
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                  ) : step.type === "file" ? (
+                    < div style={{color:'black',margin:' 2px 0px'}}>
+                    <p style={{margin:'2px'}}>
+                      Select profile Picture
+                    </p>
+                    <input type="file" onChange={(e) => step.setValue(e.target.files[0])} />
+                    </div>
+                  ) : (
+                    <input
+                      type={step.type}
+                      value={step.value}
+                      onChange={(e) => step.setValue(e.target.value)}
+                      placeholder={step.placeholder}
+                      className={styles.inputUnderline}
+                    />
+                  )}
+                  {errors[step.label.toLowerCase().replace(" ", "")] && (
+                    <p style={{ color: "red", fontSize: "13px" }}>
+                      {errors[step.label.toLowerCase().replace(" ", "")]}
+                    </p>
+                  )}
+                </div>
+              );
+            })}
+
+            {/* Error Message */}
+            {formError && <p style={{ color: "red", textAlign: "center" }}>{formError}</p>}
+
+            {/* Submit or Verify Email */}
+            {isEmailVerified ? (
+              <button
+                type="submit"
+                style={{ padding: "10px 20px", borderRadius: "8px", background: "#2bb", color: "white" }}
               >
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
-            ) : step.type === "file" ? (
-              <input
-                type="file"
-                onChange={(e) => step.setValue(e.target.files[0])}
-                style={{ width: "100%", padding: "10px" ,borderRadius:'20px'}}
-              />
+                Submit
+              </button>
             ) : (
-              <div style={{ position: "relative" }}>
-                <input
-                  type={step.type === "password" && !showPassword ? "password" : step.type}
-                  value={step.value}
-                  onChange={(e) => step.setValue(e.target.value)}
-                  placeholder={step.placeholder}
-                  style={{ width: "200px", padding: "10px", borderRadius: "20px", border: "1px solid #ccc" }}
-                />
-                {step.type === "password" && (
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    style={{
-                      position: "absolute",
-                      right: "10px",
-                      top: "50%",
-                      background: "none",
-                      border: "none",
-                      color: "gray",
-                      cursor: "pointer",
-                      width:'120px'
-                    }}
-                  >
-                    {showPassword ? <FaEyeSlash size={20} style={{position:'relative',top:'-10px',right:'-60px',color:"red"}}/> : <FaEye size={20} style={{position:'relative',top:'-10px',right:'0px'}} />}
-                  </button>
-                )}
-              </div>
-            )}
-            {errors[step.label.toLowerCase().replace(" ", "")] && (
-              <p style={{ color: "red", fontSize: "14px", marginTop: "5px" }}>
-                {errors[step.label.toLowerCase().replace(" ", "")]}
-              </p>
-            )}
-          </div>
-        ))}
-
-        {formError && (
-          <p style={{ color: "red", fontSize: "14px", textAlign: "center" }}>
-            {formError}
-          </p>
-        )}
-
-        {(currentStep === steps.length - 1 && isEmailVerified) ? (
-          <button
-            style={{
-              all: 'unset', // resets most styles
-              cursor: 'pointer', // optional: brings back pointer cursor
-              display: 'inline-block', 
-            }}
-            type="submit"
-          >
-            Submit
-          </button>
-        ) : null}
-        {(currentStep === steps.length - 1 && !isEmailVerified) ? (
-          <motion.button
-            type="button"
-              onClick={()=>{
-                setErrors({});
-                setFormError("");
-                sendOtpVerification()}}
-              
-            style={{
-              all: 'unset', // resets most styles
-              cursor: 'pointer', // optional: brings back pointer cursor
-              display: 'inline-block', 
-              marginTop:"20px"
-            }}
-              >
-              
-
-              <div className={showClass?styles.cardTw:styles.cardT}>
-                Confirm Email
-              </div>
-            </motion.button>
-        ) : null}
-
-        <div style={{ display: "flex", justifyContent: "center", marginTop: "20px",padding:"20px" }}>
-          {currentStep > 0 && (
-            <motion.button
-            type="button"
-              onClick={handlePrev}
-              
-            style={{
-              all: 'unset', // resets most styles
-              cursor: 'pointer', // optional: brings back pointer cursor
-              display: 'inline-block', 
-              margin:"0px 20px"
-            }}
-              >
-              
-
-              <div className={showClass?styles.cardTw:styles.cards}>
-                Prev
-              </div>
-            </motion.button>
-            
-          )}
-          {currentStep < steps.length - 1 && (
-            <motion.button
-              onClick={handleNext}
-              type="button"
-                
-              style={{
-                all: 'unset', // resets most styles
-                cursor: 'pointer', // optional: brings back pointer cursor
-                display: 'inline-block', 
-              }}
-              >
-              
-              <div className={showClass?styles.cardTw:styles.cards}>
-                Next
-              </div>
-            </motion.button>
-            
-          )}
-        </div>
-      </form>
-    </div>
-      ):(
-        <div  
-        style={{
-          position: "relative",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          padding: "20px",
-          height:"450px",
-          color:"white"
-        }}>
-          <div>
-            <h3 style={{
-              margin:"20px"
-            }}>
-              Email Verification
-            </h3>
-            <p>We have sent an email to</p>
-            <p style={{
-              color:'rgb(2, 182, 236)'
-            }}>{email}</p>
-            <span style={{fontWeight:"normal"}}>OTP expires in 10 minutes</span>
-          </div>
-          <form onSubmit={()=>{handleOtpVerification(e)}} style={{color:"white"}}> 
-              <input  label="OTP" placeholder="Enter OTP" type="text" value={otp} onChange={(e)=>setOtp(e.target.value)} 
-                style={{width:"200px",height:"30px",backgroundColor:"rgba(73, 73, 73, 0.5)",border:"1px solid white",
-                borderRadius:"20px",padding:"20px 5px",fontSize:"20px",color:"white",margin:"20px"
+              <motion.button
+                type="button"
+                onClick={sendOtpVerification}
+                whileHover={{ scale: 1.05 }}
+                style={{
+                  padding: "10px 20px",
+                  borderRadius: "8px",
+                  color: "white",
+                  border: "none",
+                  cursor: "pointer",
                 }}
-              />
-              <div>
-                
-              <motion.button
-              type="button"
-                onClick={handleOtpVerification}
-              style={{
-                all: 'unset', // resets most styles
-                cursor: 'pointer', // optional: brings back pointer cursor
-                display: 'inline-block', 
-              }}
+                id="customizedbackground"
               >
-              
-              <div className={showClass?styles.cardTw:styles.cards}>
-                Confirm
-              </div>
-            </motion.button>
-              <motion.button
-              type="button"
-              onClick={()=>{
-                console.log('deleting otp');
-                setOtp("");
-                setErrors({});
-                setFormError("");
-                setVerifyOtpOption(!verifyOtpOption)}}
-                
-              style={{
-                all: 'unset', // resets most styles
-                cursor: 'pointer', // optional: brings back pointer cursor
-                display: 'inline-block',
-                margin:"20px" 
-              }}
-              >
-              
-              <div className={showClass?styles.cardTw:styles.cards}>
-                Resend
-              </div>
-            </motion.button>
-              </div>
+                Verify Email
+              </motion.button>
+            )}
           </form>
         </div>
+      ) : (
+        <div style={{ maxWidth: "500px", margin: "0 auto", textAlign: "center", padding: "20px" }}>
+          <h3>Email Verification</h3>
+          <p>We’ve sent an OTP to <strong>{email}</strong></p>
+          <p>It expires in 10 minutes.</p>
+          <form onSubmit={handleOtpVerification}>
+            <input
+              type="text"
+              placeholder="Enter OTP"
+              value={otp}
+              onChange={(e) => setOtp(e.target.value)}
+              className={styles.inputUnderline}
+              style={{ margin: "10px 0", width: "100%", padding: "10px" }}
+            />
+            {formError && <p style={{ color: "red" }}>{formError}</p>}
+            <motion.button
+              type="submit"
+              whileHover={{ scale: 1.05 }}
+              style={{
+                padding: "10px 20px",
+                borderRadius: "8px",
+                background: "#28a745",
+                color: "white",
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              Verify OTP
+            </motion.button>
+          </form>
+          <button
+            onClick={() => {
+              setOtp("");
+              setFormError("");
+              setVerifyOtpOption(true);
+            }}
+            style={{
+              marginTop: "20px",
+              background: "transparent",
+              color: "#007bff",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            Resend OTP
+          </button>
+        </div>
       )}
-    </>
+    </div>
   );
 };
 

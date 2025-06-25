@@ -9,45 +9,12 @@ import MobileLandingPageHeader from "../mobileLandiPageHeader/page";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-import Lenis from '@studio-freight/lenis';
 
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Parallax = ({swingProp}) => {
 
-//i think this is subject, you ca choose to use this or the <reactlenis roo>
-useEffect(() => {
-
-
-  const lenis = new Lenis({
-    smooth: true,
-    syncTouch: true, // This is CRITICAL for mobile
-  });
-  
-
-  function raf(time) {
-    
-  lenis.raf(time);
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-
-  requestAnimationFrame(raf);
-
-  // Sync ScrollTrigger if you're using it
-  lenis.on("scroll", ScrollTrigger.update);
-
-  ScrollTrigger.defaults({
-    scroller: document.querySelector(".lenis"),
-  });
-
-  ScrollTrigger.refresh();
-
-  return () => {
-    lenis.destroy();
-  };
-}, []);
 
     useEffect(()=>{
         const ScrollTriggerSetting={
@@ -147,17 +114,35 @@ const generateRows = () => {
 
 
     return (
-        <div className={`${styles.container} lenis`}>
-            <ReactLenis root>
-                <motion.section className={styles.hero}
+        <div className={`${styles.container}`}>
+            <ReactLenis root className="snapCrollY">
+                <motion.section className={`${styles.hero} panel`}
                     initial={{opacity:0,y:300}}
                     animate={{opacity:1,y:0}}
                     transition={{type:'keyframes',duration:1,delay:0.5}}
                 >
-                    <div className={styles.image}>
-                        <img src={swingProp?"wezzie2.png": "/logo2.jpg"} alt=""
+                    <div className={styles.image} style={{justifyContent:'center',display:'flex'}}>
+                        <img src={swingProp?"wezzie1.png": "/logo2.jpg"} alt=""
                         style={{width:swingProp?"100%":'100%',height:swingProp?"100%":'150%',objectFit:'cover'}}
+
                         />
+                        <motion.div id="customizedColor"
+                        style={{position:'absolute',top:'60vh',
+                            display:'flex',
+                            justifyContent:'center',
+                            flexDirection:'column'
+                        }}
+                        initial={{y:0,opacity:0}}
+                        animate={{y:-200,opacity:1}}
+                        transition={{type:'spring'}}
+                        >
+                            <h1>
+                                Welcome,
+                            </h1>
+                            <h3 style={{fontSize:'20px'}}>
+                                Our Fashion App
+                            </h3>
+                        </motion.div>
                     </div>
                 </motion.section>
                 <section className={`${styles.main} main`}>

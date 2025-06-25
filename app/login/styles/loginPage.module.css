@@ -1,0 +1,139 @@
+.container {
+  display: flex;
+  position: fixed;
+  height: 100%;
+  width: 100vw;              /* not 100% */
+  overflow: hidden;          /* ⛔ hides scroll */
+  color: white;
+
+}
+
+
+.container::-webkit-scrollbar {
+  display: none; /* optional: hide scrollbar */
+}
+
+.landingPage,
+.loginPart,
+.signUpPart {
+  flex: 0 0 100vw;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+
+
+
+.coolContainer {
+  position: absolute;             /* stays in view regardless of scroll */
+  top: 0;                      /* adjust as needed: top/bottom */
+  left: 0;
+  width: 100vw;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;          /* ⛔ disables horizontal overflow */
+  overflow-y: visible;     
+}
+.coolContainer::-webkit-scrollbar {
+  display: none; /* optional: hide scrollbar */
+}
+.welcomeContainer {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 25vh;
+}
+
+
+.welcome {
+  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 70vw;
+  height: 25vh;
+  font-weight: bold;
+  word-spacing: 10px;
+  font-size: 30px;
+}
+@media (min-width:1000) {
+    .welcomeContainer{
+        justify-content: center;
+    }
+    .welcome{
+        width: 400px;
+    }
+}
+
+.welcome p {
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+.welcomeToOur {
+  font-weight: lighter;
+  font-size: 15px;
+}
+
+.buttons {
+  position: absolute;
+  top: 75vh;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 120px;
+  gap: 10px;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+.loginButton,
+.signUpButton {
+  border-radius: 20px;
+  width: 150px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: -2px 1px 5px 2px rgba(0, 0, 0, 0.192);
+}
+
+
+.box{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.icon{
+    transform: rotate(180deg);
+    width: 40px;
+    height: 40x;
+    border-radius: 50px;
+}
+
+.inputPart{
+    position: absolute;
+    top: 20vh;
+    width: 100%;
+}
+
+.inputUnderline {
+  border-radius: 5px;
+  border: 2px solid #ccc;
+  outline: none;
+  background-color: transparent;
+  padding: 8px 4px;
+  width: 100%;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.inputUnderline:focus {
+  border-bottom: 2px solid var(--acessoryColor); /* or any highlight color */
+}

@@ -1,0 +1,19 @@
+.panel {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  scroll-snap-align: start;
+}
+
+.orange {
+  background-color: orange;
+  color: white;
+}
+
+.pink {
+  background-color: deeppink;
+  color: white;
+}
+

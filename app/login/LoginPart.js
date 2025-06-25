@@ -4,9 +4,9 @@ import { FaSeedling } from "react-icons/fa";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import styles from "../Styles/decoratedBorder.module.css";
 import Spinner from "../home/Spinning";
 import { useUser } from "../userContext";
+import styles from "./styles/loginPage.module.css";
 
 const LoginPart = () => {
   const {person,setPerson}=useUser();
@@ -77,8 +77,8 @@ if (response.status === 201) {
           borderTopLeftRadius:"20px",
           borderBottomLeftRadius:"20px",
           height:"450px",
+          zIndex:1000
         }}
-        className={showClass ? styles.contain : ''}
       >
         
 
@@ -89,7 +89,7 @@ if (response.status === 201) {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            width: "100%",
+            width: "250px",
             gap: "15px",
           }}
         >
@@ -100,14 +100,7 @@ if (response.status === 201) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            style={{
-              padding: "10px",
-              width: "100%",
-              maxWidth: "500px",
-              marginBottom: "10px",
-              borderRadius: "50px",
-              fontSize: "16px",
-            }}
+            className={styles.inputUnderline}
           />
 
           {/* Password Input */}
@@ -117,15 +110,8 @@ if (response.status === 201) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            style={{
-              padding: "10px",
-              width: "100%",
-              maxWidth: "550px",
-              marginBottom: "20px",
-              border: "1px solid white",
-              borderRadius: "50px",
-              fontSize: "16px",
-            }}
+          
+            className={styles.inputUnderline}
           />
 
           {/* Error message */}
@@ -146,7 +132,16 @@ if (response.status === 201) {
             {loading ? (
                 <Spinner/>
             ) : (
-              <div className={showClass?styles.cardT:styles.card}>
+              <div id="thirdCustomizedBackGroundColor"
+              style={{padding:"10px",
+                borderRadius:'15px',
+                width:'100px',
+                display:'flex',
+                justifyContent:"center",
+                alignItems:'center'
+
+
+              }}>
                 Login
               </div>
             )}
