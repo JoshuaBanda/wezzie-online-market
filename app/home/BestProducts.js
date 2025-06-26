@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { FaShoppingCart } from "react-icons/fa";
 import { useRouter } from "next/navigation"; 
-import { useInView } from "react-intersection-observer";
 
 // Dummy placeholders for missing functions and components
 const checkNameLength = (name) => name.length <= 10;
@@ -13,47 +12,43 @@ const BestProducts = () => {
 
     const route=useRouter();
   const items = [
-    { name: "ToteBag", photourl: "/bag.png", alt: "bag", price: 150 },
-    { name: "Shirts", photourl: "/Shirt2.png", alt: "Shirts", price: 300 },
-    { name: "Dresses", photourl: "/dress2.png", alt: "Dresses", price: 100 },
-    { name: "Skirts", photourl: "/skirt.png", alt: "Skirts", price: 50 },
+    { name: "ToteBag", photourl: "/avon3_with_no_bg.png", alt: "avon", price: 150 },
+    { name: "Perfume", photourl: "/perfume11.png", alt: "perfume", price: 300 },
+    { name: "Earrings", photourl: "/earring2.png", alt: "earrings", price: 100 },
+    { name: "Soap", photourl: "/soap.png", alt: "soap", price: 50 },
   ];
 
   const handleRouting=(name)=>{
-    if(name=="ToteBag"){
-        route.push("/products/ToteBag")
-    }else if(name=="Dresses"){
-        route.push("/products/Dresses")
+    if(name=="Lotion"){
+        route.push("/products/Lotion")
+    }else if(name=="Earrings"){
+        route.push("/products/Earrings")
     }
     else if(name=="Brochus"){
         route.push("/products/Brochus")
-    }else if(name=="Shirts"){
-        route.push("/products/Shirts")
-    }else if(name=="Skirts"){
-        route.push("/products/Skirts")
+    }else if(name=="Perfume"){
+        route.push("/products/Perfume")
+    }else if(name=="Soap"){
+        route.push("/products/Soap")
     }
 }
-    const { ref: bestProductsListRef, inView: bestProductsInView } = useInView({
-    threshold: 0.1,
-  });
 
   const homeItems = Array.isArray(items) &&
     items.map((item, index) => (
       <motion.div
         key={index}
         style={{left:"30px"}}
-        className={styles.container} id="customizedbackgroun"
+        className={styles.container} id="customizedbackground"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.3, delay: index * 0.1 }}
         onClick={()=>handleRouting(item.name)}
       ><div className={styles.picContainer}>
-        {/*
             <div className={styles.txt}>
                 <h3 style={{ height: "20px" }}>
                 {checkNameLength(item.name) ? item.name : `${item.name.slice(0, 10)}...`}
                 </h3>
-            </div>*/}
+            </div>
 
             <Image
                 src={item.photourl}
@@ -75,14 +70,7 @@ const BestProducts = () => {
     ));
  return(
     
-    <motion.div
-    
-ref={bestProductsListRef}
-initial={{opacity:0,y:-100}}
-animate={{opacity:bestProductsInView?1:0,y:bestProductsInView?0:-100}}
-transition={{type:'tween',duration:1.2}}
-
-    >
+    <>
       
 <div 
   style={{
@@ -96,17 +84,18 @@ transition={{type:'tween',duration:1.2}}
     flexDirection: 'column',
     alignItems: 'center',
     gap: '8px',
-    borderRadius: '4px',
+    color: 'black', // Default dark color
+    borderRadius: '4px'
   }}
-  id="customizedColor"
 >
   Best Products
   <span style={{
     fontWeight: 'normal',
+    color: 'black',
     maxWidth: '80%',
     lineHeight: '1.4'
   }}
-  className={styles.explore} id="secondCustomizedColor">
+  className={styles.explore}>
     explore the most recent bought products
   </span>
 </div>
@@ -128,7 +117,7 @@ transition={{type:'tween',duration:1.2}}
         {homeItems.length > 0 ? homeItems : <div style={{position:'relative',margin:'170px auto',}}><Spinner /></div> }
       </div>
 
-    </motion.div>
+    </>
  );
 };
 

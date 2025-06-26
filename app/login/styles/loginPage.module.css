@@ -21,7 +21,10 @@
   overflow: hidden;
 }
 
-
+.loginPart,
+.signUpPart{
+  background-color: white;
+}
 
 
 .coolContainer {

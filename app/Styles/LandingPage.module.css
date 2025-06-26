@@ -2,6 +2,8 @@
     position: relative;
     margin: 0px;
     overflow: hidden;
+  overscroll-behavior-y: contain; /* Prevent pull-to-refresh only inside .content */
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
 }
 .iconContainer{
     position: relative;

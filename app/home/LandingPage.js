@@ -128,9 +128,9 @@ useEffect(()=>{
       <div>
         <Parallax swingProp={swing}/>
       </div>
-      <BrandPictures/>
+      {/*<BrandPictures/>*}
       {/* Top Icons */}
-      <section className={styles.onlyComputer}>
+      {/*<section className={styles.onlyComputer}>
       <motion.section className={styles.iconContainer}
         
         ref={welcomeListRef}
@@ -140,11 +140,11 @@ useEffect(()=>{
       >
         <div className={styles.icon1} id="customizedbackground"
         style={{overflow:'hidden'}}>
-          {/*<FaBarsStaggered className={styles.inIcon} />*/}
-          {/*<div className={styles.brandLabal} id="accessoryColor"
+         <FaBarsStaggered className={styles.inIcon} />
+         <div className={styles.brandLabal} id="accessoryColor"
           style={{top:"-30px"}}>
             w
-          </div>*/}
+          </div>
           
             <Image
                 src='/handbag.png'
@@ -167,7 +167,7 @@ useEffect(()=>{
           route.push('/profile')
         }}
         id="accessoryColorBackground">
-          {/*<FaUser className={styles.userIcon}/>*/}
+          <FaUser className={styles.userIcon}/>
           {profilePicture?(
             <Image
                 src={profilePicture}
@@ -181,7 +181,7 @@ useEffect(()=>{
         </div>
       </motion.section>
 
-      {/* Branding */}
+      {/* Branding */}{/*
       <motion.div className={styles.brand}
       initial={{x:0}}
         animate={
@@ -297,7 +297,7 @@ useEffect(()=>{
       </motion.div>
 
 
-</section>
+</section>*/}
 
 
 
@@ -319,7 +319,7 @@ useEffect(()=>{
 
 
       {/* List of Items */}
-      <section>
+      {/*<section>
         <motion.div className={styles.itemsListContainer}
           ref={homeOptionListRef}
           initial={{opacity:0,y:-100}}
@@ -405,7 +405,7 @@ useEffect(()=>{
           </ul>
         </motion.div>
       </section>
-      <Sticky/>
+      <Sticky/>*/}
     </div>
   );
 };

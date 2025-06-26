@@ -3,9 +3,11 @@
     position: relative;
     top: 0px;
     backdrop-filter: blur(2px);
+    background-color: whites;
   }
   
   .title {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 25px;
     align-items: center;
     justify-content: center;
