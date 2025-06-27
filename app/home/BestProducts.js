@@ -12,24 +12,25 @@ const BestProducts = () => {
 
     const route=useRouter();
   const items = [
-    { name: "ToteBag", photourl: "/avon3_with_no_bg.png", alt: "avon", price: 150 },
-    { name: "Perfume", photourl: "/perfume11.png", alt: "perfume", price: 300 },
-    { name: "Earrings", photourl: "/earring2.png", alt: "earrings", price: 100 },
-    { name: "Soap", photourl: "/soap.png", alt: "soap", price: 50 },
+    { name: "ToteBags",photourl:'/bag.png',alt:'pic' },
+    { name: "Dresses",photourl:'/dress2.png',alt:'pic' },
+    { name: "Shirts" ,photourl:'/shirt2.png',alt:'pic'},
+    { name: "Skirts" ,photourl:'/skirt.png',alt:'pic'},
+    { name: "Blacelets" ,photourl:'/bracelets.png',alt:'pic'},
   ];
 
   const handleRouting=(name)=>{
-    if(name=="Lotion"){
-        route.push("/products/Lotion")
-    }else if(name=="Earrings"){
-        route.push("/products/Earrings")
+    if(name=="ToteBags"){
+        route.push("/products/ToteBags")
+    }else if(name=="Dresses"){
+        route.push("/products/Dresses")
     }
-    else if(name=="Brochus"){
-        route.push("/products/Brochus")
-    }else if(name=="Perfume"){
-        route.push("/products/Perfume")
-    }else if(name=="Soap"){
-        route.push("/products/Soap")
+    else if(name=="Shirts"){
+        route.push("/products/Shirts")
+    }else if(name=="Shirts"){
+        route.push("/products/Shirts")
+    }else if(name=="Blacelets"){
+        route.push("/products/Blacelets")
     }
 }
 
@@ -38,17 +39,13 @@ const BestProducts = () => {
       <motion.div
         key={index}
         style={{left:"30px"}}
-        className={styles.container} id="customizedbackground"
+        className={styles.container} id=""
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.3, delay: index * 0.1 }}
         onClick={()=>handleRouting(item.name)}
       ><div className={styles.picContainer}>
-            <div className={styles.txt}>
-                <h3 style={{ height: "20px" }}>
-                {checkNameLength(item.name) ? item.name : `${item.name.slice(0, 10)}...`}
-                </h3>
-            </div>
+
 
             <Image
                 src={item.photourl}

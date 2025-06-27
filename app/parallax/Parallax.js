@@ -7,6 +7,8 @@ import { motion } from "framer-motion";
 import styles from "./styles/parallax.module.css";
 import MobileLandingPageHeader from "../mobileLandiPageHeader/page";
 import Lenis from "lenis";
+import Card from "./Card";
+import BestProducts from "../home/BestProducts";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -53,17 +55,7 @@ const Parallax = ({ swingProp }) => {
         y:400,
       });
 
-gsap.to(".hero", {
-  opacity: 0,
-  duration: 5,
-  scrollTrigger: {
-    trigger: ".hero",          // Add this to define what element triggers the scroll
-    start: "center center",
-    end: "bottom center",      // Optional, improves reverse behavior
-    scrub: true,               // 👈 Makes it reversible
-    // markers: true           // Uncomment to debug
-  }
-});
+
 
 
       gsap.to(".line p", {
@@ -74,10 +66,9 @@ gsap.to(".hero", {
         scrollTrigger: ScrollTriggerSetting,
       });
     });
+  
 
 
-
-// Define timeline
 const zoomTimeline = gsap.timeline({
   paused: true,
   defaults: { ease: "power2.out" },
@@ -94,11 +85,11 @@ const zoomTimeline = gsap.timeline({
 
 
 
-// Zoom in
-zoomTimeline.to(".zoom", { scale: 50, duration: 1 });
+  // Zoom in
+  zoomTimeline.to(".zoom", { scale: 50, duration: 1 });
 
-// Fade out
-zoomTimeline.to(".zoom", { opacity: 0, duration: 0.5 }, ">");
+  // Fade out
+  zoomTimeline.to(".zoom", { opacity: 0, duration: 0.5 }, ">");
 
 // Fade in next
 
@@ -108,8 +99,8 @@ zoomTimeline.to(".fadeInAfterZoomTwo", { opacity: 1, duration: 0.6 }, ">");
 zoomTimeline.to(".fadeInAfterZoomTwo", { opacity: 0, duration: 0.6 }, ">");
 zoomTimeline.to(".fadeInAfterZoomThree", { opacity: 1, duration: 0.6 }, ">");
 zoomTimeline.to(".fadeInAfterZoomThree", { opacity: 0, duration: 0.6 }, ">");
-zoomTimeline.to(".fadeInAfterZoomFour", { opacity: 1, duration: 0.5 }, ">");
-zoomTimeline.to(".fadeInAfterZoomFour", { opacity: 0, duration: 0.5 }, ">");
+zoomTimeline.to(".fadeInAfterZoomFour", { opacity: 1, duration: 0.6 }, ">");
+zoomTimeline.to(".fadeInAfterZoomFour", { opacity: 0, duration: 0.6 }, ">");
 
 
 zoomTimeline.to(".fadeInAfterZoomFive", { opacity: 1, }, ">");
@@ -117,7 +108,7 @@ zoomTimeline.to(".fadeInAfterZoomFive", { opacity: 1, }, ">");
 // ScrollTrigger that plays forward and reverses on scroll up
 ScrollTrigger.create({
   trigger: ".zoom",
-  start: "top center",
+  start: "bottom 50%",
   toggleActions: "play none none reverse", // optional fallback behavior
   onEnter: () => zoomTimeline.play(),
   onLeaveBack: () => {
@@ -128,33 +119,61 @@ ScrollTrigger.create({
 
 
 
-
-
-const bgAnimationForZoomTimeline = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".fadeInAfterZoomOne",
-    start: "top center",
-    end: "bottom center",
-    scrub: true,
-    // markers: true
-  },
-  defaults: { ease: "power2.out" },
-});
-
-// Parallax background motion (y and opacity: 1)
-bgAnimationForZoomTimeline.to(".bg", {
-  y: "-150vh",
+gsap.to(".heroParallaxOne", {
   opacity: 1,
-  duration: 5,
-  delay:2,
+  y: -800,
+  duration: 1,
+  ease: "power2.out",
+  scrollTrigger: {
+    trigger: ".hero",
+    start: "center center",
+    toggleActions: "play none none reverse", // 🔹 no scrub, plays once on enter
+    // markers: true,
+    onEnter: () => {
+      document.body.style.overflow = "hidden";
+
+      // You could also delay unlock inside the animation complete
+      setTimeout(() => {
+        document.body.style.overflow = "auto";
+      }, 1000); // same as animation duration
+    },
+    onEnterBack: () => {
+      document.body.style.overflow = "hidden";
+
+      setTimeout(() => {
+        document.body.style.overflow = "auto";
+      }, 1000);
+    }
+  }
 });
 
-// THEN fade it out at ~70% of scroll progress
-bgAnimationForZoomTimeline.to(".bg", {
-  opacity: 0,
-  duration: 0.5,
-}, ">-0.3"); // 🟡 use offset to fade out shortly after previous
 
+//card
+    gsap.to(".heroParallaxTwo", {
+  opacity: 1,
+  duration: 2,
+  y:-500,
+  scrollTrigger: {
+    trigger: ".hero",          // Add this to define what element triggers the scroll
+    start: "center center",
+    end: "bottom center",      // Optional, improves reverse behavior
+    scrub: true,               // 👈 Makes it reversible
+    // markers: true           // Uncomment to debug
+  }
+});
+
+    gsap.to(".heroParallaxThree", {
+  opacity: 1,
+  duration: 0.5,
+  scale:0.5,
+  scrollTrigger: {
+    trigger: ".hero",        
+    start: "center center",
+    end: "bottom center",     
+    scrub: true,              
+    // markers: true          
+  }
+});
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
@@ -201,50 +220,71 @@ bgAnimationForZoomTimeline.to(".bg", {
       <section 
         className={`${styles.hero} panel hero`}
       >
-        <motion.div className={styles.image} style={{ justifyContent: "center", display: "flex" }}
+        <div className=" heroParallaxTwo" style={{
+          left:'20px',
+          position:'absolute',
+          display:'grid',
+          justifyContent:'center'
+        }}>
+          <Card/>
+        </div>
         
-        initial={{ opacity: 0, y: 300 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ type: "keyframes", duration: 1, delay: 0.5 }}>
-          <img
-            src="wezzie2.png"
-            alt=""
+
+
+
+
+
+
+
+        
+        <motion.div style={{position:'absolute',
+        backgroundColor:'',
+          width:'100%',
+          height:'20px',
+          bottom:'25px',color:'white',
+          fontSize:'12px',
+          display:'flex',
+          justifyContent:'center'
+        }}
+        initial={{y:200}}
+        animate={{y:0}}
+        transition={{type:'spring',stiffness:200,delay:5}}
+        >
+          <p>Scroll down</p>
+        </motion.div>
+
+
+        <div className={styles.bgContainer}>
+        <div className={`${styles.bg} bg`}>
+          <img src="sittingroom.jpg"
             style={{
-              width: "100%",
-              height: swingProp ? "100%" : "150%",
-              objectFit: "cover",
+              height:swingProp?"120%":'120vh',
+              width:swingProp?"100%":"100%"
             }}
           />
-        </motion.div>
-        
-          <motion.div
+        </div>
+        <div className={`${styles.bg} bg heroParallaxOne`} style={{
+          top:'105vh',
+          display:'grid',
+          justifyItems:'center',
+          width:'100%'
+        }}>
+          <img src="/bag.png"
             style={{
-              position: "absolute",
-              top: "60vh",
-              width:'100%',
-              display:'flex',
-              flexDirection:'column',
-              alignContent:'center',justifyContent:'center'
+              height:swingProp?"50%":'60vh',
+              width:swingProp?"40%":"50%"
             }}
-            initial={{ y: 0, opacity: 0 }}
-            animate={{ y: -200, opacity: 1 }}
-            transition={{ type: "spring" ,duration:1,delay:1,stiffness:120}}
-          >
-            <div style={{
-              position:'absolute',
-              margin:'20px',
-              width:'100%',
-              display:'flex',
-              flexDirection:'column',
-              alignContent:'center',justifyContent:'center',
-              fontSize:'60px',
-              fontWeight:'900',}}>
-              Fashion App
-            </div>
-          </motion.div>
+          />
+        </div>
+        
+      </div>
+
       </section>
 
-      <section className={`${styles.main} main`}>
+      <section className={`${styles.main} main`} style={{
+        backgroundColor:'salmon',
+        boxShadow:'-2px 1px 20px 25px salmon'
+      }}>
         <div className={styles.mainContent}>
           <div className={`${styles.logo} logo`}>
             <Image src="/wezzie3.png" alt="" width={150} height={150} priority />
@@ -265,35 +305,52 @@ bgAnimationForZoomTimeline.to(".bg", {
       </section>
 
       <section className={`${styles.content} content`} style={{
-              overflow:'hidden'}}>
+              overflow:'hidden',}}>
         <div
         className={`${styles.zoom} zoom`}
-         style={{color:'white',fontWeight:'900',fontSize:'60px'}}>
+         style={{fontWeight:'900',fontSize:'60px',
+          display:'flex',
+          justifyContent:'center',
+         }}>
           Fashion App
         </div>
         <div className={`fadeInAfterZoomOne ${styles.fadeInAfterZoomOne}`}
         
-         style={{color:'white',fontWeight:'900',fontSize:'50px',opacity:'0'}}>
+         style={{color:'white',fontWeight:'900',fontSize:'50px',opacity:'0',
+          background:'white',color:'black',
+          display:'flex',
+          justifyContent:'center',
+         }}>
           Cheap
         </div>
         <div className={`fadeInAfterZoomTwo ${styles.fadeInAfterZoomTwo}`}
         
-         style={{color:'white',fontWeight:'900',fontSize:'50px',opacity:'0'}}>
+         style={{color:'white',fontWeight:'900',fontSize:'50px',opacity:'0',
+          background:'salmon',color:'white',
+          display:'flex',
+          justifyContent:'center',
+         }}>
           Affodable
         </div>
         
         <div className={`fadeInAfterZoomThree ${styles.fadeInAfterZoomThree}`}
         
-         style={{color:'white',fontWeight:'900',fontSize:'50px',opacity:'0'}}>
+         style={{color:'white',fontWeight:'900',fontSize:'50px',opacity:'0',
+          background:'white',color:'salmon',
+          display:'flex',
+          justifyContent:'center',
+         }}>
           And Stylish Too
         </div>
         <div className={`fadeInAfterZoomFour ${styles.fadeInAfterZoomThree}`}
         
-         style={{color:'white',fontWeight:'900',fontSize:'50px',opacity:'0'}}>
+         style={{color:'white',fontWeight:'900',fontSize:'50px',opacity:'0',
+          background:'white',color:'black'
+         }}>
           <MobileLandingPageHeader/>
         </div>
         <div className={`fadeInAfterZoomFive ${styles.fadeInAfterZoomThree}`}
-         style={{color:'white',fontWeight:'900',fontSize:'50px',opacity:'0',
+         style={{fontWeight:'900',fontSize:'50px',opacity:'0',
           height:'100%',
           width:'100vw',
           display:'flex',
@@ -307,7 +364,8 @@ bgAnimationForZoomTimeline.to(".bg", {
           width:'100vw',
           display:'flex',
           alignItems:'center',
-          justifyContent:'center'
+          justifyContent:'center',
+
           }}>
             Get Started
           </div>
@@ -315,26 +373,18 @@ bgAnimationForZoomTimeline.to(".bg", {
           
         </div>
 
-          
-      <div className={styles.bgContainer}>
-        <div className={`${styles.bg} bg`}>
-          <img src="/wezzie2.png"
-            style={{
-              height:swingProp?"120%":'120vh',
-              width:swingProp?"100%":"100%"
-            }}
-          />
-        </div>
-        
-      </div>
+
         
       </section>
 
-      
+      <section>
+        <div>
+          <BestProducts/>
+        </div>
+      </section>
 
 
-
-
+                  
 
 
 
