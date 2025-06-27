@@ -6,17 +6,49 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import styles from "./styles/parallax.module.css";
 import MobileLandingPageHeader from "../mobileLandiPageHeader/page";
-import Lenis from "lenis";
 import Card from "./Card";
 import BestProducts from "../home/BestProducts";
-
+import Lenis from '@studio-freight/lenis'
 gsap.registerPlugin(ScrollTrigger);
 
 const Parallax = ({ swingProp }) => {
 
+  useEffect(() => {
+  }, []);
+
+
+
+  
+
+
+
+
+
+
+
+
+
 
 
   useEffect(() => {
+    
+    const lenis = new Lenis({
+      duration: 1.5,
+      easing: (t) => t,
+      smooth: true,
+    })
+
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+//lenis configurations
+
+
+
+
     const ScrollTriggerSetting = {
       trigger: ".main",
       start: swingProp ? "top 30%" : "top 50%",
@@ -73,15 +105,16 @@ const zoomTimeline = gsap.timeline({
   paused: true,
   defaults: { ease: "power2.out" },
   onStart: () => {
-    document.body.style.overflow = "hidden"; // Lock scroll while animating
+    lenis.stop(); // ✅ Disable Lenis scrolling
   },
   onReverseComplete: () => {
-    document.body.style.overflow = "auto"; // Restore scroll after reverse
+    lenis.start(); // ✅ Also enable on reverse complete
   },
   onComplete: () => {
-    document.body.style.overflow = "auto"; // Restore scroll after forward
-  }
+    lenis.start(); // ✅ Enable Lenis scrolling after animation
+  },
 });
+
 
 
 
@@ -112,7 +145,7 @@ ScrollTrigger.create({
   toggleActions: "play none none reverse", // optional fallback behavior
   onEnter: () => zoomTimeline.play(),
   onLeaveBack: () => {
-    document.body.style.overflow = "hidden"; // Lock scroll while reversing
+    lenis.stop();
     zoomTimeline.reverse();
   }
 });
@@ -121,8 +154,8 @@ ScrollTrigger.create({
 
 gsap.to(".heroParallaxOne", {
   opacity: 1,
-  y: -800,
-  duration: 1,
+  y: -750,
+  duration: 2,
   ease: "power2.out",
   scrollTrigger: {
     trigger: ".hero",
@@ -151,8 +184,8 @@ gsap.to(".heroParallaxOne", {
 //card
     gsap.to(".heroParallaxTwo", {
   opacity: 1,
-  duration: 2,
-  y:-500,
+  duration: 1,
+  y:-800,
   scrollTrigger: {
     trigger: ".hero",          // Add this to define what element triggers the scroll
     start: "center center",
@@ -162,7 +195,7 @@ gsap.to(".heroParallaxOne", {
   }
 });
 
-    gsap.to(".heroParallaxThree", {
+  /*  gsap.to(".heroParallaxThree", {
   opacity: 1,
   duration: 0.5,
   scale:0.5,
@@ -173,10 +206,11 @@ gsap.to(".heroParallaxOne", {
     scrub: true,              
     // markers: true          
   }
-});
+});*/
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      lenis.destroy()
     };
   }, []);
 
@@ -238,17 +272,18 @@ gsap.to(".heroParallaxOne", {
 
         
         <motion.div style={{position:'absolute',
-        backgroundColor:'',
           width:'100%',
-          height:'20px',
-          bottom:'25px',color:'white',
-          fontSize:'12px',
-          display:'flex',
-          justifyContent:'center'
+          height:swingProp?'20px':'50px',
+          bottom:swingProp?'25px':'120px',
+          color:'white',
+          fontSize:swingProp?'15px':'25px',
+          display:'grid',
+          justifyContent:'center',
+          flexDirection:'column'
         }}
-        initial={{y:200}}
-        animate={{y:0}}
-        transition={{type:'spring',stiffness:200,delay:5}}
+        initial={{y:50,opacity:0}}
+        animate={{y:0,opacity:0.9}}
+        transition={{type:'spring',stiffness:200,delay:5,repeat:Infinity,repeatType:'reverse'}}
         >
           <p>Scroll down</p>
         </motion.div>
@@ -256,7 +291,7 @@ gsap.to(".heroParallaxOne", {
 
         <div className={styles.bgContainer}>
         <div className={`${styles.bg} bg`}>
-          <img src="sittingroom.jpg"
+          <img src={swingProp?"herosectionbackground.jpg": "sittingroom.jpg"}
             style={{
               height:swingProp?"120%":'120vh',
               width:swingProp?"100%":"100%"
@@ -272,7 +307,7 @@ gsap.to(".heroParallaxOne", {
           <img src="/bag.png"
             style={{
               height:swingProp?"50%":'60vh',
-              width:swingProp?"40%":"50%"
+              width:swingProp?"105%":"50%"
             }}
           />
         </div>
