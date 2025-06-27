@@ -42,7 +42,7 @@ const BestProducts = () => {
         className={styles.container} id=""
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.3, delay: index * 0.1 }}
+        transition={{ duration: 0.3, delay:index * 0.1 }}
         onClick={()=>handleRouting(item.name)}
       ><div className={styles.picContainer}>
 
