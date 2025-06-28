@@ -162,22 +162,6 @@ gsap.to(".heroParallaxOne", {
     trigger: ".hero",
     start: "center center",
     toggleActions: "play none none reverse", // 🔹 no scrub, plays once on enter
-    // markers: true,
-    onEnter: () => {
-      document.body.style.overflow = "hidden";
-
-      // You could also delay unlock inside the animation complete
-      setTimeout(() => {
-        document.body.style.overflow = "auto";
-      }, 1000); // same as animation duration
-    },
-    onEnterBack: () => {
-      document.body.style.overflow = "hidden";
-
-      setTimeout(() => {
-        document.body.style.overflow = "auto";
-      }, 1000);
-    }
   }
 });
 
@@ -318,8 +302,8 @@ gsap.to(".heroParallaxOne", {
       </section>
 
       <section className={`${styles.main} main`} style={{
-        backgroundColor:'salmon',
-        boxShadow:'-2px 1px 20px 25px salmon'
+        backgroundColor:'white',
+        boxShadow:'-2px 1px 20px 25px white'
       }}>
         <div className={styles.mainContent}>
           <div className={`${styles.logo} logo`}>
