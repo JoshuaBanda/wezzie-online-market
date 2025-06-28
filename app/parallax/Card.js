@@ -10,21 +10,20 @@ const Card = () => {
         <motion.div className={styles.heroImage} style={{ justifyContent: "center", display: "flex" }}
             
         initial={{ opacity: 0, y: 0 }}
-        animate={{ opacity: 1, y: -300 }}
+        animate={{ opacity: 1, y: -500 }}
         transition={{ type: "spring",stiffness:200, duration: 0.5, delay: 0.5 }}>
           
-            <span className={styles.heroImageSpan}/>
           <motion.div
             style={{
               position: "absolute",
-              top: "60vh",
+              top: "100px",
               width:'100%',
               display:'flex',
               flexDirection:'column',
               alignContent:'center',justifyContent:'center'
             }}
-            initial={{ y: 0, opacity: 0 }}
-            animate={{ y: -400, opacity: 1 }}
+            initial={{ y: 200, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
             transition={{ type: "spring" ,duration:1,delay:0.5,stiffness:120}}
           >
             <div className={styles.cardBigFont}
@@ -42,14 +41,15 @@ const Card = () => {
                     <motion.div
             style={{
               position: "absolute",
-              top: "60vh",
+              top: "150px",
               width:'100%',
+              left:'20px',
               display:'flex',
               flexDirection:'column',
               alignContent:'center',justifyContent:'center'
             }}
-            initial={{ y: 200, opacity: 0 }}
-            animate={{ y: -350, opacity: 1 }}
+            initial={{ y:200, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
             transition={{ type: "spring" ,duration:1,delay:1.5,stiffness:150}}
           >
             <div 

@@ -82,9 +82,10 @@ const Parallax = ({ swingProp }) => {
       gsap.to(".logo", {
         scale: 1,
         duration: 2,
+        delay:0.5,
         ease: "power1.out",
         scrollTrigger: ScrollTriggerSetting,
-        y:400,
+        y:swingProp?0:550,
       });
 
 
@@ -226,7 +227,7 @@ gsap.to(".heroParallaxOne", {
         >
           <div className={`${styles.card} ${styles.cardLeft} cardLeft`}>
             <Image
-              src={`/img-${2 * i - 1}.jpg`}
+              src={`/img-${2 * i - 1}.png`}
               alt={`img-${2 * i - 1}`}
               width={swingProp ? 250 : 700}
               height={swingProp ? 250 : 400}
@@ -235,7 +236,7 @@ gsap.to(".heroParallaxOne", {
           </div>
           <div className={`${styles.card} ${styles.cardRight} cardRight`}>
             <Image
-              src={`/img-${2 * i}.jpg`}
+              src={`/img-${2 * i}.png`}
               alt={`img-${2 * i}`}
               width={swingProp ? 250 : 700}
               height={swingProp ? 250 : 400}

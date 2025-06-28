@@ -35,7 +35,7 @@ useEffect(() => {
     const screenWidth = window.innerWidth;
     //console.log("Current screen width:", screenWidth);
 
-    if (screenWidth < 400) {
+    if (screenWidth < 1080) {
       //console.log("Setting swing to TRUE (screen is narrow)");
       setSwing(true);
     } else {
